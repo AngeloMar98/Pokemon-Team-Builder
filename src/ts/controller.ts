@@ -78,31 +78,52 @@ Prendi tipo, gen, name, evoluto o no
 
 // createJSON();
 
-const selectMenus = Array.from(document.querySelectorAll(".select-menu"));
+const sidemenuBtn = document.querySelector(".sidemenu-btn");
+const sidemenuContainer = document.querySelector(".sidemenu-container");
 
-selectMenus.forEach((selectMenu) => {
-  const dropdownMenus = Array.from(
-    selectMenu.querySelectorAll(".dropdownMenuContainer")
-  );
+sidemenuBtn?.addEventListener("click", () =>
+  sidemenuContainer?.classList.toggle("sidemenu-hidden")
+);
 
-  dropdownMenus.forEach((menu) => {
-    const filterMenu: HTMLInputElement | null =
-      menu.querySelector(".filterMenu");
+const movesetMenuBtns = Array.from(
+  document.querySelectorAll(".moveset-menu-btn")
+);
 
-    const dropdownMenuBtn: HTMLElement | null =
-      menu.querySelector(".dropdownMenuBtn");
+movesetMenuBtns.forEach((movesetMenuBtn) => {
+  const teamMember = movesetMenuBtn.closest(".team-member");
+  const movesetMenu = teamMember?.querySelector(".moveset-menu");
 
-    dropdownMenuBtn!.addEventListener("click", () => {
-      menu.classList.toggle("activated");
-      dropdownMenus.forEach((otherMenu) => {
-        console.log(menu !== otherMenu);
-        if (menu !== otherMenu) otherMenu.classList.remove("activated");
+  movesetMenuBtn.addEventListener("click", () => {
+    movesetMenu?.classList.toggle("moveset-hidden");
+    movesetMenu?.classList.toggle("grid");
+    teamMember?.classList.toggle("cut-rounded");
+
+    movesetMenuBtn.classList.toggle("moveset-menu-btn-open");
+  });
+});
+
+const movesetMenus = Array.from(document.querySelectorAll(".moveset-menu"));
+
+movesetMenus.forEach((movesetMenu) => {
+  const slotSelect = Array.from(movesetMenu.querySelectorAll(".slot-select"));
+
+  slotSelect.forEach((slot) => {
+    const slotInput: HTMLInputElement | null =
+      slot.querySelector(".slot-select_input");
+
+    const slotBtn: HTMLElement | null = slot.querySelector(".slot-select_btn");
+
+    slotBtn!.addEventListener("click", () => {
+      slot.classList.toggle("activated");
+      slotSelect.forEach((otherSlot) => {
+        console.log(slot !== otherSlot);
+        if (slot !== otherSlot) otherSlot.classList.remove("activated");
       });
     });
 
-    filterMenu!.addEventListener("keyup", function () {
-      const value: string = filterMenu!.value;
-      const listOptions: NodeListOf<HTMLElement> = menu.querySelectorAll("li");
+    slotInput!.addEventListener("keyup", function () {
+      const value: string = slotInput!.value;
+      const listOptions: NodeListOf<HTMLElement> = slot.querySelectorAll("li");
 
       for (const li of Array.from(listOptions)) {
         const option = li?.textContent || li?.innerText;
@@ -114,33 +135,67 @@ selectMenus.forEach((selectMenu) => {
   });
 });
 
-const movesetMenuBtns = Array.from(
-  document.querySelectorAll(".moveset-menu-btn")
+const teamMemberPicks = Array.from(
+  document.querySelectorAll(".team-members-pick")
 );
 
-movesetMenuBtns.forEach((movesetMenuBtn) => {
-  const teamMember = movesetMenuBtn.closest(".team-member");
-  const movesetMenu = teamMember?.querySelector(".moveset-menu");
+teamMemberPicks.forEach((teamMemberPick) => {
+  const teamNameLabel = teamMemberPick.querySelector(".team-name-label");
+  const teamNameInput: HTMLInputElement | null =
+    teamMemberPick.querySelector(".team-name-input");
 
-  movesetMenuBtn.addEventListener("click", () =>
-    movesetMenu?.classList.toggle("moveset-hidden")
+  teamNameInput!.value = teamNameLabel?.textContent || "";
+  console.log(teamNameInput!.value);
+  teamNameLabel?.addEventListener("click", () => {
+    teamNameLabel.classList.add("hidden");
+    teamNameInput!.classList.remove("hidden");
+  });
+
+  teamNameInput?.addEventListener("keypress", (e: KeyboardEventInit) => {
+    if (e.key === "Enter") {
+      teamNameLabel!.textContent = teamNameInput.value || "Default Team Name";
+
+      teamNameLabel!.classList.remove("hidden");
+      teamNameInput!.classList.add("hidden");
+    }
+  });
+});
+
+const filterMenuBtns = Array.from(
+  document.querySelectorAll(".filter-menu_btn")
+);
+
+filterMenuBtns.forEach((filterMenuBtn) => {
+  const filterMenu = filterMenuBtn.closest(".filter-menu");
+
+  filterMenuBtn.addEventListener("click", () =>
+    filterMenu?.classList.toggle("activated")
   );
 });
 
-// function filterFunction() {
-//   const filter = (<HTMLInputElement>document.getElementById("myInput")).value;
+const filterFullyEvo = document.querySelector(".filter-fullyEvo");
+const toggleFullyEvo = document.querySelector(".toggle-fully-evo");
 
-//   let a, i, txtValue;
+filterFullyEvo?.addEventListener("click", () => {
+  filterFullyEvo.classList.toggle("fullyEvo-only");
+});
 
-//   a = div!.getElementsByTagName("li");
+["hashchange", "load"].forEach((event) =>
+  window.addEventListener(event, (e) => {
+    e.preventDefault();
 
-//   console.log(a);
-//   for (i = 0; i < a.length; i++) {
-//     txtValue = a[i].textContent || a[i].innerText;
-//     if (txtValue.toUpperCase().includes(filter.toUpperCase())) {
-//       a[i].style.display = "";
-//     } else {
-//       a[i].style.display = "none";
-//     }
-//   }
-// }
+    const pokemozzo = window.location.hash;
+    console.log(`added ${pokemozzo}`);
+  })
+);
+
+const teamMemberAdds = Array.from(document.querySelectorAll(".teamMember-add"));
+
+teamMemberAdds.forEach((teamMemberAdd: any) =>
+  teamMemberAdd.addEventListener(
+    "click",
+    () =>
+      (window.location.href =
+        window.location + `#${teamMemberAdd.title} ` || "")
+  )
+);

@@ -13,327 +13,1951 @@
     <script defer src="src/js/controller.js"></script>
     <title>Document</title>
   </head>
+
   <body
-    class="bg-lightM-paleYellow dark:bg-darkM-indigo min-h-screen font-default font-normal"
+    class="bg-lightM-paleYellow dark:bg-darkM-indigo font-default font-normal relative min-h-screen"
   >
-    <div class="text-center flex items-center p-3" id="title">
+    <header class="text-center flex items-center p-3 mx-auto w-fit" id="title">
       <a href="#">
         <img src="src/img/icons_ui/meowth.png" alt="Meowth Icon" />
       </a>
       <a href="#">
         <h1 class="text-darkM-whiteIndigo">Pokèmon Team Builder</h1>
       </a>
-    </div>
-
-    <div class="p-3">
-      <div class="dark:text-darkM-whiteIndigo team-members">
-        <div class="grid grid-cols-6">
-          <button
-            class="pok-pick-1 dark:bg-darkM-lightIndigo1 dark:hover:bg-darkM-lightIndigo3 py-1 transition-all duration-200 rounded-tl-md"
-          >
-            1
-          </button>
-          <button
-            class="pok-pick-2 dark:bg-darkM-lightIndigo1 dark:hover:bg-darkM-lightIndigo3 py-1 transition-all duration-200"
-          >
-            2
-          </button>
-          <button
-            class="pok-pick-3 dark:bg-darkM-lightIndigo1 dark:hover:bg-darkM-lightIndigo3 py-1 transition-all duration-200"
-          >
-            3
-          </button>
-          <button
-            class="pok-pick-4 dark:bg-darkM-lightIndigo1 dark:hover:bg-darkM-lightIndigo3 py-1 transition-all duration-200"
-          >
-            4
-          </button>
-          <button
-            class="pok-pick-5 dark:bg-darkM-lightIndigo1 dark:hover:bg-darkM-lightIndigo3 py-1 transition-all duration-200"
-          >
-            5
-          </button>
-          <button
-            class="pok-pick-6 dark:bg-darkM-lightIndigo1 dark:hover:bg-darkM-lightIndigo3 py-1 transition-all duration-200 rounded-tr-md"
-          >
-            6
-          </button>
-        </div>
-        <!-- <div class="grid grid-cols-3">
-          <button
-            class="pok-pick-1 dark:bg-darkM-lightIndigo1 dark:hover:bg-darkM-lightIndigo3 py-1 transition-all duration-200 rounded-tl-md"
-          >
-            1 - 2
-          </button>
-
-          <button
-            class="pok-pick-5 dark:bg-darkM-lightIndigo1 dark:hover:bg-darkM-lightIndigo3 py-1 transition-all duration-200"
-          >
-            3 - 4
-          </button>
-          <button
-            class="pok-pick-6 dark:bg-darkM-lightIndigo1 dark:hover:bg-darkM-lightIndigo3 py-1 transition-all duration-200 rounded-tr-md"
-          >
-            5 - 6
-          </button>
-        </div> -->
-      </div>
-      <div class="mt-3 team-member team-member-1">
-        <article
-          class="dark:bg-darkM-lightIndigo1 rounded-t-md border dark:border-darkM-lightIndigo3 relative"
-          id="member-1"
+    </header>
+    <main class="laptop:grid laptop:grid-cols-2 relative pb-6">
+      <section class="p-3">
+        <div
+          class="team-members-pick dark:text-darkM-whiteIndigo border dark:border-darkM-lightIndigo3 rounded-md overflow-hidden"
         >
-          <h2
-            class="text-center dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-darkM-lightIndigo3"
-            id="arceus"
-            alt="pokèmon name"
+          <div
+            class="pick-container pick-container-1 grid grid-cols-6 tablet:hidden"
           >
-            Arceus
-          </h2>
-          <div class="flex justify-center py-2">
-            <img
-              class="hover:cursor-pointer"
-              src="src/img/pokemon_sprites/10035.png"
-            />
+            <button class="pick-1 pick-btn">1</button>
+            <button class="pick-2 pick-btn">2</button>
+            <button class="pick-3 pick-btn pick-btn-active">3</button>
+            <button class="pick-4 pick-btn">4</button>
+            <button class="pick-5 pick-btn">5</button>
+            <button class="pick-6 pick-btn">6</button>
           </div>
           <div
-            class="flex flex-col items-center gap-1 py-2 border-t dark:border-darkM-lightIndigo3 rounded-sm relative"
-            id="types"
+            class="grid-cols-3 pick-container pick-container-2 hidden tablet:grid laptop:hidden"
           >
-            <img class="h-[25px]" src="src/img/types_labels/electric.png" />
-            <img class="h-[25px]" src="src/img/types_labels/bug.png" />
-            <button
-              class="absolute right-2 top-1/2 -translate-y-1/2 dark:bg-darkM-lightIndigo3 dark:hover:bg-darkM-purple p-1 rounded-full transition-all duration-200 flex items-center justify-center moveset-menu-btn"
+            <button class="pick-1-2 pick-btn rounded-tl-md">
+              1 &nbsp;&nbsp; - &nbsp;&nbsp; 2
+            </button>
+
+            <button class="pick-3-4 pick-btn pick-btn-active">
+              3 &nbsp;&nbsp; - &nbsp;&nbsp; 4
+            </button>
+            <button class="pick-5-6 pick-btn rounded-tr-md">
+              5 &nbsp;&nbsp; - &nbsp;&nbsp; 6
+            </button>
+          </div>
+          <div class="dark:bg-darkM-lightIndigo3">
+            <div
+              class="team-name-container flex flex-col justify-center p-2 mx-auto w-fit"
             >
+              <label
+                class="team-name-label font-semibold text-base"
+                for="teamName"
+                >Team name #1</label
+              >
+
+              <input
+                class="team-name-input w-full hidden text-darkM-indigo"
+                id="teamName"
+                type="text"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="mt-3 team-members-container grid tablet:grid-cols-2 gap-2">
+          <article class="team-member team-member-1" id="member-1">
+            <h2
+              class="text-center dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-darkM-lightIndigo3"
+              id="arceus"
+              alt="pokèmon name"
+            >
+              Arceus
+            </h2>
+            <div class="flex justify-center py-2">
+              <img
+                class="hover:cursor-pointer"
+                src="src/img/pokemon_sprites/10035.png"
+              />
+            </div>
+            <div
+              class="flex flex-col items-center gap-1 py-2 border-t dark:border-darkM-lightIndigo3 rounded-sm relative"
+              id="types"
+            >
+              <img class="h-[25px]" src="src/img/types_labels/electric.png" />
+              <img class="h-[25px]" src="src/img/types_labels/bug.png" />
+              <button class="moveset-menu-btn">
+                <svg
+                  class="dark:fill-darkM-whiteIndigo"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 256 256"
+                >
+                  <path
+                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+
+            <div class="moveset-menu moveset-hidden">
+              <div class="grid grid-cols-2 gap-2">
+                <div class="slots-select">
+                  <div class="slot-select slot-select-1 group">
+                    <button class="slot-select_btn">
+                      <span>Move 1</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-1_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-2 group">
+                    <button class="slot-select_btn">
+                      <span>Move 2</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-2_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-3 group">
+                    <button class="slot-select_btn">
+                      <span>Move 3</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-3_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-4 group">
+                    <button class="slot-select_btn">
+                      <span>Move 4</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-4_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-ability group">
+                    <button class="slot-select_btn">
+                      <span>Ability</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-ability_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="slots mr-3 leading-5">
+                  <div class="slot slot-move-1 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-2 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-3 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-4 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-ability bg-darkM-lightIndigo3">
+                    Pressure
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="team-member team-member-2" id="member-2">
+            <h2
+              class="text-center dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-darkM-lightIndigo3"
+              id="arceus"
+              alt="pokèmon name"
+            >
+              Arceus
+            </h2>
+            <div class="flex justify-center py-2">
+              <img
+                class="hover:cursor-pointer"
+                src="src/img/pokemon_sprites/10035.png"
+              />
+            </div>
+            <div
+              class="flex flex-col items-center gap-1 py-2 border-t dark:border-darkM-lightIndigo3 rounded-sm relative"
+              id="types"
+            >
+              <img class="h-[25px]" src="src/img/types_labels/electric.png" />
+              <img class="h-[25px]" src="src/img/types_labels/bug.png" />
+              <button class="moveset-menu-btn">
+                <svg
+                  class="dark:fill-darkM-whiteIndigo"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 256 256"
+                >
+                  <path
+                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+
+            <div class="moveset-menu moveset-hidden">
+              <div class="grid grid-cols-2 gap-2">
+                <div class="slots-select">
+                  <div class="slot-select slot-select-1 group">
+                    <button class="slot-select_btn">
+                      <span>Move 1</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-1_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-2 group">
+                    <button class="slot-select_btn">
+                      <span>Move 2</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-2_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-3 group">
+                    <button class="slot-select_btn">
+                      <span>Move 3</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-3_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-4 group">
+                    <button class="slot-select_btn">
+                      <span>Move 4</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-4_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-ability group">
+                    <button class="slot-select_btn">
+                      <span>Ability</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-ability_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="slots mr-3 leading-5">
+                  <div class="slot slot-move-1 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-2 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-3 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-4 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-ability bg-darkM-lightIndigo3">
+                    Pressure
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="team-member team-member-3" id="member-3">
+            <h2
+              class="text-center dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-darkM-lightIndigo3"
+              id="arceus"
+              alt="pokèmon name"
+            >
+              Arceus
+            </h2>
+            <div class="flex justify-center py-2">
+              <img
+                class="hover:cursor-pointer"
+                src="src/img/pokemon_sprites/10035.png"
+              />
+            </div>
+            <div
+              class="flex flex-col items-center gap-1 py-2 border-t dark:border-darkM-lightIndigo3 rounded-sm relative"
+              id="types"
+            >
+              <img class="h-[25px]" src="src/img/types_labels/electric.png" />
+              <img class="h-[25px]" src="src/img/types_labels/bug.png" />
+              <button class="moveset-menu-btn">
+                <svg
+                  class="dark:fill-darkM-whiteIndigo"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 256 256"
+                >
+                  <path
+                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+
+            <div class="moveset-menu moveset-hidden">
+              <div class="grid grid-cols-2 gap-2">
+                <div class="slots-select">
+                  <div class="slot-select slot-select-1 group">
+                    <button class="slot-select_btn">
+                      <span>Move 1</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-1_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-2 group">
+                    <button class="slot-select_btn">
+                      <span>Move 2</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-2_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-3 group">
+                    <button class="slot-select_btn">
+                      <span>Move 3</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-3_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-4 group">
+                    <button class="slot-select_btn">
+                      <span>Move 4</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-4_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-ability group">
+                    <button class="slot-select_btn">
+                      <span>Ability</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-ability_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="slots mr-3 leading-5">
+                  <div class="slot slot-move-1 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-2 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-3 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-4 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-ability bg-darkM-lightIndigo3">
+                    Pressure
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="team-member team-member-4" id="member-4">
+            <h2
+              class="text-center dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-darkM-lightIndigo3"
+              id="arceus"
+              alt="pokèmon name"
+            >
+              Arceus
+            </h2>
+            <div class="flex justify-center py-2">
+              <img
+                class="hover:cursor-pointer"
+                src="src/img/pokemon_sprites/10035.png"
+              />
+            </div>
+            <div
+              class="flex flex-col items-center gap-1 py-2 border-t dark:border-darkM-lightIndigo3 rounded-sm relative"
+              id="types"
+            >
+              <img class="h-[25px]" src="src/img/types_labels/electric.png" />
+              <img class="h-[25px]" src="src/img/types_labels/bug.png" />
+              <button class="moveset-menu-btn">
+                <svg
+                  class="dark:fill-darkM-whiteIndigo"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 256 256"
+                >
+                  <path
+                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+
+            <div class="moveset-menu moveset-hidden">
+              <div class="grid grid-cols-2 gap-2">
+                <div class="slots-select">
+                  <div class="slot-select slot-select-1 group">
+                    <button class="slot-select_btn">
+                      <span>Move 1</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-1_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-2 group">
+                    <button class="slot-select_btn">
+                      <span>Move 2</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-2_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-3 group">
+                    <button class="slot-select_btn">
+                      <span>Move 3</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-3_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-4 group">
+                    <button class="slot-select_btn">
+                      <span>Move 4</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-4_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-ability group">
+                    <button class="slot-select_btn">
+                      <span>Ability</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-ability_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="slots mr-3 leading-5">
+                  <div class="slot slot-move-1 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-2 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-3 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-4 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-ability bg-darkM-lightIndigo3">
+                    Pressure
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="team-member team-member-5" id="member-5">
+            <h2
+              class="text-center dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-darkM-lightIndigo3"
+              id="arceus"
+              alt="pokèmon name"
+            >
+              Arceus
+            </h2>
+            <div class="flex justify-center py-2">
+              <img
+                class="hover:cursor-pointer"
+                src="src/img/pokemon_sprites/10035.png"
+              />
+            </div>
+            <div
+              class="flex flex-col items-center gap-1 py-2 border-t dark:border-darkM-lightIndigo3 rounded-sm relative"
+              id="types"
+            >
+              <img class="h-[25px]" src="src/img/types_labels/electric.png" />
+              <img class="h-[25px]" src="src/img/types_labels/bug.png" />
+              <button class="moveset-menu-btn">
+                <svg
+                  class="dark:fill-darkM-whiteIndigo"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 256 256"
+                >
+                  <path
+                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+
+            <div class="moveset-menu moveset-hidden">
+              <div class="grid grid-cols-2 gap-2">
+                <div class="slots-select">
+                  <div class="slot-select slot-select-1 group">
+                    <button class="slot-select_btn">
+                      <span>Move 1</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-1_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-2 group">
+                    <button class="slot-select_btn">
+                      <span>Move 2</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-2_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-3 group">
+                    <button class="slot-select_btn">
+                      <span>Move 3</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-3_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-4 group">
+                    <button class="slot-select_btn">
+                      <span>Move 4</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-4_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-ability group">
+                    <button class="slot-select_btn">
+                      <span>Ability</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-ability_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="slots mr-3 leading-5">
+                  <div class="slot slot-move-1 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-2 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-3 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-4 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-ability bg-darkM-lightIndigo3">
+                    Pressure
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+          <article class="team-member team-member-6" id="member-6">
+            <h2
+              class="text-center dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-darkM-lightIndigo3"
+              id="arceus"
+              alt="pokèmon name"
+            >
+              Arceus
+            </h2>
+            <div class="flex justify-center py-2">
+              <img
+                class="hover:cursor-pointer"
+                src="src/img/pokemon_sprites/10035.png"
+              />
+            </div>
+            <div
+              class="flex flex-col items-center gap-1 py-2 border-t dark:border-darkM-lightIndigo3 rounded-sm relative"
+              id="types"
+            >
+              <img class="h-[25px]" src="src/img/types_labels/electric.png" />
+              <img class="h-[25px]" src="src/img/types_labels/bug.png" />
+              <button class="moveset-menu-btn">
+                <svg
+                  class="dark:fill-darkM-whiteIndigo"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 256 256"
+                >
+                  <path
+                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+
+            <div class="moveset-menu moveset-hidden">
+              <div class="grid grid-cols-2 gap-2">
+                <div class="slots-select">
+                  <div class="slot-select slot-select-1 group">
+                    <button class="slot-select_btn">
+                      <span>Move 1</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-1_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-2 group">
+                    <button class="slot-select_btn">
+                      <span>Move 2</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-2_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-3 group">
+                    <button class="slot-select_btn">
+                      <span>Move 3</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-3_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-4 group">
+                    <button class="slot-select_btn">
+                      <span>Move 4</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-4_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="slot-select slot-select-ability group">
+                    <button class="slot-select_btn">
+                      <span>Ability</span>
+                      <svg
+                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="20"
+                        height="20"
+                        viewBox="0 0 256 256"
+                      >
+                        <path
+                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                        ></path>
+                      </svg>
+                    </button>
+                    <ul
+                      class="slot-select_ul slot-select-ability_ul group-[.activated]:flex"
+                    >
+                      <input
+                        class="slot-select_input"
+                        type="text"
+                        placeholder="Pick a move"
+                      />
+                      <li
+                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        id="fire_punch"
+                        alt="Fire Punch\n Physical 75 power"
+                      >
+                        Fire Punch
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="slots mr-3 leading-5">
+                  <div class="slot slot-move-1 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-2 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-3 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-move-4 bg-fire">
+                    Hyperspace Hyperspace
+                  </div>
+                  <div class="slot slot-ability bg-darkM-lightIndigo3">
+                    Pressure
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="p-3">
+        <div
+          class="filter-container p-3 rounded-md grid grid-cols-2 tablet:grid-cols-3 dark:bg-darkM-lightIndigo1 border dark:border-darkM-lightIndigo3 gap-2"
+        >
+          <div
+            class="filter filter-menu filter-gen relative group tablet:order-1"
+          >
+            <button
+              class="filter-menu_btn w-full dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 px-1 rounded-lg"
+            >
+              <span>Gen </span>
               <svg
-                class="dark:fill-darkM-whiteIndigo"
+                class="carret-down dark:fill-darkM-whiteIndigo rotate-180 group-[.activated]:rotate-0 inline-block transition-all duration-300"
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="20"
+                height="20"
                 viewBox="0 0 256 256"
               >
                 <path
-                  d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
+                  d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
                 ></path>
               </svg>
             </button>
+            <ul class="filter-menu_ul group-[.activated]:flex">
+              <li class="flex" data-gen="generation-i">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="gen-i"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="gen-i"
+                  >Gen I</label
+                >
+              </li>
+              <li class="flex" data-gen="generation-ii">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="gen-ii"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="gen-ii"
+                  >Gen II</label
+                >
+              </li>
+              <li class="flex" data-gen="generation-iii">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="gen-iii"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="gen-iii"
+                  >Gen III</label
+                >
+              </li>
+              <li class="flex" data-gen="generation-iv">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="gen-iv"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="gen-iv"
+                  >Gen IV</label
+                >
+              </li>
+              <li class="flex" data-gen="generation-v">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="gen-v"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="gen-v"
+                  >Gen V</label
+                >
+              </li>
+              <li class="flex" data-gen="gen-vi">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="gen-vi"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="gen-vi"
+                  >Gen VI</label
+                >
+              </li>
+              <li class="flex" data-gen="generation-vii">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="gen-vii"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="gen-vii"
+                  >Gen VII</label
+                >
+              </li>
+              <li class="flex" data-gen="generation-viii">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="gen-viii"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="gen-viii"
+                  >Gen VIII</label
+                >
+              </li>
+              <li class="flex" data-generation="gen-ix">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="gen-ix"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="gen-ix"
+                  >Gen IX</label
+                >
+              </li>
+            </ul>
           </div>
-
           <div
-            class="absolute left-[-1px] text-sm top-full rounded-b-md dark:bg-darkM-purple border dark:border-darkM-lightIndigo3 w-[calc(100%_+_2px)] z-10 grid grid-cols-2 gap-2 transition-all duration-300 moveset-menu moveset-hidden ease-out"
+            class="filter filter-menu filter-type relative group tablet:order-2"
           >
-            <div class="select-menu">
-              <div
-                class="move-select move-select-1 flex flex-col justify-center dropdownMenuContainer ml-3 my-2 relative"
+            <button
+              class="filter-menu_btn w-full dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 px-1 rounded-lg"
+            >
+              <span>Type </span>
+              <svg
+                class="carret-down dark:fill-darkM-whiteIndigo rotate-180 group-[.activated]:rotate-0 inline-block transition-all duration-300"
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 256 256"
               >
-                <button
-                  class="font-semibold dark:bg-darkM-violet rounded-xl text-center py-1 dark:text-darkM-whiteIndigo dropdownMenuBtn"
+                <path
+                  d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
+                ></path>
+              </svg>
+            </button>
+            <ul class="filter-menu_ul group-[.activated]:flex">
+              <li class="flex" data-type="fire">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-fire"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-fire"
+                  >Fire</label
                 >
-                  <span>Move 1</span>
-                  <svg
-                    class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                    ></path>
-                  </svg>
-                </button>
-                <ul
-                  class="move-select-1_ul hidden w-full text-center pt-1 mt-1 dark:bg-darkM-lightIndigo1 dark:text-darkM-whiteIndigo rounded-md text-sm min-h-[52px] max-h-[200px] overflow-y-scroll dropdownMenu absolute top-8 z-20"
+              </li>
+              <li class="flex" data-type="water">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-water"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-water"
+                  >Water</label
                 >
-                  <input
-                    class="w-[calc(100%_-_0.5rem)] dark:text-darkM-indigo mx-1 pl-1 filterMenu"
-                    type="text"
-                    placeholder="Pick a move"
-                  />
-                  <li
-                    class="hover:cursor-pointer dark:hover:bg-darkM-lightIndigo3 w-full py-1"
-                    id="fire_punch"
-                    alt="Fire Punch\n Physical 75 power"
-                  >
-                    Fire Punch
-                  </li>
-                </ul>
-              </div>
-              <div
-                class="move-select move-select-2 flex flex-col justify-center dropdownMenuContainer ml-3 my-2 relative"
-              >
-                <button
-                  class="font-semibold dark:bg-darkM-violet rounded-xl text-center py-1 dark:text-darkM-whiteIndigo dropdownMenuBtn"
+              </li>
+              <li class="flex" data-type="grass">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-grass"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-grass"
+                  >Grass</label
                 >
-                  <span>Move 2</span>
-                  <svg
-                    class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                    ></path>
-                  </svg>
-                </button>
-                <ul
-                  class="move-select-2_ul hidden w-full text-center pt-1 mt-1 dark:bg-darkM-lightIndigo1 dark:text-darkM-whiteIndigo rounded-md text-sm min-h-[52px] max-h-[200px] overflow-y-scroll dropdownMenu absolute top-8 z-20"
+              </li>
+              <li class="flex" data-type="bug">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-bug"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-bug"
+                  >Bug</label
                 >
-                  <input
-                    class="w-[calc(100%_-_0.5rem)] dark:text-darkM-indigo mx-1 pl-1 filterMenu"
-                    type="text"
-                    placeholder="Pick a move"
-                  />
-                  <li
-                    class="hover:cursor-pointer dark:hover:bg-darkM-lightIndigo3 w-full py-1"
-                    id="fire_punch"
-                    alt="Fire Punch\n Physical 75 power"
-                  >
-                    Fire Punch
-                  </li>
-                </ul>
-              </div>
-              <div
-                class="move-select move-select-3 flex flex-col justify-center dropdownMenuContainer ml-3 my-2 relative"
-              >
-                <button
-                  class="font-semibold dark:bg-darkM-violet rounded-xl text-center py-1 dark:text-darkM-whiteIndigo dropdownMenuBtn"
+              </li>
+              <li class="flex" data-type="dark">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-dark"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-dark"
+                  >Dark</label
                 >
-                  <span>Move 3</span>
-                  <svg
-                    class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                    ></path>
-                  </svg>
-                </button>
-                <ul
-                  class="move-select-3_ul hidden w-full text-center pt-1 mt-1 dark:bg-darkM-lightIndigo1 dark:text-darkM-whiteIndigo rounded-md text-sm min-h-[52px] max-h-[200px] overflow-y-scroll dropdownMenu absolute top-8 z-20"
+              </li>
+              <li class="flex" data-type="dragon">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-dragon"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-dragon"
+                  >Dragon</label
                 >
-                  <input
-                    class="w-[calc(100%_-_0.5rem)] dark:text-darkM-indigo mx-1 pl-1 filterMenu"
-                    type="text"
-                    placeholder="Pick a move"
-                  />
-                  <li
-                    class="hover:cursor-pointer dark:hover:bg-darkM-lightIndigo3 w-full py-1"
-                    id="fire_punch"
-                    alt="Fire Punch\n Physical 75 power"
-                  >
-                    Fire Punch
-                  </li>
-                </ul>
-              </div>
-              <div
-                class="move-select move-select-4 flex flex-col justify-center dropdownMenuContainer ml-3 my-2 relative"
-              >
-                <button
-                  class="font-semibold dark:bg-darkM-violet rounded-xl text-center py-1 dark:text-darkM-whiteIndigo dropdownMenuBtn"
+              </li>
+              <li class="flex" data-type="flying">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-flying"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-flying"
+                  >Flying</label
                 >
-                  <span>Move 4</span>
-                  <svg
-                    class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                    ></path>
-                  </svg>
-                </button>
-                <ul
-                  class="move-select-4_ul hidden w-full text-center pt-1 mt-1 dark:bg-darkM-lightIndigo1 dark:text-darkM-whiteIndigo rounded-md text-sm min-h-[52px] max-h-[200px] overflow-y-scroll dropdownMenu absolute top-8 z-20"
+              </li>
+              <li class="flex" data-type="electric">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-electric"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-eletric"
+                  >Electric</label
                 >
-                  <input
-                    class="w-[calc(100%_-_0.5rem)] dark:text-darkM-indigo mx-1 pl-1 filterMenu"
-                    type="text"
-                    placeholder="Pick a move"
-                  />
-                  <li
-                    class="hover:cursor-pointer dark:hover:bg-darkM-lightIndigo3 w-full py-1"
-                    id="fire_punch"
-                    alt="Fire Punch\n Physical 75 power"
-                  >
-                    Fire Punch
-                  </li>
-                </ul>
-              </div>
-              <div
-                class="ability-select flex flex-col justify-center dropdownMenuContainer ml-3 my-2 relative"
-              >
-                <button
-                  class="font-semibold dark:bg-darkM-violet rounded-xl text-center py-1 dark:text-darkM-whiteIndigo dropdownMenuBtn"
+              </li>
+              <li class="flex" data-type="fairy">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-fairy"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-fairy"
+                  >Fairy</label
                 >
-                  <span>Ability</span>
-                  <svg
-                    class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 256 256"
-                  >
-                    <path
-                      d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                    ></path>
-                  </svg>
-                </button>
-                <ul
-                  class="ability_ul hidden w-full text-center pt-1 mt-1 dark:bg-darkM-lightIndigo1 dark:text-darkM-whiteIndigo rounded-md text-sm min-h-[52px] max-h-[200px] overflow-y-scroll dropdownMenu absolute top-8 z-20"
+              </li>
+              <li class="flex" data-type="fighting">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-fighting"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-fighting"
+                  >Fighting</label
                 >
-                  <input
-                    class="w-[calc(100%_-_0.5rem)] dark:text-darkM-indigo mx-1 pl-1 filterMenu"
-                    type="text"
-                    placeholder="Pick a move"
-                  />
-                  <li
-                    class="hover:cursor-pointer dark:hover:bg-darkM-lightIndigo3 w-full py-1"
-                    id="fire_punch"
-                    alt="Fire Punch\n Physical 75 power"
-                  >
-                    Fire Punch
-                  </li>
-                </ul>
-              </div>
+              </li>
+              <li class="flex" data-type="ghost">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-ghost"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-ghost"
+                  >Ghost</label
+                >
+              </li>
+              <li class="flex" data-type="ground">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-ground"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-ground"
+                  >Ground</label
+                >
+              </li>
+              <li class="flex" data-type="ice">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-ice"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-ice"
+                  >Ice</label
+                >
+              </li>
+              <li class="flex" data-type="normal">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-normal"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-normal"
+                  >Normal</label
+                >
+              </li>
+              <li class="flex" data-type="poison">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-poison"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-poison"
+                  >Poison</label
+                >
+              </li>
+              <li class="flex" data-type="psychic">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-psychic"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-psychic"
+                  >Psychic</label
+                >
+              </li>
+              <li class="flex" data-type="rock">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-rock"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-rock"
+                  >Rock</label
+                >
+              </li>
+              <li class="flex" data-type="steel">
+                <input
+                  class="ml-2"
+                  type="checkbox"
+                  id="type-steel"
+                  checked="checked"
+                />
+                <label class="hover:cursor-pointer ml-2" for="type-steel"
+                  >Steel</label
+                >
+              </li>
+            </ul>
+          </div>
+          <input
+            class="filter filter-name text-sm pl-1 tablet:order-4"
+            type="text"
+            placeholder="Insert name..."
+          />
+          <div
+            class="w-full dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 px-1 rounded-lg flex flex-col gap-1 mobile:flex-row items-center justify-between tablet:order-5"
+          >
+            <span>Full-evo</span>
+            <span
+              class="filter-fullyEvo h-[14px] w-[40px] rounded-full hover:cursor-pointer items-center flex group relative bg-darkM-whiteIndigo"
+            >
+              <span
+                class="toggle-fully-evo w-[11px] h-[11px] dark:bg-darkM-indigo rounded-full block absolute left-[calc(2px)] group-[.fullyEvo-only]:left-[calc(100%_-_13px)] transition-all duration-200"
+              ></span>
+            </span>
+          </div>
+          <button
+            class="col-span-2 tablet:order-3 tablet:col-span-1 tablet:row-span-2 dark:bg-darkM-purple py-1 transition-all duration-200 dark:hover:bg-darkM-violet dark:text-darkM-whiteIndigo font-semibold rounded-md mx-auto my-auto w-full max-w-[200px] h-fit"
+          >
+            Search!
+          </button>
+        </div>
+
+        <div
+          class="mt-3 results-container border w-full dark:bg-darkM-lightIndigo1 dark:border-darkM-lightIndigo3 rounded-md p-3 gap-1"
+        >
+          <div
+            class="grid justify-around gap-x-1 gap-y-2 min-h-pick"
+            style="grid-template-columns: repeat(auto-fill, 60px)"
+          >
+            <div class="teamMember-add-container inline-block h-pick">
+              <a
+                class="teamMember-add hover:cursor-pointer h-pick inline-block"
+                title="Deoxys"
+                data-ID="10002"
+                data-NAME="deoxys"
+                data-FULLEVO="true"
+                data-TYPE1="Psychic"
+                data-TYPE2=""
+                ><div
+                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                >
+                  <img src="src/img/pokemon_sprites/10002.png" /></div
+              ></a>
             </div>
-            <div class="slots">
-              <div
-                class="slot slot-move-1 font-semibold bg-fire rounded-xl text-center py-1 text-white mr-3 my-2 text-ellipsis overflow-hidden h-[1.825rem] line-clamp-1 break-words"
-              >
-                Hyperspace Hyperspace
-              </div>
-              <div
-                class="slot slot-move-2 font-semibold bg-fire rounded-xl text-center py-1 text-white mr-3 my-2 text-ellipsis overflow-hidden h-[1.825rem] line-clamp-1 break-words"
-              >
-                Hyperspace Hyperspace
-              </div>
-              <div
-                class="slot slot-move-3 font-semibold bg-fire rounded-xl text-center py-1 text-white mr-3 my-2 text-ellipsis overflow-hidden h-[1.825rem] line-clamp-1 break-words"
-              >
-                Hyperspace Hyperspace
-              </div>
-              <div
-                class="slot slot-move-4 font-semibold bg-fire rounded-xl text-center py-1 text-white mr-3 my-2 text-ellipsis overflow-hidden h-[1.825rem] line-clamp-1 break-words"
-              >
-                Hyperspace Hyperspace
-              </div>
-              <div
-                class="slot slot-ability font-semibold bg-fire rounded-xl text-center py-1 text-white mr-3 my-2 text-ellipsis overflow-hidden h-[1.825rem] line-clamp-1 break-words"
-              >
-                Hyperspace Hyperspace
-              </div>
+            <div class="teamMember-add-container inline-block h-pick">
+              <a
+                class="teamMember-add hover:cursor-pointer h-pick inline-block"
+                title="Deoxys"
+                data-ID="10002"
+                data-NAME="deoxys"
+                data-FULLEVO="true"
+                data-TYPE1="Psychic"
+                data-TYPE2=""
+                ><div
+                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                >
+                  <img src="src/img/pokemon_sprites/10002.png" /></div
+              ></a>
+            </div>
+            <div class="teamMember-add-container inline-block h-pick">
+              <a
+                class="teamMember-add hover:cursor-pointer h-pick inline-block"
+                title="Deoxys"
+                data-ID="10002"
+                data-NAME="deoxys"
+                data-FULLEVO="true"
+                data-TYPE1="Psychic"
+                data-TYPE2=""
+                ><div
+                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                >
+                  <img src="src/img/pokemon_sprites/10002.png" /></div
+              ></a>
+            </div>
+            <div class="teamMember-add-container inline-block h-pick">
+              <a
+                class="teamMember-add hover:cursor-pointer h-pick inline-block"
+                title="Deoxys"
+                data-ID="10002"
+                data-NAME="deoxys"
+                data-FULLEVO="true"
+                data-TYPE1="Psychic"
+                data-TYPE2=""
+                ><div
+                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                >
+                  <img src="src/img/pokemon_sprites/10002.png" /></div
+              ></a>
+            </div>
+            <div class="teamMember-add-container inline-block h-pick">
+              <a
+                class="teamMember-add hover:cursor-pointer h-pick inline-block"
+                title="Deoxys"
+                data-ID="10002"
+                data-NAME="deoxys"
+                data-FULLEVO="true"
+                data-TYPE1="Psychic"
+                data-TYPE2=""
+                ><div
+                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                >
+                  <img src="src/img/pokemon_sprites/10002.png" /></div
+              ></a>
+            </div>
+            <div class="teamMember-add-container inline-block h-pick">
+              <a
+                class="teamMember-add hover:cursor-pointer h-pick inline-block"
+                title="Deoxys"
+                data-ID="10002"
+                data-NAME="deoxys"
+                data-FULLEVO="true"
+                data-TYPE1="Psychic"
+                data-TYPE2=""
+                ><div
+                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                >
+                  <img src="src/img/pokemon_sprites/10002.png" /></div
+              ></a>
+            </div>
+            <div class="teamMember-add-container inline-block h-pick">
+              <a
+                class="teamMember-add hover:cursor-pointer h-pick inline-block"
+                title="Deoxys"
+                data-ID="10002"
+                data-NAME="deoxys"
+                data-FULLEVO="true"
+                data-TYPE1="Psychic"
+                data-TYPE2=""
+                ><div
+                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                >
+                  <img src="src/img/pokemon_sprites/10002.png" /></div
+              ></a>
+            </div>
+            <div class="teamMember-add-container inline-block h-pick">
+              <a
+                class="teamMember-add hover:cursor-pointer h-pick inline-block"
+                title="Deoxys"
+                data-ID="10002"
+                data-NAME="deoxys"
+                data-FULLEVO="true"
+                data-TYPE1="Psychic"
+                data-TYPE2=""
+                ><div
+                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                >
+                  <img src="src/img/pokemon_sprites/10002.png" /></div
+              ></a>
+            </div>
+            <div class="teamMember-add-container inline-block h-pick">
+              <a
+                class="teamMember-add hover:cursor-pointer h-pick inline-block"
+                title="Deoxys"
+                data-ID="10002"
+                data-NAME="deoxys"
+                data-FULLEVO="true"
+                data-TYPE1="Psychic"
+                data-TYPE2=""
+                ><div
+                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                >
+                  <img src="src/img/pokemon_sprites/10002.png" /></div
+              ></a>
             </div>
           </div>
-        </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- <div class="sidemenu-btn-container hidden">
+      <button
+        class="sidemenu-btn w-[40px] h-[40px] p-1 mb-2 rounded-full mx-auto dark:bg-darkM-purple flex items-center justify-center transition-all duration-200"
+      >
+        <svg
+          class="dark:fill-darkM-whiteIndigo"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 256 256"
+        >
+          <path
+            d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"
+          ></path>
+        </svg>
+      </button>
+    </div> -->
+
+    <menu
+      class="grid grid-cols-2 dark:bg-darkM-darkBlue transition-all duration-200 sidemenu-container w-full absolute bottom-0 z-50 hidden h-[130px]"
+    >
+      <div
+        class="hover:cursor-pointer dark:text-darkM-whiteBlue flex flex-col items-center border-r dark:border-darkM-whiteBlue pt-2"
+      >
+        <svg
+          class="dark:fill-darkM-whiteBlue w-[35%] mb-2"
+          id="Layer_1"
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 980 978.94"
+        >
+          <path
+            d="M770,1224.85H732c-1.49-1-3.21-.74-4.85-.82-43.27-1.91-85.66-9.09-126.64-23.08-151.15-51.57-254.79-152.44-311.12-301.58-14.9-39.48-23.16-80.65-26.63-122.76-.55-6.76-.06-13.62-1.76-20.28v-43a58.81,58.81,0,0,0,.89-5.86,461,461,0,0,1,17.86-106.37q47-160.89,181.91-260.55C529.06,290.81,604.73,261,687.76,250a479.9,479.9,0,0,1,103.69-2.35c37.6,3.17,74.47,9.93,110.19,22q208.55,70.45,299,271.14c21.87,48.51,34.17,99.72,38.6,152.8.58,6.92.1,13.95,1.8,20.77v42c-.3,2.1-.78,4.2-.88,6.31A464.49,464.49,0,0,1,1222.35,869q-43.32,149.69-164.66,247.69Q941,1210.57,791.31,1223.07C784.21,1223.67,777,1223.05,770,1224.85ZM438.72,766.6h-96c-7.34,0-7.35,0-6.51,7.5a455.59,455.59,0,0,0,7.62,48.7q32.9,148.47,153,241.88c65.33,50.8,139.8,79.07,222.48,85.42,48.25,3.71,96,.07,142.34-13.67,136.22-40.33,229.87-127.25,281-259.63,12.92-33.47,19.88-68.48,23.33-104.17.33-3.46.83-6.17-4.62-6.16q-98,.3-196,0c-3.42,0-4.7,1.17-5.18,4.31-.71,4.59-1.53,9.17-2.63,13.68-27.08,111-135,180.24-247.43,158.68-85.94-16.48-153.58-85.58-168.15-171.85-.58-3.44-1.83-4.87-5.73-4.85C503.71,766.68,471.21,766.6,438.72,766.6Zm165.37-31.32C604.13,815.92,670.26,882,751,882s146.87-66,146.94-146.66S831.91,588.73,751,588.69,604.05,654.66,604.09,735.28Z"
+            transform="translate(-261 -245.91)"
+          />
+        </svg>
+        <p>Saved teams</p>
       </div>
-    </div>
+      <div
+        class="hover:cursor-pointer dark:text-darkM-whiteBlue flex flex-col items-center border-l dark:border-darkM-whiteBlue pt-2"
+      >
+        <svg
+          class="dark:fill-darkM-whiteBlue w-[35%] mb-2"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 256 256"
+        >
+          <path
+            d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"
+          ></path>
+        </svg>
+        <p>Statics</p>
+      </div>
+    </menu>
   </body>
 </html>
