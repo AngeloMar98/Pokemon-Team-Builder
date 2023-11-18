@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,20 +15,22 @@
   </head>
 
   <body
-    class="bg-lightM-paleYellow dark:bg-darkM-indigo font-default font-normal"
+    class="bg-lightM-lightBismark dark:bg-darkM-indigo font-default font-normal relative"
   >
     <header class="text-center flex items-center p-3 mx-auto w-fit" id="title">
       <a href="#">
         <img src="src/img/icons_ui/meowth.png" alt="Meowth Icon" />
       </a>
       <a href="#">
-        <h1 class="text-darkM-whiteIndigo">Pokèmon Team Builder</h1>
+        <h1 class="text-lightM-blackPearl dark:text-darkM-whiteIndigo">
+          Pokèmon Team Builder
+        </h1>
       </a>
     </header>
     <main class="laptop:grid laptop:grid-cols-2 relative pb-6">
       <section class="p-3">
         <div
-          class="team-members-pick dark:text-darkM-whiteIndigo border dark:border-darkM-lightIndigo3 rounded-md overflow-hidden"
+          class="team-members-pick dark:text-darkM-whiteIndigo border border-lightM-darkBismark dark:border-darkM-lightIndigo2 rounded-md overflow-hidden"
         >
           <div
             class="pick-container pick-container-1 grid grid-cols-6 tablet:hidden"
@@ -43,14 +45,14 @@
           <div
             class="grid-cols-3 pick-container pick-container-2 hidden tablet:grid laptop:hidden"
           >
-            <button class="pick-1-2 pick-btn rounded-tl-md">
+            <button class="pick-1-2 pick-btn">
               1 &nbsp;&nbsp; - &nbsp;&nbsp; 2
             </button>
 
             <button class="pick-3-4 pick-btn pick-btn-active">
               3 &nbsp;&nbsp; - &nbsp;&nbsp; 4
             </button>
-            <button class="pick-5-6 pick-btn rounded-tr-md">
+            <button class="pick-5-6 pick-btn">
               5 &nbsp;&nbsp; - &nbsp;&nbsp; 6
             </button>
           </div>
@@ -73,9 +75,12 @@
           </div>
         </div>
         <div class="mt-3 team-members-container grid tablet:grid-cols-2 gap-2">
-          <article class="team-member team-member-1" id="member-1">
+          <article
+            class="team-member team-member-1 group hide-moveset"
+            id="member-1"
+          >
             <h2
-              class="text-center dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-darkM-lightIndigo3"
+              class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3"
               id="arceus"
               alt="pokèmon name"
             >
@@ -83,13 +88,12 @@
             </h2>
             <div class="flex justify-center py-2">
               <img
-                class="hover:cursor-pointer"
+                class="hover:cursor-pointer custom-shadow"
                 src="src/img/pokemon_sprites/10035.png"
               />
             </div>
             <div
-              class="flex flex-col items-center gap-1 py-2 border-t dark:border-darkM-lightIndigo3 rounded-sm relative"
-              id="types"
+              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md flex flex-col items-center gap-1 py-2 border-t bg-lightM-darkBismark dark:bg-transparent dark:border-darkM-lightIndigo3 relative"
             >
               <img class="h-[25px]" src="src/img/types_labels/electric.png" />
               <img class="h-[25px]" src="src/img/types_labels/bug.png" />
@@ -108,8 +112,8 @@
               </button>
             </div>
 
-            <div class="moveset-menu moveset-hidden">
-              <div class="grid grid-cols-2 gap-2">
+            <div class="moveset-menu group-[.hide-moveset]:moveset-hidden">
+              <div class="grid grid-cols-2 gap-2 h-full">
                 <div class="slots-select">
                   <div class="slot-select slot-select-1 group">
                     <button class="slot-select_btn">
@@ -135,7 +139,7 @@
                         placeholder="Pick a move"
                       />
                       <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        class="slot-select_li"
                         id="fire_punch"
                         alt="Fire Punch\n Physical 75 power"
                       >
@@ -167,7 +171,7 @@
                         placeholder="Pick a move"
                       />
                       <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        class="slot-select_li"
                         id="fire_punch"
                         alt="Fire Punch\n Physical 75 power"
                       >
@@ -199,7 +203,7 @@
                         placeholder="Pick a move"
                       />
                       <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        class="slot-select_li"
                         id="fire_punch"
                         alt="Fire Punch\n Physical 75 power"
                       >
@@ -231,7 +235,7 @@
                         placeholder="Pick a move"
                       />
                       <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        class="slot-select_li"
                         id="fire_punch"
                         alt="Fire Punch\n Physical 75 power"
                       >
@@ -263,1102 +267,7 @@
                         placeholder="Pick a move"
                       />
                       <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-2 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-3 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-4 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-ability bg-darkM-lightIndigo3">
-                    Pressure
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="team-member team-member-2" id="member-2">
-            <h2
-              class="text-center dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-darkM-lightIndigo3"
-              id="arceus"
-              alt="pokèmon name"
-            >
-              Arceus
-            </h2>
-            <div class="flex justify-center py-2">
-              <img
-                class="hover:cursor-pointer"
-                src="src/img/pokemon_sprites/10035.png"
-              />
-            </div>
-            <div
-              class="flex flex-col items-center gap-1 py-2 border-t dark:border-darkM-lightIndigo3 rounded-sm relative"
-              id="types"
-            >
-              <img class="h-[25px]" src="src/img/types_labels/electric.png" />
-              <img class="h-[25px]" src="src/img/types_labels/bug.png" />
-              <button class="moveset-menu-btn">
-                <svg
-                  class="dark:fill-darkM-whiteIndigo"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 256 256"
-                >
-                  <path
-                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-
-            <div class="moveset-menu moveset-hidden">
-              <div class="grid grid-cols-2 gap-2">
-                <div class="slots-select">
-                  <div class="slot-select slot-select-1 group">
-                    <button class="slot-select_btn">
-                      <span>Move 1</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-1_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-2 group">
-                    <button class="slot-select_btn">
-                      <span>Move 2</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-2_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-3 group">
-                    <button class="slot-select_btn">
-                      <span>Move 3</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-3_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-4 group">
-                    <button class="slot-select_btn">
-                      <span>Move 4</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-4_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-ability group">
-                    <button class="slot-select_btn">
-                      <span>Ability</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-ability_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-2 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-3 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-4 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-ability bg-darkM-lightIndigo3">
-                    Pressure
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="team-member team-member-3" id="member-3">
-            <h2
-              class="text-center dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-darkM-lightIndigo3"
-              id="arceus"
-              alt="pokèmon name"
-            >
-              Arceus
-            </h2>
-            <div class="flex justify-center py-2">
-              <img
-                class="hover:cursor-pointer"
-                src="src/img/pokemon_sprites/10035.png"
-              />
-            </div>
-            <div
-              class="flex flex-col items-center gap-1 py-2 border-t dark:border-darkM-lightIndigo3 rounded-sm relative"
-              id="types"
-            >
-              <img class="h-[25px]" src="src/img/types_labels/electric.png" />
-              <img class="h-[25px]" src="src/img/types_labels/bug.png" />
-              <button class="moveset-menu-btn">
-                <svg
-                  class="dark:fill-darkM-whiteIndigo"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 256 256"
-                >
-                  <path
-                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-
-            <div class="moveset-menu moveset-hidden">
-              <div class="grid grid-cols-2 gap-2">
-                <div class="slots-select">
-                  <div class="slot-select slot-select-1 group">
-                    <button class="slot-select_btn">
-                      <span>Move 1</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-1_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-2 group">
-                    <button class="slot-select_btn">
-                      <span>Move 2</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-2_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-3 group">
-                    <button class="slot-select_btn">
-                      <span>Move 3</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-3_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-4 group">
-                    <button class="slot-select_btn">
-                      <span>Move 4</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-4_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-ability group">
-                    <button class="slot-select_btn">
-                      <span>Ability</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-ability_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-2 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-3 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-4 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-ability bg-darkM-lightIndigo3">
-                    Pressure
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="team-member team-member-4" id="member-4">
-            <h2
-              class="text-center dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-darkM-lightIndigo3"
-              id="arceus"
-              alt="pokèmon name"
-            >
-              Arceus
-            </h2>
-            <div class="flex justify-center py-2">
-              <img
-                class="hover:cursor-pointer"
-                src="src/img/pokemon_sprites/10035.png"
-              />
-            </div>
-            <div
-              class="flex flex-col items-center gap-1 py-2 border-t dark:border-darkM-lightIndigo3 rounded-sm relative"
-              id="types"
-            >
-              <img class="h-[25px]" src="src/img/types_labels/electric.png" />
-              <img class="h-[25px]" src="src/img/types_labels/bug.png" />
-              <button class="moveset-menu-btn">
-                <svg
-                  class="dark:fill-darkM-whiteIndigo"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 256 256"
-                >
-                  <path
-                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-
-            <div class="moveset-menu moveset-hidden">
-              <div class="grid grid-cols-2 gap-2">
-                <div class="slots-select">
-                  <div class="slot-select slot-select-1 group">
-                    <button class="slot-select_btn">
-                      <span>Move 1</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-1_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-2 group">
-                    <button class="slot-select_btn">
-                      <span>Move 2</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-2_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-3 group">
-                    <button class="slot-select_btn">
-                      <span>Move 3</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-3_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-4 group">
-                    <button class="slot-select_btn">
-                      <span>Move 4</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-4_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-ability group">
-                    <button class="slot-select_btn">
-                      <span>Ability</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-ability_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-2 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-3 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-4 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-ability bg-darkM-lightIndigo3">
-                    Pressure
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="team-member team-member-5" id="member-5">
-            <h2
-              class="text-center dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-darkM-lightIndigo3"
-              id="arceus"
-              alt="pokèmon name"
-            >
-              Arceus
-            </h2>
-            <div class="flex justify-center py-2">
-              <img
-                class="hover:cursor-pointer"
-                src="src/img/pokemon_sprites/10035.png"
-              />
-            </div>
-            <div
-              class="flex flex-col items-center gap-1 py-2 border-t dark:border-darkM-lightIndigo3 rounded-sm relative"
-              id="types"
-            >
-              <img class="h-[25px]" src="src/img/types_labels/electric.png" />
-              <img class="h-[25px]" src="src/img/types_labels/bug.png" />
-              <button class="moveset-menu-btn">
-                <svg
-                  class="dark:fill-darkM-whiteIndigo"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 256 256"
-                >
-                  <path
-                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-
-            <div class="moveset-menu moveset-hidden">
-              <div class="grid grid-cols-2 gap-2">
-                <div class="slots-select">
-                  <div class="slot-select slot-select-1 group">
-                    <button class="slot-select_btn">
-                      <span>Move 1</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-1_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-2 group">
-                    <button class="slot-select_btn">
-                      <span>Move 2</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-2_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-3 group">
-                    <button class="slot-select_btn">
-                      <span>Move 3</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-3_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-4 group">
-                    <button class="slot-select_btn">
-                      <span>Move 4</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-4_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-ability group">
-                    <button class="slot-select_btn">
-                      <span>Ability</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-ability_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-2 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-3 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-4 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-ability bg-darkM-lightIndigo3">
-                    Pressure
-                  </div>
-                </div>
-              </div>
-            </div>
-          </article>
-          <article class="team-member team-member-6" id="member-6">
-            <h2
-              class="text-center dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-darkM-lightIndigo3"
-              id="arceus"
-              alt="pokèmon name"
-            >
-              Arceus
-            </h2>
-            <div class="flex justify-center py-2">
-              <img
-                class="hover:cursor-pointer"
-                src="src/img/pokemon_sprites/10035.png"
-              />
-            </div>
-            <div
-              class="flex flex-col items-center gap-1 py-2 border-t dark:border-darkM-lightIndigo3 rounded-sm relative"
-              id="types"
-            >
-              <img class="h-[25px]" src="src/img/types_labels/electric.png" />
-              <img class="h-[25px]" src="src/img/types_labels/bug.png" />
-              <button class="moveset-menu-btn">
-                <svg
-                  class="dark:fill-darkM-whiteIndigo"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 256 256"
-                >
-                  <path
-                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
-                  ></path>
-                </svg>
-              </button>
-            </div>
-
-            <div class="moveset-menu moveset-hidden">
-              <div class="grid grid-cols-2 gap-2">
-                <div class="slots-select">
-                  <div class="slot-select slot-select-1 group">
-                    <button class="slot-select_btn">
-                      <span>Move 1</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-1_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-2 group">
-                    <button class="slot-select_btn">
-                      <span>Move 2</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-2_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-3 group">
-                    <button class="slot-select_btn">
-                      <span>Move 3</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-3_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-4 group">
-                    <button class="slot-select_btn">
-                      <span>Move 4</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-4_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
-                    </ul>
-                  </div>
-                  <div class="slot-select slot-select-ability group">
-                    <button class="slot-select_btn">
-                      <span>Ability</span>
-                      <svg
-                        class="carret-down dark:fill-darkM-whiteIndigo rotate-180 inline-block transition-all duration-300"
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="20"
-                        height="20"
-                        viewBox="0 0 256 256"
-                      >
-                        <path
-                          d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"
-                        ></path>
-                      </svg>
-                    </button>
-                    <ul
-                      class="slot-select_ul slot-select-ability_ul group-[.activated]:flex"
-                    >
-                      <input
-                        class="slot-select_input"
-                        type="text"
-                        placeholder="Pick a move"
-                      />
-                      <li
-                        class="dark:hover:bg-darkM-lightIndigo3 slot-select_li"
+                        class="slot-select_li"
                         id="fire_punch"
                         alt="Fire Punch\n Physical 75 power"
                       >
@@ -1392,13 +301,13 @@
 
       <section class="p-3">
         <div
-          class="filter-container p-3 rounded-md grid grid-cols-2 tablet:grid-cols-3 dark:bg-darkM-lightIndigo1 border dark:border-darkM-lightIndigo3 gap-2"
+          class="filter-container p-3 rounded-md grid grid-cols-2 tablet:grid-cols-3 bg-white dark:bg-darkM-lightIndigo1 border border-lightM-bismark dark:border-darkM-lightIndigo3 gap-2"
         >
           <div
             class="filter filter-menu filter-gen relative group tablet:order-1"
           >
             <button
-              class="filter-menu_btn w-full dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 px-1 rounded-lg"
+              class="filter-menu_btn w-full bg-lightM-lightBismark text-lightM-blackPearl dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 px-1 rounded-lg"
             >
               <span>Gen </span>
               <svg
@@ -1519,7 +428,7 @@
             class="filter filter-menu filter-type relative group tablet:order-2"
           >
             <button
-              class="filter-menu_btn w-full dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 px-1 rounded-lg"
+              class="filter-menu_btn w-full bg-lightM-lightBismark text-lightM-blackPearl dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 px-1 rounded-lg"
             >
               <span>Type </span>
               <svg
@@ -1736,24 +645,24 @@
             </ul>
           </div>
           <input
-            class="filter filter-name text-sm pl-1 tablet:order-4"
+            class="filter filter-name bg-lightM-darkBismark text-white dark:bg-white dark:text-black text-sm pl-1 tablet:order-4"
             type="text"
             placeholder="Insert name..."
           />
           <div
-            class="w-full dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 px-1 rounded-lg flex flex-col gap-1 mobile:flex-row items-center justify-between tablet:order-5"
+            class="w-full bg-lightM-lightBismark text-lightM-blackPearl dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 px-1 rounded-lg flex flex-col gap-1 mobile:flex-row items-center justify-between tablet:order-5"
           >
             <span>Full-evo</span>
             <span
               class="filter-fullyEvo h-[14px] w-[40px] rounded-full hover:cursor-pointer items-center flex group relative bg-darkM-whiteIndigo"
             >
               <span
-                class="toggle-fully-evo w-[11px] h-[11px] dark:bg-darkM-indigo rounded-full block absolute left-[calc(2px)] group-[.fullyEvo-only]:left-[calc(100%_-_13px)] transition-all duration-200"
+                class="toggle-fully-evo w-[11px] h-[11px] bg-lightM-blackPearl dark:bg-darkM-indigo rounded-full block absolute left-[calc(2px)] group-[.fullyEvo-only]:left-[calc(100%_-_13px)] transition-all duration-200"
               ></span>
             </span>
           </div>
           <button
-            class="col-span-2 tablet:order-3 tablet:col-span-1 tablet:row-span-2 dark:bg-darkM-purple py-1 transition-all duration-200 dark:hover:bg-darkM-violet dark:text-darkM-whiteIndigo font-semibold rounded-md mx-auto my-auto w-full max-w-[200px] h-fit"
+            class="col-span-2 tablet:order-3 tablet:col-span-1 tablet:row-span-2 text-lightM-blackPearl hover:text-white bg-lightM-middleBismark hover:bg-lightM-darkBismark dark:bg-darkM-purple py-1 transition-all duration-200 dark:hover:bg-darkM-violet dark:text-darkM-whiteIndigo font-semibold rounded-md mx-auto my-auto w-full max-w-[200px] h-fit"
           >
             Search!
           </button>
@@ -1776,9 +685,12 @@
                 data-TYPE1="Psychic"
                 data-TYPE2=""
                 ><div
-                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                  class="w-pick h-pick inline-block rounded-md bg-lightM-bermudaGray hover:bg-white dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
                 >
-                  <img src="src/img/pokemon_sprites/10002.png" /></div
+                  <img
+                    src="src/img/pokemon_sprites/10002.png"
+                    class="custom-shadow-sm"
+                  /></div
               ></a>
             </div>
             <div class="teamMember-add-container inline-block h-pick">
@@ -1791,9 +703,12 @@
                 data-TYPE1="Psychic"
                 data-TYPE2=""
                 ><div
-                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                  class="w-pick h-pick inline-block rounded-md bg-lightM-bermudaGray hover:bg-white dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
                 >
-                  <img src="src/img/pokemon_sprites/10002.png" /></div
+                  <img
+                    src="src/img/pokemon_sprites/10002.png"
+                    class="custom-shadow-sm"
+                  /></div
               ></a>
             </div>
             <div class="teamMember-add-container inline-block h-pick">
@@ -1806,9 +721,12 @@
                 data-TYPE1="Psychic"
                 data-TYPE2=""
                 ><div
-                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                  class="w-pick h-pick inline-block rounded-md bg-lightM-bermudaGray hover:bg-white dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
                 >
-                  <img src="src/img/pokemon_sprites/10002.png" /></div
+                  <img
+                    src="src/img/pokemon_sprites/10002.png"
+                    class="custom-shadow-sm"
+                  /></div
               ></a>
             </div>
             <div class="teamMember-add-container inline-block h-pick">
@@ -1821,9 +739,12 @@
                 data-TYPE1="Psychic"
                 data-TYPE2=""
                 ><div
-                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                  class="w-pick h-pick inline-block rounded-md bg-lightM-bermudaGray hover:bg-white dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
                 >
-                  <img src="src/img/pokemon_sprites/10002.png" /></div
+                  <img
+                    src="src/img/pokemon_sprites/10002.png"
+                    class="custom-shadow-sm"
+                  /></div
               ></a>
             </div>
             <div class="teamMember-add-container inline-block h-pick">
@@ -1836,9 +757,12 @@
                 data-TYPE1="Psychic"
                 data-TYPE2=""
                 ><div
-                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                  class="w-pick h-pick inline-block rounded-md bg-lightM-bermudaGray hover:bg-white dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
                 >
-                  <img src="src/img/pokemon_sprites/10002.png" /></div
+                  <img
+                    src="src/img/pokemon_sprites/10002.png"
+                    class="custom-shadow-sm"
+                  /></div
               ></a>
             </div>
             <div class="teamMember-add-container inline-block h-pick">
@@ -1851,9 +775,12 @@
                 data-TYPE1="Psychic"
                 data-TYPE2=""
                 ><div
-                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                  class="w-pick h-pick inline-block rounded-md bg-lightM-bermudaGray hover:bg-white dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
                 >
-                  <img src="src/img/pokemon_sprites/10002.png" /></div
+                  <img
+                    src="src/img/pokemon_sprites/10002.png"
+                    class="custom-shadow-sm"
+                  /></div
               ></a>
             </div>
             <div class="teamMember-add-container inline-block h-pick">
@@ -1866,44 +793,1455 @@
                 data-TYPE1="Psychic"
                 data-TYPE2=""
                 ><div
-                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
+                  class="w-pick h-pick inline-block rounded-md bg-lightM-bermudaGray hover:bg-white dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
                 >
-                  <img src="src/img/pokemon_sprites/10002.png" /></div
-              ></a>
-            </div>
-            <div class="teamMember-add-container inline-block h-pick">
-              <a
-                class="teamMember-add hover:cursor-pointer h-pick inline-block"
-                title="Deoxys"
-                data-ID="10002"
-                data-NAME="deoxys"
-                data-FULLEVO="true"
-                data-TYPE1="Psychic"
-                data-TYPE2=""
-                ><div
-                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
-                >
-                  <img src="src/img/pokemon_sprites/10002.png" /></div
-              ></a>
-            </div>
-            <div class="teamMember-add-container inline-block h-pick">
-              <a
-                class="teamMember-add hover:cursor-pointer h-pick inline-block"
-                title="Deoxys"
-                data-ID="10002"
-                data-NAME="deoxys"
-                data-FULLEVO="true"
-                data-TYPE1="Psychic"
-                data-TYPE2=""
-                ><div
-                  class="w-pick h-pick inline-block rounded-md dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
-                >
-                  <img src="src/img/pokemon_sprites/10002.png" /></div
+                  <img
+                    src="src/img/pokemon_sprites/10002.png"
+                    class="custom-shadow-sm"
+                  /></div
               ></a>
             </div>
           </div>
         </div>
       </section>
     </main>
+    <button
+      class="sidemenu-btn bigTablet:bottom-0 bigTablet:top-6 bigTablet:left-[calc(100%_-_4.5rem)] bigTablet:translate-x-0 fixed bottom-[45px] w-[35px] h-[35px] transition-all duration-200 rounded-full flex items-center justify-center p-1 bg-lightM-darkBismark dark:bg-darkM-darkBlue left-1/2 -translate-x-1/2 group z-50"
+    >
+      <svg
+        class="text-darkM-whiteBlue group-[.lift-sidemenu-btn]:hidden"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 256 256"
+      >
+        <rect width="256" height="256" fill="none" />
+        <line
+          x1="40"
+          y1="128"
+          x2="216"
+          y2="128"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+        <line
+          x1="40"
+          y1="64"
+          x2="216"
+          y2="64"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+        <line
+          x1="40"
+          y1="192"
+          x2="216"
+          y2="192"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+      </svg>
+      <svg
+        class="text-darkM-whiteBlue hidden group-[.lift-sidemenu-btn]:block"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 256 256"
+      >
+        <rect width="256" height="256" fill="none" />
+        <line
+          x1="200"
+          y1="56"
+          x2="56"
+          y2="200"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+        <line
+          x1="200"
+          y1="200"
+          x2="56"
+          y2="56"
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="16"
+        />
+      </svg>
+    </button>
+    <div
+      class="teamsAndStats w-full group fixed top-0 bigTablet:right-0 bigTablet:top-[26vh] h-[70vh] bigTablet:h-[74vh] bigTablet:w-1/2"
+    >
+      <menu
+        class="saved-teams hidden min-h-[40%] max-h-[40%] group-[.show-teams]:block group-[:not(.show-stats)]:min-h-full group-[:not(.show-stats)]:max-h-full col-span-2 p-3 overflow-y-scroll bg-lightM-bismark dark:bg-darkM-darkBlue pl-6 w-full transition-all duration-100 bigTablet:border-l dark:border-darkM-whiteBlue"
+      >
+        <h2 class="text-darkM-whiteBlue pb-1">
+          Saved Teams
+          <svg
+            class="fill-darkM-whiteBlue w-[30px] mb-2 inline"
+            id="Layer_1"
+            data-name="Layer 1"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 980 978.94"
+          >
+            <path
+              d="M770,1224.85H732c-1.49-1-3.21-.74-4.85-.82-43.27-1.91-85.66-9.09-126.64-23.08-151.15-51.57-254.79-152.44-311.12-301.58-14.9-39.48-23.16-80.65-26.63-122.76-.55-6.76-.06-13.62-1.76-20.28v-43a58.81,58.81,0,0,0,.89-5.86,461,461,0,0,1,17.86-106.37q47-160.89,181.91-260.55C529.06,290.81,604.73,261,687.76,250a479.9,479.9,0,0,1,103.69-2.35c37.6,3.17,74.47,9.93,110.19,22q208.55,70.45,299,271.14c21.87,48.51,34.17,99.72,38.6,152.8.58,6.92.1,13.95,1.8,20.77v42c-.3,2.1-.78,4.2-.88,6.31A464.49,464.49,0,0,1,1222.35,869q-43.32,149.69-164.66,247.69Q941,1210.57,791.31,1223.07C784.21,1223.67,777,1223.05,770,1224.85ZM438.72,766.6h-96c-7.34,0-7.35,0-6.51,7.5a455.59,455.59,0,0,0,7.62,48.7q32.9,148.47,153,241.88c65.33,50.8,139.8,79.07,222.48,85.42,48.25,3.71,96,.07,142.34-13.67,136.22-40.33,229.87-127.25,281-259.63,12.92-33.47,19.88-68.48,23.33-104.17.33-3.46.83-6.17-4.62-6.16q-98,.3-196,0c-3.42,0-4.7,1.17-5.18,4.31-.71,4.59-1.53,9.17-2.63,13.68-27.08,111-135,180.24-247.43,158.68-85.94-16.48-153.58-85.58-168.15-171.85-.58-3.44-1.83-4.87-5.73-4.85C503.71,766.68,471.21,766.6,438.72,766.6Zm165.37-31.32C604.13,815.92,670.26,882,751,882s146.87-66,146.94-146.66S831.91,588.73,751,588.69,604.05,654.66,604.09,735.28Z"
+              transform="translate(-261 -245.91)"
+            />
+          </svg>
+        </h2>
+        <div
+          class="saved-team grid grid-cols-6 rounded-md bg-lightM-lightBismark dark:bg-darkM-lightIndigo3 mb-2 pb-2 hover:cursor-pointer"
+          data-teamName="Team_#1"
+        >
+          <h3
+            class="col-span-6 text-center text-lightM-blackPearl dark:text-darkM-whiteBlue border-b border-darkM-whiteBlue"
+          >
+            Team #1
+          </h3>
+          <img src="src/img/pokemon_icons/10012.png" />
+          <img src="src/img/pokemon_icons/1.png" />
+          <img src="src/img/pokemon_icons/10009.png" />
+          <img src="src/img/pokemon_icons/10018.png" />
+          <img src="src/img/pokemon_icons/10020.png" />
+          <img src="src/img/pokemon_icons/10.png" />
+        </div>
+      </menu>
+
+      <menu
+        class="statistics grid-cols-2 gap-2 hidden min-h-[60%] max-h-[60%] group-[.show-stats]:grid group-[:not(.show-teams)]:min-h-full group-[:not(.show-teams)]:max-h-full col-span-2 p-3 bg-lightM-bismark dark:bg-darkM-darkBlue pl-6 w-full auto-rows-min overflow-y-scroll transition-all duration-100 bigTablet:border-l dark:border-darkM-whiteBlue"
+      >
+        <h2
+          class="text-darkM-whiteBlue pb-1 col-span-2 border-b dark:border-darkM-whiteBlue"
+        >
+          Stats current team
+          <svg
+            class="fill-darkM-whiteBlue w-[30px] mb-2 inline"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 256 256"
+          >
+            <path
+              d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"
+            ></path>
+          </svg>
+        </h2>
+
+        <div class="coverage-container">
+          <h2 class="text-darkM-whiteIndigo pb-2">Coverage</h2>
+          <ul class="coverage_ul flex flex-col gap-2">
+            <li
+              class="coverage-bug grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="bug"
+                alt="bug"
+                src="src/img/types_icons/bug.svg"
+                class="inline w-[30px] rounded-full bg-bug p-1"
+              />
+
+              <div
+                class="coverage-bug_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="coverage-dark grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="dark"
+                alt="dark"
+                src="src/img/types_icons/dark.svg"
+                class="inline w-[30px] rounded-full bg-dark p-1"
+              />
+
+              <div
+                class="coverage-dark_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="coverage-dragon grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="dragon"
+                alt="dragon"
+                src="src/img/types_icons/dragon.svg"
+                class="inline w-[30px] rounded-full bg-dragon p-1"
+              />
+
+              <div
+                class="coverage-dragon_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="coverage-electric grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="electric"
+                alt="electric"
+                src="src/img/types_icons/electric.svg"
+                class="inline w-[30px] rounded-full bg-electric p-1"
+              />
+
+              <div
+                class="coverage-electric_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="coverage-fairy grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="fairy"
+                alt="fairy"
+                src="src/img/types_icons/fairy.svg"
+                class="inline w-[30px] rounded-full bg-fairy p-1"
+              />
+
+              <div
+                class="coverage-fairy_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="coverage-fighting grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="fighting"
+                alt="fighting"
+                src="src/img/types_icons/fighting.svg"
+                class="inline w-[30px] rounded-full bg-fighting p-1"
+              />
+
+              <div
+                class="coverage-fighting_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="coverage-fire grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="fire"
+                alt="fire"
+                src="src/img/types_icons/fire.svg"
+                class="inline w-[30px] rounded-full bg-fire p-1"
+              />
+
+              <div
+                class="coverage-fire_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="coverage-flying grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="flying"
+                alt="flying"
+                src="src/img/types_icons/flying.svg"
+                class="inline w-[30px] rounded-full bg-flying p-1"
+              />
+
+              <div
+                class="coverage-flying_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              title="ghost"
+              alt="ghost"
+              class="coverage-ghost grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                src="src/img/types_icons/ghost.svg"
+                class="inline w-[30px] rounded-full bg-ghost p-1"
+              />
+
+              <div
+                class="coverage-ghost_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              title="grass"
+              alt="grass"
+              class="coverage-grass grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                src="src/img/types_icons/grass.svg"
+                class="inline w-[30px] rounded-full bg-grass p-1"
+              />
+
+              <div
+                class="coverage-grass_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              title="ground"
+              alt="ground"
+              class="coverage-ground grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                src="src/img/types_icons/ground.svg"
+                class="inline w-[30px] rounded-full bg-ground p-1"
+              />
+
+              <div
+                class="coverage-ground_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              title="ice"
+              alt="ice"
+              class="coverage-ice grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                src="src/img/types_icons/ice.svg"
+                class="inline w-[30px] rounded-full bg-ice p-1"
+              />
+
+              <div
+                class="coverage-ice_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              title="normal"
+              alt="normal"
+              class="coverage-normal grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                src="src/img/types_icons/normal.svg"
+                class="inline w-[30px] rounded-full bg-normal p-1"
+              />
+
+              <div
+                class="coverage-normal_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="coverage-poison grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="poison"
+                alt="poison"
+                src="src/img/types_icons/poison.svg"
+                class="inline w-[30px] rounded-full bg-poison p-1"
+              />
+
+              <div
+                class="coverage-poison_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="coverage-psychic grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="psychic"
+                alt="psychic"
+                src="src/img/types_icons/psychic.svg"
+                class="inline w-[30px] rounded-full bg-psychic p-1"
+              />
+
+              <div
+                class="coverage-psychic_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="coverage-rock grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="rock"
+                alt="rock"
+                src="src/img/types_icons/rock.svg"
+                class="inline w-[30px] rounded-full bg-rock p-1"
+              />
+
+              <div
+                class="coverage-rock_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="coverage-steel grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="steel"
+                alt="steel"
+                src="src/img/types_icons/steel.svg"
+                class="inline w-[30px] rounded-full bg-steel p-1"
+              />
+
+              <div
+                class="coverage-steel_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="coverage-water grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="water"
+                alt="water"
+                src="src/img/types_icons/water.svg"
+                class="inline w-[30px] rounded-full bg-water p-1"
+              />
+
+              <div
+                class="coverage-water_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="defense-container">
+          <h2 class="text-darkM-whiteIndigo pb-2">Defense</h2>
+          <ul class="defense_ul flex flex-col gap-2">
+            <li
+              class="defense-bug grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="bug"
+                alt="bug"
+                src="src/img/types_icons/bug.svg"
+                class="inline w-[30px] rounded-full bg-bug p-1"
+              />
+
+              <div
+                class="defense-bug_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="defense-dark grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="dark"
+                alt="dark"
+                src="src/img/types_icons/dark.svg"
+                class="inline w-[30px] rounded-full bg-dark p-1"
+              />
+
+              <div
+                class="defense-dark_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="defense-dragon grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="dragon"
+                alt="dragon"
+                src="src/img/types_icons/dragon.svg"
+                class="inline w-[30px] rounded-full bg-dragon p-1"
+              />
+
+              <div
+                class="defense-dragon_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="defense-electric grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="electric"
+                alt="electric"
+                src="src/img/types_icons/electric.svg"
+                class="inline w-[30px] rounded-full bg-electric p-1"
+              />
+
+              <div
+                class="defense-electric_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="defense-fairy grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="fairy"
+                alt="fairy"
+                src="src/img/types_icons/fairy.svg"
+                class="inline w-[30px] rounded-full bg-fairy p-1"
+              />
+
+              <div
+                class="defense-fairy_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="defense-fighting grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="fighting"
+                alt="fighting"
+                src="src/img/types_icons/fighting.svg"
+                class="inline w-[30px] rounded-full bg-fighting p-1"
+              />
+
+              <div
+                class="defense-fighting_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="defense-fire grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="fire"
+                alt="fire"
+                src="src/img/types_icons/fire.svg"
+                class="inline w-[30px] rounded-full bg-fire p-1"
+              />
+
+              <div
+                class="defense-fire_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="defense-flying grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="flying"
+                alt="flying"
+                src="src/img/types_icons/flying.svg"
+                class="inline w-[30px] rounded-full bg-flying p-1"
+              />
+
+              <div
+                class="defense-flying_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              title="ghost"
+              alt="ghost"
+              class="defense-ghost grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                src="src/img/types_icons/ghost.svg"
+                class="inline w-[30px] rounded-full bg-ghost p-1"
+              />
+
+              <div
+                class="defense-ghost_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              title="grass"
+              alt="grass"
+              class="defense-grass grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                src="src/img/types_icons/grass.svg"
+                class="inline w-[30px] rounded-full bg-grass p-1"
+              />
+
+              <div
+                class="defense-grass_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              title="ground"
+              alt="ground"
+              class="defense-ground grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                src="src/img/types_icons/ground.svg"
+                class="inline w-[30px] rounded-full bg-ground p-1"
+              />
+
+              <div
+                class="defense-ground_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              title="ice"
+              alt="ice"
+              class="defense-ice grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                src="src/img/types_icons/ice.svg"
+                class="inline w-[30px] rounded-full bg-ice p-1"
+              />
+
+              <div
+                class="defense-ice_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              title="normal"
+              alt="normal"
+              class="defense-normal grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                src="src/img/types_icons/normal.svg"
+                class="inline w-[30px] rounded-full bg-normal p-1"
+              />
+
+              <div
+                class="defense-normal_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="defense-poison grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="poison"
+                alt="poison"
+                src="src/img/types_icons/poison.svg"
+                class="inline w-[30px] rounded-full bg-poison p-1"
+              />
+
+              <div
+                class="defense-poison_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="defense-psychic grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="psychic"
+                alt="psychic"
+                src="src/img/types_icons/psychic.svg"
+                class="inline w-[30px] rounded-full bg-psychic p-1"
+              />
+
+              <div
+                class="defense-psychic_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="defense-rock grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="rock"
+                alt="rock"
+                src="src/img/types_icons/rock.svg"
+                class="inline w-[30px] rounded-full bg-rock p-1"
+              />
+
+              <div
+                class="defense-rock_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="defense-steel grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="steel"
+                alt="steel"
+                src="src/img/types_icons/steel.svg"
+                class="inline w-[30px] rounded-full bg-steel p-1"
+              />
+
+              <div
+                class="defense-steel_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+            <li
+              class="defense-water grid gap-4"
+              style="grid-template-columns: 30px auto"
+            >
+              <img
+                title="water"
+                alt="water"
+                src="src/img/types_icons/water.svg"
+                class="inline w-[30px] rounded-full bg-water p-1"
+              />
+
+              <div
+                class="defense-water_inner grid gap-1 h-[30px]"
+                style="grid-template-columns: repeat(auto-fill, 11px)"
+              >
+                <div
+                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+                <div
+                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                ></div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </menu>
+    </div>
+
+    <menu
+      class="fixed bottom-0 bigTablet:top-0 bigTablet:w-1/2 bigTablet:right-0 sidemenu-hidden grid grid-cols-2 sidemenu bg-lightM-bismark dark:bg-darkM-darkBlue transition-all duration-200 sidemenu-container w-full z-20 h-fit"
+    >
+      <div
+        class="hidden col-span-2 bigTablet:block h-[10vh] border-l dark:border-darkM-whiteBlue"
+      ></div>
+      <div
+        class="saved-teams_btn hover:cursor-pointer dark:text-darkM-whiteBlue flex flex-col justify-around items-center border dark:border-darkM-whiteBlue pt-2 bigTablet:h-[16vh]"
+      >
+        <svg
+          class="fill-darkM-whiteBlue w-[35%] max-w-[60px] mb-2"
+          id="Layer_1"
+          data-name="Layer 1"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 980 978.94"
+        >
+          <path
+            d="M770,1224.85H732c-1.49-1-3.21-.74-4.85-.82-43.27-1.91-85.66-9.09-126.64-23.08-151.15-51.57-254.79-152.44-311.12-301.58-14.9-39.48-23.16-80.65-26.63-122.76-.55-6.76-.06-13.62-1.76-20.28v-43a58.81,58.81,0,0,0,.89-5.86,461,461,0,0,1,17.86-106.37q47-160.89,181.91-260.55C529.06,290.81,604.73,261,687.76,250a479.9,479.9,0,0,1,103.69-2.35c37.6,3.17,74.47,9.93,110.19,22q208.55,70.45,299,271.14c21.87,48.51,34.17,99.72,38.6,152.8.58,6.92.1,13.95,1.8,20.77v42c-.3,2.1-.78,4.2-.88,6.31A464.49,464.49,0,0,1,1222.35,869q-43.32,149.69-164.66,247.69Q941,1210.57,791.31,1223.07C784.21,1223.67,777,1223.05,770,1224.85ZM438.72,766.6h-96c-7.34,0-7.35,0-6.51,7.5a455.59,455.59,0,0,0,7.62,48.7q32.9,148.47,153,241.88c65.33,50.8,139.8,79.07,222.48,85.42,48.25,3.71,96,.07,142.34-13.67,136.22-40.33,229.87-127.25,281-259.63,12.92-33.47,19.88-68.48,23.33-104.17.33-3.46.83-6.17-4.62-6.16q-98,.3-196,0c-3.42,0-4.7,1.17-5.18,4.31-.71,4.59-1.53,9.17-2.63,13.68-27.08,111-135,180.24-247.43,158.68-85.94-16.48-153.58-85.58-168.15-171.85-.58-3.44-1.83-4.87-5.73-4.85C503.71,766.68,471.21,766.6,438.72,766.6Zm165.37-31.32C604.13,815.92,670.26,882,751,882s146.87-66,146.94-146.66S831.91,588.73,751,588.69,604.05,654.66,604.09,735.28Z"
+            transform="translate(-261 -245.91)"
+          />
+        </svg>
+        <h3 class="text-white">Saved teams</h3>
+      </div>
+      <div
+        class="statistics_btn hover:cursor-pointer dark:text-darkM-whiteBlue flex flex-col items-center justify-around border dark:border-darkM-whiteBlue pt-2 bigTablet:h-[16vh]"
+      >
+        <svg
+          class="fill-darkM-whiteBlue w-[35%] mb-2 max-w-[60px]"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 256 256"
+        >
+          <path
+            d="M224,200h-8V40a8,8,0,0,0-8-8H152a8,8,0,0,0-8,8V80H96a8,8,0,0,0-8,8v40H48a8,8,0,0,0-8,8v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16ZM160,48h40V200H160ZM104,96h40V200H104ZM56,144H88v56H56Z"
+          ></path>
+        </svg>
+        <h3 class="text-white">Statistics</h3>
+      </div>
+    </menu>
   </body>
 </html>

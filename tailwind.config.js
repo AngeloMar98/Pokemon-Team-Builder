@@ -25,6 +25,12 @@ module.exports = {
         },
         lightM: {
           paleOrange: "#fed7aa",
+          blackPearl: "#030708",
+          bismark: "#3C6478",
+          lightBismark: "#A7C3D1",
+          darkBismark: "#1F4354",
+          middleBismark: "#7D83AF",
+          bermudaGray: "#6F91A1",
         },
         bug: "#92bc2c",
         dark: "#595761",
@@ -58,6 +64,7 @@ module.exports = {
     screens: {
       mobile: "280px",
       tablet: "520px",
+      bigTablet: "620px",
       laptop: "940px",
       desktop: "1280px",
     },
@@ -72,6 +79,7 @@ module.exports = {
     "rounded-l-md",
     "rounded-r-none",
     "rounded-unset",
+    "lift-sidemenu-btn",
     "cut-rounded",
     "moveset-menu-btn-open",
   ],

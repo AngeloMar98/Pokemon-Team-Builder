@@ -17,15 +17,45 @@
     font-size: 1.3rem;
     font-weight: 600;
   }
+
+  h3 {
+    font-weight: 600;
+  }
 }
 
 @layer components {
+  :not(.show-stats):not(.show-teams).teamsAndStats {
+    @apply hidden;
+  }
+
+  .custom-shadow {
+    filter: drop-shadow(0 4px 8px rgb(0 0 0 / 0.75));
+  }
+
+  .custom-shadow-sm {
+    filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.85));
+  }
+
+  .bar-immune,
+  .bar-stabeff {
+    @apply bg-darkM-yellow;
+  }
+
+  .bar-resist,
+  .bar-eff {
+    @apply bg-darkM-whiteIndigo;
+  }
+
+  .lift-sidemenu-btn {
+    @apply bottom-[140px] bg-lightM-blackPearl dark:bg-darkM-violet !important;
+  }
+
   .pick-btn {
-    @apply dark:bg-darkM-lightIndigo1 dark:hover:bg-darkM-lightIndigo3 py-1 transition-all duration-200;
+    @apply bg-lightM-bismark hover:bg-lightM-lightBismark  dark:bg-darkM-lightIndigo1 dark:hover:bg-darkM-lightIndigo3 py-1 transition-all duration-200;
   }
 
   .pick-btn-active {
-    @apply dark:bg-darkM-lightIndigo3 border-b-2;
+    @apply bg-lightM-lightBismark dark:bg-darkM-lightIndigo3 border-b-4  border-white;
   }
 
   .activated .carret-down {
@@ -34,10 +64,6 @@
 
   .rounded-unset {
     border-radius: unset;
-  }
-
-  .cut-rounded {
-    @apply rounded-unset rounded-t-md laptop:rounded-b-md laptop:rounded-r-none !important;
   }
 
   .slots-select,
@@ -50,11 +76,11 @@
   }
 
   .slot-select_btn {
-    @apply font-semibold dark:bg-darkM-violet rounded-xl text-center py-1 dark:text-darkM-whiteIndigo;
+    @apply font-semibold dark:bg-darkM-violet bg-lightM-lightBismark rounded-xl text-center py-1 dark:text-darkM-whiteIndigo;
   }
 
   .slot-select_ul {
-    @apply hidden w-full text-center pt-1 mt-1 dark:bg-darkM-lightIndigo1 dark:text-darkM-whiteIndigo rounded-md text-sm min-h-[52px] max-h-[200px] overflow-y-scroll  absolute top-8 z-20  flex-col items-center;
+    @apply hidden w-full text-center pt-1 mt-1 bg-lightM-darkBismark dark:bg-darkM-lightIndigo1 dark:text-darkM-whiteIndigo rounded-md text-sm min-h-[52px] max-h-[200px] overflow-y-scroll  absolute top-8 z-20  flex-col items-center;
   }
 
   .slot-select_input {
@@ -62,7 +88,7 @@
   }
 
   .slot-select_li {
-    @apply hover:cursor-pointer w-full py-1;
+    @apply hover:cursor-pointer w-full py-1 hover:bg-lightM-lightBismark dark:hover:bg-darkM-lightIndigo3;
   }
 
   .slot {
@@ -70,33 +96,37 @@
   }
 
   .filter-fullyEvo.fullyEvo-only {
-    @apply dark:bg-darkM-yellow;
+    @apply bg-lightM-middleBismark  dark:bg-darkM-yellow;
   }
 
   .filter-menu_ul {
-    @apply hidden flex-col w-full absolute top-[30px] dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 rounded-lg text-center h-[100px] overflow-y-scroll z-10;
+    @apply hidden flex-col w-full absolute top-[30px] bg-lightM-lightBismark dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 rounded-lg text-center h-[100px] overflow-y-scroll z-10;
   }
 
   .team-member {
     @apply dark:bg-darkM-lightIndigo1 rounded-md  border dark:border-darkM-lightIndigo3 relative;
   }
 
+  :not(.hide-moveset).team-member {
+    @apply rounded-b-none laptop:rounded-b-md  laptop:rounded-r-none;
+  }
+
   .moveset-menu {
-    @apply absolute left-[-1px] text-sm top-full rounded-b-md dark:bg-darkM-purple border dark:border-darkM-lightIndigo3 w-[calc(100%_+_2px)] z-10 transition-all duration-300 ease-out h-[235px] laptop:left-full laptop:top-[-1px] laptop:h-[calc(100%_+_2px)] laptop:w-[calc(100%_+_0.8rem)] laptop:rounded-b-none laptop:rounded-r-md;
+    @apply absolute left-[-1px] text-sm top-full rounded-b-md bg-white dark:bg-darkM-purple border dark:border-darkM-lightIndigo3 w-[calc(100%_+_2px)] z-40 transition-all duration-300 ease-out h-[235px] laptop:left-full laptop:top-[-1px] laptop:h-[calc(100%_+_2px)] laptop:w-[calc(100%_+_0.8rem)] laptop:rounded-b-none laptop:rounded-r-md;
   }
 
   .moveset-menu-btn {
-    @apply absolute right-2 top-1/2 -translate-y-1/2 dark:bg-darkM-lightIndigo3 dark:hover:bg-darkM-purple p-1 rounded-full transition-all duration-200 flex items-center justify-center rotate-180 laptop:rotate-90;
+    @apply absolute right-2 top-1/2 -translate-y-1/2 bg-lightM-lightBismark hover:bg-white dark:bg-darkM-lightIndigo3 dark:hover:bg-darkM-purple p-1 rounded-full transition-all duration-200 flex items-center justify-center rotate-180 laptop:rotate-90;
   }
 
   .moveset-hidden {
-    @apply translate-y-full laptop:translate-y-0 laptop:-translate-x-full opacity-0;
+    @apply -translate-y-full laptop:translate-y-0 laptop:-translate-x-full opacity-0;
 
     pointer-events: none;
   }
 
-  .sidemenu-hidden menu {
-    @apply translate-y-full opacity-0 hidden;
+  .sidemenu-hidden {
+    @apply translate-y-full bigTablet:translate-y-0 bigTablet:translate-x-full  !important;
 
     pointer-events: none;
   }
