@@ -89,6 +89,15 @@ sidemenuBtn === null || sidemenuBtn === void 0 ? void 0 : sidemenuBtn.addEventLi
     sidemenu === null || sidemenu === void 0 ? void 0 : sidemenu.classList.toggle("sidemenu-hidden");
     sidemenuBtn === null || sidemenuBtn === void 0 ? void 0 : sidemenuBtn.classList.toggle("lift-sidemenu-btn");
 });
+const toggleDarkMode = document.querySelector(".toggle-darkMode");
+const toggleDMIcon = toggleDarkMode.querySelector("img");
+toggleDarkMode === null || toggleDarkMode === void 0 ? void 0 : toggleDarkMode.addEventListener("click", () => {
+    toggleDMIcon.src =
+        toggleDMIcon.src.split("/").at(-1) === "solrock.png"
+            ? "src/img/icons_ui/lunrock.png"
+            : "src/img/icons_ui/solrock.png";
+    document.documentElement.classList.toggle("dark");
+});
 const movesetMenuBtns = Array.from(document.querySelectorAll(".moveset-menu-btn"));
 movesetMenuBtns.forEach((movesetMenuBtn) => {
     const teamMember = movesetMenuBtn.closest(".team-member");

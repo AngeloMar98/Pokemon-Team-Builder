@@ -47,7 +47,7 @@
   }
 
   .lift-sidemenu-btn {
-    @apply bottom-[140px] bg-lightM-blackPearl dark:bg-darkM-violet !important;
+    @apply bottom-[180px] bg-lightM-blackPearl dark:bg-darkM-violet !important;
   }
 
   .pick-btn {
@@ -126,7 +126,7 @@
   }
 
   .sidemenu-hidden {
-    @apply translate-y-full bigTablet:translate-y-0 bigTablet:translate-x-full  !important;
+    @apply translate-y-full bigTablet:translate-y-0 bigTablet:translate-x-full hidden  !important;
 
     pointer-events: none;
   }

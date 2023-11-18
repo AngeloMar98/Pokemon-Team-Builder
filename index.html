@@ -2016,7 +2016,6 @@
           <img src="src/img/pokemon_icons/10.png" />
         </div>
       </menu>
-
       <menu
         class="statistics grid-cols-2 gap-2 hidden min-h-[60%] max-h-[60%] group-[.show-stats]:grid group-[:not(.show-teams)]:min-h-full group-[:not(.show-teams)]:max-h-full col-span-2 p-3 bg-lightM-bismark dark:bg-darkM-darkBlue pl-6 w-full auto-rows-min overflow-y-scroll transition-all duration-100 bigTablet:border-l dark:border-darkM-whiteBlue"
       >
@@ -3311,11 +3310,20 @@
     </div>
 
     <menu
-      class="fixed bottom-0 bigTablet:top-0 bigTablet:w-1/2 bigTablet:right-0 sidemenu-hidden grid grid-cols-2 sidemenu bg-lightM-bismark dark:bg-darkM-darkBlue transition-all duration-200 sidemenu-container w-full z-20 h-fit"
+      class="fixed bottom-0 bigTablet:top-0 bigTablet:w-1/2 bigTablet:right-0 sidemenu-hidden grid grid-cols-2 sidemenu bg-lightM-bismark dark:bg-darkM-darkBlue transition-all duration-200 w-full z-20 h-fit"
     >
       <div
-        class="hidden col-span-2 bigTablet:block h-[10vh] border-l dark:border-darkM-whiteBlue"
-      ></div>
+        class="col-span-2 h-[6vh] bigTablet:h-[10vh] border dark:border-darkM-whiteBlue flex items-center justify-center"
+      >
+        <span
+          class="toggle-darkMode h-[12px] w-[50px] dark:bg-darkM-lightIndigo2 rounded-full hover:cursor-pointer items-center flex group bg-darkM-whiteIndigo absolute"
+        >
+          <img
+            class="left-[-28px] dark:left-[28px] relative inline-block w-full transition-all duration-200"
+            src="src/img/icons_ui/lunrock.png"
+          />
+        </span>
+      </div>
       <div
         class="saved-teams_btn hover:cursor-pointer dark:text-darkM-whiteBlue flex flex-col justify-around items-center border dark:border-darkM-whiteBlue pt-2 bigTablet:h-[16vh]"
       >

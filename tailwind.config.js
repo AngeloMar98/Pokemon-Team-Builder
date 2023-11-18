@@ -70,6 +70,7 @@ module.exports = {
     },
   },
   safelist: [
+    "left-[-28px]",
     "rotate-0",
     "-rotate-90",
     "rotate-180",

@@ -103,6 +103,17 @@ sidemenuBtn?.addEventListener("click", () => {
   sidemenuBtn?.classList.toggle("lift-sidemenu-btn");
 });
 
+const toggleDarkMode = document.querySelector(".toggle-darkMode");
+const toggleDMIcon = toggleDarkMode!.querySelector("img");
+
+toggleDarkMode?.addEventListener("click", () => {
+  toggleDMIcon!.src =
+    toggleDMIcon!.src.split("/").at(-1) === "solrock.png"
+      ? "src/img/icons_ui/lunrock.png"
+      : "src/img/icons_ui/solrock.png";
+  document.documentElement.classList.toggle("dark");
+});
+
 const movesetMenuBtns = Array.from(
   document.querySelectorAll(".moveset-menu-btn")
 );
