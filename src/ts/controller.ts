@@ -109,6 +109,8 @@ sidemenuBtn?.addEventListener("click", () => {
 const toggleDarkMode = document.querySelector(".toggle-darkMode");
 const toggleDMIcon = toggleDarkMode!.querySelector("img");
 
+toggleDMIcon!.src = "img/pokemon_icons/2.png";
+
 toggleDarkMode?.addEventListener("click", () => {
   toggleDMIcon!.src = toggleDMIcon!.src.split("/").at(-1)?.includes("solrock")
     ? lunrock
