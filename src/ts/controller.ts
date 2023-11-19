@@ -78,6 +78,9 @@ Prendi tipo, gen, name, evoluto o no
 
 // createJSON();
 
+const solrock = require("../../static/img/icons_ui/solrock.png");
+const lunrock = require("../../static/img/icons_ui/lunrock.png");
+
 const sidemenuBtn = document.querySelector(".sidemenu-btn");
 const sidemenu = document.querySelector(".sidemenu");
 const savedTeamsBtn = document.querySelector(".saved-teams_btn");
@@ -107,10 +110,9 @@ const toggleDarkMode = document.querySelector(".toggle-darkMode");
 const toggleDMIcon = toggleDarkMode!.querySelector("img");
 
 toggleDarkMode?.addEventListener("click", () => {
-  toggleDMIcon!.src =
-    toggleDMIcon!.src.split("/").at(-1) === "solrock.png"
-      ? "static/img/icons_ui/lunrock.png"
-      : "static/img/icons_ui/solrock.png";
+  toggleDMIcon!.src = toggleDMIcon!.src.split("/").at(-1)?.includes("solrock")
+    ? lunrock
+    : solrock;
   document.documentElement.classList.toggle("dark");
 });
 

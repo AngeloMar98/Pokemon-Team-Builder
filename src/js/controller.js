@@ -68,6 +68,8 @@ Prendi tipo, gen, name, evoluto o no
 //   console.log(JSON);
 // };
 // createJSON();
+const solrock = require("../../static/img/icons_ui/solrock.png");
+const lunrock = require("../../static/img/icons_ui/lunrock.png");
 const sidemenuBtn = document.querySelector(".sidemenu-btn");
 const sidemenu = document.querySelector(".sidemenu");
 const savedTeamsBtn = document.querySelector(".saved-teams_btn");
@@ -92,10 +94,10 @@ sidemenuBtn === null || sidemenuBtn === void 0 ? void 0 : sidemenuBtn.addEventLi
 const toggleDarkMode = document.querySelector(".toggle-darkMode");
 const toggleDMIcon = toggleDarkMode.querySelector("img");
 toggleDarkMode === null || toggleDarkMode === void 0 ? void 0 : toggleDarkMode.addEventListener("click", () => {
-    toggleDMIcon.src =
-        toggleDMIcon.src.split("/").at(-1) === "solrock.png"
-            ? "static/img/icons_ui/lunrock.png"
-            : "static/img/icons_ui/solrock.png";
+    var _a;
+    toggleDMIcon.src = ((_a = toggleDMIcon.src.split("/").at(-1)) === null || _a === void 0 ? void 0 : _a.includes("solrock"))
+        ? lunrock
+        : solrock;
     document.documentElement.classList.toggle("dark");
 });
 const movesetMenuBtns = Array.from(document.querySelectorAll(".moveset-menu-btn"));
