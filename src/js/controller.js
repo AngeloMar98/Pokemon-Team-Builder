@@ -93,7 +93,6 @@ sidemenuBtn === null || sidemenuBtn === void 0 ? void 0 : sidemenuBtn.addEventLi
 });
 const toggleDarkMode = document.querySelector(".toggle-darkMode");
 const toggleDMIcon = toggleDarkMode.querySelector("img");
-toggleDMIcon.src = "img/pokemon_icons/2.png";
 toggleDarkMode === null || toggleDarkMode === void 0 ? void 0 : toggleDarkMode.addEventListener("click", () => {
     var _a;
     toggleDMIcon.src = ((_a = toggleDMIcon.src.split("/").at(-1)) === null || _a === void 0 ? void 0 : _a.includes("solrock"))
