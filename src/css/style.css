@@ -555,6 +555,7 @@ h3 {
 
 :not(.show-stats):not(.show-teams).teamsAndStats {
   display: none;
+  height: 0px;
 }
 
 .custom-shadow {
@@ -1069,6 +1070,10 @@ h3 {
   position: relative;
 }
 
+.sticky {
+  position: sticky;
+}
+
 .bottom-0 {
   bottom: 0px;
 }
@@ -1222,6 +1227,10 @@ h3 {
 
 .min-h-pick {
   min-height: 60px;
+}
+
+.min-h-screen {
+  min-height: 100vh;
 }
 
 .w-\[11px\] {
@@ -1951,6 +1960,10 @@ h3 {
 
   .bigTablet\:top-\[26vh\] {
     top: 26vh;
+  }
+
+  .bigTablet\:bottom-auto {
+    bottom: auto;
   }
 
   .bigTablet\:h-\[10vh\] {

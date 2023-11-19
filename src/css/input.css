@@ -25,7 +25,7 @@
 
 @layer components {
   :not(.show-stats):not(.show-teams).teamsAndStats {
-    @apply hidden;
+    @apply hidden h-0;
   }
 
   .custom-shadow {

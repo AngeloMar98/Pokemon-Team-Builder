@@ -15,7 +15,7 @@
   </head>
 
   <body
-    class="bg-lightM-lightBismark dark:bg-darkM-indigo font-default font-normal relative"
+    class="bg-lightM-lightBismark dark:bg-darkM-indigo font-default font-normal relative min-h-screen"
   >
     <header class="text-center flex items-center p-3 mx-auto w-fit" id="title">
       <a href="#">
@@ -1911,7 +1911,7 @@
       </section>
     </main>
     <button
-      class="sidemenu-btn bigTablet:bottom-0 bigTablet:top-6 bigTablet:left-[calc(100%_-_4.5rem)] bigTablet:translate-x-0 fixed bottom-[45px] w-[35px] h-[35px] transition-all duration-200 rounded-full flex items-center justify-center p-1 bg-lightM-darkBismark dark:bg-darkM-darkBlue left-1/2 -translate-x-1/2 group z-50"
+      class="sidemenu-btn fixed bottom-[45px] bigTablet:bottom-auto bigTablet:top-6 bigTablet:left-[calc(100%_-_4.5rem)] bigTablet:translate-x-0 w-[35px] h-[35px] transition-all duration-200 rounded-full flex items-center justify-center p-1 bg-lightM-darkBismark dark:bg-darkM-darkBlue left-1/2 -translate-x-1/2 group z-50"
     >
       <svg
         class="text-darkM-whiteBlue group-[.lift-sidemenu-btn]:hidden"
@@ -1979,10 +1979,10 @@
       </svg>
     </button>
     <div
-      class="teamsAndStats w-full group fixed top-0 bigTablet:right-0 bigTablet:top-[26vh] h-[70vh] bigTablet:h-[74vh] bigTablet:w-1/2"
+      class="teamsAndStats bg-lightM-bismark dark:bg-darkM-darkBlue w-full group fixed top-0 bigTablet:right-0 bigTablet:top-[26vh] h-[70vh] bigTablet:h-[74vh] bigTablet:w-1/2"
     >
       <menu
-        class="saved-teams hidden min-h-[40%] max-h-[40%] group-[.show-teams]:block group-[:not(.show-stats)]:min-h-full group-[:not(.show-stats)]:max-h-full col-span-2 p-3 overflow-y-scroll bg-lightM-bismark dark:bg-darkM-darkBlue pl-6 w-full transition-all duration-100 bigTablet:border-l dark:border-darkM-whiteBlue"
+        class="saved-teams hidden min-h-[40%] max-h-[40%] group-[.show-teams]:block group-[:not(.show-stats)]:min-h-full group-[:not(.show-stats)]:max-h-full col-span-2 p-3 overflow-y-scroll pl-6 w-full transition-all duration-100 bigTablet:border-l dark:border-darkM-whiteBlue"
       >
         <h2 class="text-darkM-whiteBlue pb-1">
           Saved Teams
@@ -2017,7 +2017,7 @@
         </div>
       </menu>
       <menu
-        class="statistics grid-cols-2 gap-2 hidden min-h-[60%] max-h-[60%] group-[.show-stats]:grid group-[:not(.show-teams)]:min-h-full group-[:not(.show-teams)]:max-h-full col-span-2 p-3 bg-lightM-bismark dark:bg-darkM-darkBlue pl-6 w-full auto-rows-min overflow-y-scroll transition-all duration-100 bigTablet:border-l dark:border-darkM-whiteBlue"
+        class="statistics grid-cols-2 gap-2 min-h-[60%] max-h-[60%] hidden group-[.show-stats]:grid group-[:not(.show-teams)]:min-h-full group-[:not(.show-teams)]:max-h-full col-span-2 p-3 pl-6 w-full auto-rows-min overflow-y-scroll transition-all duration-100 bigTablet:border-l dark:border-darkM-whiteBlue"
       >
         <h2
           class="text-darkM-whiteBlue pb-1 col-span-2 border-b dark:border-darkM-whiteBlue"
