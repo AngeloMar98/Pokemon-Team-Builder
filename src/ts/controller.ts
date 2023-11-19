@@ -109,8 +109,8 @@ const toggleDMIcon = toggleDarkMode!.querySelector("img");
 toggleDarkMode?.addEventListener("click", () => {
   toggleDMIcon!.src =
     toggleDMIcon!.src.split("/").at(-1) === "solrock.png"
-      ? "src/img/icons_ui/lunrock.png"
-      : "src/img/icons_ui/solrock.png";
+      ? "static/img/icons_ui/lunrock.png"
+      : "static/img/icons_ui/solrock.png";
   document.documentElement.classList.toggle("dark");
 });
 
@@ -194,8 +194,9 @@ const filterMenuBtns = Array.from(
 filterMenuBtns.forEach((filterMenuBtn) => {
   const filterMenu = filterMenuBtn.closest(".filter-menu");
 
-  filterMenuBtn.addEventListener("click", () =>
-    filterMenu?.classList.toggle("activated")
+  filterMenuBtn.addEventListener(
+    "click",
+    () => filterMenu?.classList.toggle("activated")
   );
 });
 

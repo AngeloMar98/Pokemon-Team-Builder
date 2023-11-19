@@ -688,7 +688,27 @@ h3 {
   }
 }
 
-.toggle .saved-teams_btn,
+.toggle-darkMode {
+  position: absolute;
+  display: flex;
+  height: 12px;
+  width: 50px;
+  align-items: center;
+  border-radius: 9999px;
+  --tw-bg-opacity: 1;
+  background-color: rgb(233 232 237 / var(--tw-bg-opacity));
+}
+
+.toggle-darkMode:hover {
+  cursor: pointer;
+}
+
+:is(.dark .toggle-darkMode) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(107 127 192 / var(--tw-bg-opacity));
+}
+
+.saved-teams_btn,
   .statistics_btn {
   display: flex;
   flex-direction: column;
@@ -698,12 +718,12 @@ h3 {
   padding-top: 0.5rem;
 }
 
-.toggle .saved-teams_btn:hover,
+.saved-teams_btn:hover,
   .statistics_btn:hover {
   cursor: pointer;
 }
 
-:is(.dark .toggle .saved-teams_btn),:is(.dark 
+:is(.dark .saved-teams_btn),:is(.dark 
   .statistics_btn) {
   --tw-border-opacity: 1;
   border-color: rgb(230 230 233 / var(--tw-border-opacity));
@@ -712,7 +732,7 @@ h3 {
 }
 
 @media (min-width: 620px) {
-  .toggle .saved-teams_btn,
+  .saved-teams_btn,
   .statistics_btn {
     height: 16vh;
   }
@@ -1551,10 +1571,6 @@ h3 {
   border-bottom-width: 1px;
 }
 
-.border-t {
-  border-top-width: 1px;
-}
-
 .border-darkM-whiteBlue {
   --tw-border-opacity: 1;
   border-color: rgb(230 230 233 / var(--tw-border-opacity));
@@ -1959,10 +1975,6 @@ h3 {
 :is(.dark .dark\:bg-darkM-purple) {
   --tw-bg-opacity: 1;
   background-color: rgb(36 6 73 / var(--tw-bg-opacity));
-}
-
-:is(.dark .dark\:bg-transparent) {
-  background-color: transparent;
 }
 
 :is(.dark .dark\:bg-white) {

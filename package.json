@@ -1,8 +1,7 @@
 {
-  "name": "pokemon-team-builder",
+  "name": "pokemon_team_builder",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Pokèmon team builder",
   "scripts": {
     "tw": "npx tailwindcss -i ./src/css/input.css -o ./src/css/style.css --watch",
     "ts": "tsc --watch",
@@ -11,6 +10,25 @@
   "author": "Angelo Marciano",
   "license": "ISC",
   "dependencies": {
+    "core-js": "^3.33.2",
+    "regenerator-runtime": "^0.14.0",
     "tailwindcss": "^3.3.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "@webpack-cli/generators": "^3.0.7",
+    "babel-loader": "^9.1.3",
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "parcel": "^2.10.3",
+    "parcel-plugin-static-files-copy": "^2.6.0",
+    "prettier": "^3.0.3",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.2.2",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
   }
 }

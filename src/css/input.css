@@ -55,7 +55,7 @@
   }
 
   .toggle-darkMode {
-    @apply h-[12px] w-[50px] dark:bg-darkM-lightIndigo2 rounded-full hover:cursor-pointer items-center flex group bg-darkM-whiteIndigo absolute;
+    @apply h-[12px] w-[50px] dark:bg-darkM-lightIndigo2 rounded-full hover:cursor-pointer items-center flex  bg-darkM-whiteIndigo absolute;
   }
 
   .saved-teams_btn,
