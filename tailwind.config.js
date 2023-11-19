@@ -83,5 +83,6 @@ module.exports = {
     "lift-sidemenu-btn",
     "cut-rounded",
     "moveset-menu-btn-open",
+    "sidemenu",
   ],
 };

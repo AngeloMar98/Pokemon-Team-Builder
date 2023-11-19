@@ -330,7 +330,7 @@
               />
             </div>
             <div
-              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md flex flex-col items-center gap-1 py-2 border-t bg-lightM-darkBismark dark:bg-transparent dark:border-darkM-lightIndigo3 relative"
+              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
             >
               <img
                 class="h-[25px] w-[92px]"
@@ -560,7 +560,7 @@
               />
             </div>
             <div
-              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md flex flex-col items-center gap-1 py-2 border-t bg-lightM-darkBismark dark:bg-transparent dark:border-darkM-lightIndigo3 relative"
+              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
             >
               <img
                 class="h-[25px] w-[92px]"
@@ -790,7 +790,7 @@
               />
             </div>
             <div
-              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md flex flex-col items-center gap-1 py-2 border-t bg-lightM-darkBismark dark:bg-transparent dark:border-darkM-lightIndigo3 relative"
+              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
             >
               <img
                 class="h-[25px] w-[92px]"
@@ -1020,7 +1020,7 @@
               />
             </div>
             <div
-              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md flex flex-col items-center gap-1 py-2 border-t bg-lightM-darkBismark dark:bg-transparent dark:border-darkM-lightIndigo3 relative"
+              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
             >
               <img
                 class="h-[25px] w-[92px]"
@@ -1250,7 +1250,7 @@
               />
             </div>
             <div
-              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md flex flex-col items-center gap-1 py-2 border-t bg-lightM-darkBismark dark:bg-transparent dark:border-darkM-lightIndigo3 relative"
+              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
             >
               <img
                 class="h-[25px] w-[92px]"
@@ -1977,9 +1977,7 @@
         </div>
       </section>
     </main>
-    <button
-      class="sidemenu-btn fixed bottom-[45px] bigTablet:bottom-auto bigTablet:top-6 bigTablet:left-[calc(100%_-_4.5rem)] bigTablet:translate-x-0 w-[35px] h-[35px] transition-all duration-200 rounded-full flex items-center justify-center p-1 bg-lightM-darkBismark dark:bg-darkM-darkBlue left-1/2 -translate-x-1/2 group z-50"
-    >
+    <button class="sidemenu-btn group">
       <svg
         class="text-darkM-whiteBlue group-[.lift-sidemenu-btn]:hidden"
         xmlns="http://www.w3.org/2000/svg"
@@ -2049,7 +2047,7 @@
       class="teamsAndStats bg-lightM-bismark dark:bg-darkM-darkBlue w-full group fixed top-0 bigTablet:right-0 bigTablet:top-[26vh] h-[70vh] bigTablet:h-[74vh] bigTablet:w-1/2"
     >
       <menu
-        class="saved-teams hidden min-h-[40%] max-h-[40%] group-[.show-teams]:block group-[:not(.show-stats)]:min-h-full group-[:not(.show-stats)]:max-h-full col-span-2 p-3 overflow-y-scroll pl-6 w-full transition-all duration-100 bigTablet:border-l dark:border-darkM-whiteBlue"
+        class="saved-teams hidden group-[.show-teams]:block group-[:not(.show-stats)]:min-h-full group-[:not(.show-stats)]:max-h-full m"
       >
         <h2 class="text-darkM-whiteBlue pb-1">
           Saved Teams
@@ -2084,7 +2082,7 @@
         </div>
       </menu>
       <menu
-        class="statistics grid-cols-2 gap-2 min-h-[60%] max-h-[60%] hidden group-[.show-stats]:grid group-[:not(.show-teams)]:min-h-full group-[:not(.show-teams)]:max-h-full col-span-2 p-3 pl-6 w-full auto-rows-min overflow-y-scroll transition-all duration-100 bigTablet:border-l dark:border-darkM-whiteBlue"
+        class="statistics hidden group-[.show-stats]:grid group-[:not(.show-teams)]:min-h-full group-[:not(.show-teams)]:max-h-full"
       >
         <h2
           class="text-darkM-whiteBlue pb-1 col-span-2 border-b dark:border-darkM-whiteBlue"
@@ -3376,24 +3374,18 @@
       </menu>
     </div>
 
-    <menu
-      class="fixed bottom-0 bigTablet:top-0 bigTablet:w-1/2 bigTablet:right-0 sidemenu-hidden grid grid-cols-2 sidemenu bg-lightM-bismark dark:bg-darkM-darkBlue transition-all duration-200 w-full z-20 h-fit"
-    >
+    <menu class="sidemenu sidemenu-hidden">
       <div
         class="col-span-2 h-[6vh] bigTablet:h-[10vh] border dark:border-darkM-whiteBlue flex items-center justify-center"
       >
-        <span
-          class="toggle-darkMode h-[12px] w-[50px] dark:bg-darkM-lightIndigo2 rounded-full hover:cursor-pointer items-center flex group bg-darkM-whiteIndigo absolute"
-        >
+        <span class="toggle-darkMode">
           <img
             class="left-[-28px] dark:left-[28px] relative inline-block w-full transition-all duration-200"
             src="src/img/icons_ui/lunrock.png"
           />
         </span>
       </div>
-      <div
-        class="saved-teams_btn hover:cursor-pointer dark:text-darkM-whiteBlue flex flex-col justify-around items-center border dark:border-darkM-whiteBlue pt-2 bigTablet:h-[16vh]"
-      >
+      <div class="saved-teams_btn">
         <svg
           class="fill-darkM-whiteBlue w-[35%] max-w-[60px] mb-2"
           id="Layer_1"
@@ -3408,9 +3400,7 @@
         </svg>
         <h3 class="text-white">Saved teams</h3>
       </div>
-      <div
-        class="statistics_btn hover:cursor-pointer dark:text-darkM-whiteBlue flex flex-col items-center justify-around border dark:border-darkM-whiteBlue pt-2 bigTablet:h-[16vh]"
-      >
+      <div class="statistics_btn">
         <svg
           class="fill-darkM-whiteBlue w-[35%] mb-2 max-w-[60px]"
           xmlns="http://www.w3.org/2000/svg"
