@@ -40,7 +40,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 //   The value "evolves_to" needs to be empty
 // Prendi tipo, gen, name, evoluto o no
 // // FIX WHEN DEPLOYING
-import "node_modules/core-js/stable";
+import "core-js/stable";
 import "regenerator-runtime/runtime";
 //
 import * as model from "./model.js";
