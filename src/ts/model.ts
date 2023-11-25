@@ -14,9 +14,6 @@ import forms from "./pokèdex/forms.js";
 import megas from "./pokèdex/megas.js";
 import variants from "./pokèdex/variants.js";
 
-console.log(forms);
-console.log(megas);
-console.log(variants);
 const searchResults: Pokemon[] = [];
 const savedTeams: Team[] = [];
 const currentTeam: Team = {
@@ -136,13 +133,8 @@ const fetchMoves = async function (moves: Array<any> = []) {
 };
 
 class PokedexFilter {
-  formsId: (Number | undefined)[];
-  megasId: (Number | undefined)[];
-
-  constructor() {
-    this.formsId = forms.map((formPokemon) => formPokemon.originId);
-    this.megasId = megas.map((megaPokemon) => megaPokemon.originId);
-  }
+  formsId = forms.map((formPokemon) => formPokemon.originId);
+  megasId = megas.map((megaPokemon) => megaPokemon.originId);
 
   filterAll(
     types: Type[],
