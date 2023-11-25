@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+import "regenerator-runtime";
 import * as pokedex from "./pokèdex/pokedex.js";
 import forms from "./pokèdex/forms.js";
 import megas from "./pokèdex/megas.js";
