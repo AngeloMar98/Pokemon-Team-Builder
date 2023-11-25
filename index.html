@@ -20,10 +20,11 @@
       media="print"
       onload="this.media='all'"
     />
-
+    <link rel="icon" type="image/x-icon" href="src/img/icons_ui/favicon.ico" />
     <link href="src/css/style.css" rel="stylesheet" />
+
     <script defer type="module" src="src/js/controller.js"></script>
-    <title>Document</title>
+    <title>Pokèmon Team Builder By Angelo</title>
   </head>
 
   <body
@@ -32,7 +33,7 @@
     <header class="text-center flex items-center p-3 mx-auto w-fit" id="title">
       <a href="#">
         <img
-          class="h-[64px] w-[64px]"
+          class="h-auto w-[64px]"
           src="src/img/icons_ui/meowth.png"
           alt="Meowth Icon"
         />
@@ -51,9 +52,9 @@
           <div
             class="pick-container pick-container-1 grid grid-cols-6 tablet:hidden"
           >
-            <button class="pick-1 pick-btn">1</button>
+            <button class="pick-1 pick-btn pick-btn-active">1</button>
             <button class="pick-2 pick-btn">2</button>
-            <button class="pick-3 pick-btn pick-btn-active">3</button>
+            <button class="pick-3 pick-btn">3</button>
             <button class="pick-4 pick-btn">4</button>
             <button class="pick-5 pick-btn">5</button>
             <button class="pick-6 pick-btn">6</button>
@@ -61,11 +62,11 @@
           <div
             class="grid-cols-3 pick-container pick-container-2 hidden tablet:grid laptop:hidden"
           >
-            <button class="pick-1-2 pick-btn">
+            <button class="pick-1-2 pick-btn pick-btn-active">
               1 &nbsp;&nbsp; - &nbsp;&nbsp; 2
             </button>
 
-            <button class="pick-3-4 pick-btn pick-btn-active">
+            <button class="pick-3-4 pick-btn">
               3 &nbsp;&nbsp; - &nbsp;&nbsp; 4
             </button>
             <button class="pick-5-6 pick-btn">
@@ -79,7 +80,7 @@
               <label
                 class="team-name-label font-semibold text-base"
                 for="teamName"
-                >Team name #1</label
+                >Team name</label
               >
 
               <input
@@ -90,57 +91,63 @@
             </div>
           </div>
         </div>
-        <div class="mt-3 team-members-container grid tablet:grid-cols-2 gap-2">
+        <div
+          class="mt-3 team-members-container grid tablet:grid-cols-2 gap-2 relative"
+        >
           <article
-            class="team-member team-member-1 group hide-moveset"
-            id="member-1"
+            class="team-member hidden hard-active team-member-1 group hide-moveset"
           >
-            <h2
-              class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3"
-              id="arceus"
-              alt="pokèmon name"
-            >
-              Arceus
-            </h2>
-            <div class="flex justify-center py-2">
-              <img
-                alt="Pokèmmon icon"
-                class="hover:cursor-pointer custom-shadow w-[96px] h-[96px]"
-                src="static/img/pokemon_sprites/1002.png"
-              />
-            </div>
-            <div
-              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
-            >
-              <img
-                alt="Electric type icon"
-                class="h-[25px] w-[92px]"
-                alt="Electric type icon"
-                src="static/img/types_labels/electric.png"
-              />
-              <img
-                alt="Bug type icon"
-                class="h-[25px] w-[92px]"
-                alt="Electric type icon"
-                src="static/img/types_labels/bug.png"
-              />
-              <button title="Toggle moveset menu" class="moveset-menu-btn">
-                <svg
-                  class="dark:fill-darkM-whiteIndigo"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 256 256"
+            <div class="team-member-1-inner">
+              <h2
+                class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3 min-h-[40px]"
+                id="${pokemon.id}"
+                alt="${pokemon.name}"
+              ></h2>
+              <div class="flex min-h-[112px] justify-center py-2">
+                <img
+                  class="hidden hover:cursor-pointer custom-shadow w-[96px] h-[96px]"
+                  src=""
+                />
+              </div>
+              <div class="filter-menu group">
+                <div
+                  class="types-flex min-h-[71px] group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
                 >
-                  <path
-                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
-                  ></path>
-                </svg>
-              </button>
+                  <div class="types-flex-inner">
+                    <img
+                      class="h-[25px] w-[92px] hidden"
+                      alt="type icon"
+                      src=""
+                    />
+                    <img
+                      class="h-[25px] w-[92px] hidden"
+                      alt="type icon"
+                      src=""
+                    />
+                  </div>
+                  <button title="Toggle moveset menu" class="moveset-menu-btn">
+                    <svg
+                      class="dark:fill-darkM-whiteIndigo"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 256 256"
+                    >
+                      <path
+                        d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+                <b class="pointer-events-none"></b>
+              </div>
             </div>
 
             <div class="moveset-menu group-[.hide-moveset]:moveset-hidden">
-              <div class="grid grid-cols-2 gap-2 h-full">
+              <div
+                class="moveset-menu-inner grid grid-cols-2 gap-2 h-full relative"
+              >
+                <div class="tooltip"></div>
                 <div class="slots-select">
                   <div class="slot-select slot-select-1 group">
                     <button class="slot-select_btn">
@@ -165,13 +172,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-2 group">
@@ -197,13 +197,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-3 group">
@@ -229,13 +222,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-4 group">
@@ -261,13 +247,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-ability group">
@@ -293,84 +272,72 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                 </div>
                 <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-2 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-3 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-4 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-ability bg-darkM-lightIndigo3">
-                    Pressure
-                  </div>
+                  <div class="slot slot-move-1 bg-fire"></div>
+                  <div class="slot slot-move-2 bg-fire"></div>
+                  <div class="slot slot-move-3 bg-fire"></div>
+                  <div class="slot slot-move-4 bg-fire"></div>
+                  <div class="slot slot-ability bg-darkM-lightIndigo3"></div>
                 </div>
               </div>
             </div>
           </article>
           <article
-            class="team-member team-member-2 group hide-moveset"
+            class="team-member team-member-2 group soft-active hide-moveset"
             id="member-1"
           >
-            <h2
-              class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3"
-              id="arceus"
-              alt="pokèmon name"
-            >
-              Arceus
-            </h2>
-            <div class="flex justify-center py-2">
-              <img
-                alt="Pokèmon icon"
-                class="hover:cursor-pointer custom-shadow h-[96px] w-[96px]"
-                src="static/img/pokemon_sprites/10035.png"
-              />
-            </div>
-            <div
-              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
-            >
-              <img
-                class="h-[25px] w-[92px]"
-                alt="Electric type icon"
-                src="static/img/types_labels/electric.png"
-              />
-              <img
-                class="h-[25px] w-[92px]"
-                alt="Electric type icon"
-                src="static/img/types_labels/bug.png"
-              />
-              <button title="Toggle moveset menu" class="moveset-menu-btn">
-                <svg
-                  class="dark:fill-darkM-whiteIndigo"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 256 256"
+            <div class="team-member-2-inner">
+              <h2
+                class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3 min-h-[40px]"
+                id="${pokemon.id}"
+                alt="${pokemon.name}"
+              ></h2>
+              <div class="flex min-h-[112px] justify-center py-2">
+                <img
+                  class="hidden hover:cursor-pointer custom-shadow w-[96px] h-[96px]"
+                  src=""
+                />
+              </div>
+              <div class="filter-menu group">
+                <div
+                  class="types-flex min-h-[71px] group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
                 >
-                  <path
-                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
-                  ></path>
-                </svg>
-              </button>
+                  <div class="types-flex-inner">
+                    <img
+                      class="h-[25px] w-[92px] hidden"
+                      alt="type icon"
+                      src=""
+                    />
+                    <img
+                      class="h-[25px] w-[92px] hidden"
+                      alt="type icon"
+                      src=""
+                    />
+                  </div>
+                  <button title="Toggle moveset menu" class="moveset-menu-btn">
+                    <svg
+                      class="dark:fill-darkM-whiteIndigo"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 256 256"
+                    >
+                      <path
+                        d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
-
             <div class="moveset-menu group-[.hide-moveset]:moveset-hidden">
-              <div class="grid grid-cols-2 gap-2 h-full">
+              <div
+                class="moveset-menu-inner grid grid-cols-2 gap-2 h-full relative"
+              >
+                <div class="tooltip"></div>
                 <div class="slots-select">
                   <div class="slot-select slot-select-1 group">
                     <button class="slot-select_btn">
@@ -395,13 +362,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-2 group">
@@ -427,13 +387,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-3 group">
@@ -459,13 +412,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-4 group">
@@ -491,13 +437,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-ability group">
@@ -523,32 +462,15 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                 </div>
                 <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-2 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-3 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-4 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-ability bg-darkM-lightIndigo3">
-                    Pressure
-                  </div>
+                  <div class="slot slot-move-1 bg-fire"></div>
+                  <div class="slot slot-move-2 bg-fire"></div>
+                  <div class="slot slot-move-3 bg-fire"></div>
+                  <div class="slot slot-move-4 bg-fire"></div>
+                  <div class="slot slot-ability bg-darkM-lightIndigo3"></div>
                 </div>
               </div>
             </div>
@@ -557,50 +479,55 @@
             class="team-member team-member-3 group hide-moveset"
             id="member-1"
           >
-            <h2
-              class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3"
-              id="arceus"
-              alt="pokèmon name"
-            >
-              Arceus
-            </h2>
-            <div class="flex justify-center py-2">
-              <img
-                alt="Pokèmon icon"
-                class="hover:cursor-pointer custom-shadow h-[96px] w-[96px]"
-                src="static/img/pokemon_sprites/10035.png"
-              />
-            </div>
-            <div
-              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
-            >
-              <img
-                class="h-[25px] w-[92px]"
-                alt="Electric type icon"
-                src="static/img/types_labels/electric.png"
-              />
-              <img
-                class="h-[25px] w-[92px]"
-                alt="Electric type icon"
-                src="static/img/types_labels/bug.png"
-              />
-              <button title="Toggle moveset menu" class="moveset-menu-btn">
-                <svg
-                  class="dark:fill-darkM-whiteIndigo"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 256 256"
+            <div class="team-member-3-inner">
+              <h2
+                class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3 min-h-[40px]"
+                id="${pokemon.id}"
+                alt="${pokemon.name}"
+              ></h2>
+              <div class="flex min-h-[112px] justify-center py-2">
+                <img
+                  class="hidden hover:cursor-pointer custom-shadow w-[96px] h-[96px]"
+                  src=""
+                />
+              </div>
+              <div class="filter-menu group">
+                <div
+                  class="types-flex min-h-[71px] group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
                 >
-                  <path
-                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
-                  ></path>
-                </svg>
-              </button>
+                  <div class="types-flex-inner">
+                    <img
+                      class="h-[25px] w-[92px] hidden"
+                      alt="type icon"
+                      src=""
+                    />
+                    <img
+                      class="h-[25px] w-[92px] hidden"
+                      alt="type icon"
+                      src=""
+                    />
+                  </div>
+                  <button title="Toggle moveset menu" class="moveset-menu-btn">
+                    <svg
+                      class="dark:fill-darkM-whiteIndigo"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 256 256"
+                    >
+                      <path
+                        d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
-
             <div class="moveset-menu group-[.hide-moveset]:moveset-hidden">
-              <div class="grid grid-cols-2 gap-2 h-full">
+              <div
+                class="moveset-menu-inner grid grid-cols-2 gap-2 h-full relative"
+              >
+                <div class="tooltip"></div>
                 <div class="slots-select">
                   <div class="slot-select slot-select-1 group">
                     <button class="slot-select_btn">
@@ -625,13 +552,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-2 group">
@@ -657,13 +577,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-3 group">
@@ -689,13 +602,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-4 group">
@@ -721,13 +627,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-ability group">
@@ -753,32 +652,15 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                 </div>
                 <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-2 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-3 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-4 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-ability bg-darkM-lightIndigo3">
-                    Pressure
-                  </div>
+                  <div class="slot slot-move-1 bg-fire"></div>
+                  <div class="slot slot-move-2 bg-fire"></div>
+                  <div class="slot slot-move-3 bg-fire"></div>
+                  <div class="slot slot-move-4 bg-fire"></div>
+                  <div class="slot slot-ability bg-darkM-lightIndigo3"></div>
                 </div>
               </div>
             </div>
@@ -787,50 +669,56 @@
             class="team-member team-member-4 group hide-moveset"
             id="member-1"
           >
-            <h2
-              class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3"
-              id="arceus"
-              alt="pokèmon name"
-            >
-              Arceus
-            </h2>
-            <div class="flex justify-center py-2">
-              <img
-                alt="Pokèmon Icon"
-                class="hover:cursor-pointer custom-shadow h-[96px] w-[96px]"
-                src="static/img/pokemon_sprites/10035.png"
-              />
-            </div>
-            <div
-              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
-            >
-              <img
-                class="h-[25px] w-[92px]"
-                alt="Electric type icon"
-                src="static/img/types_labels/electric.png"
-              />
-              <img
-                class="h-[25px] w-[92px]"
-                alt="Electric type icon"
-                src="static/img/types_labels/bug.png"
-              />
-              <button title="Toggle moveset menu" class="moveset-menu-btn">
-                <svg
-                  class="dark:fill-darkM-whiteIndigo"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 256 256"
+            <div class="team-member-4-inner">
+              <h2
+                class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3 min-h-[40px]"
+                id="${pokemon.id}"
+                alt="${pokemon.name}"
+              ></h2>
+              <div class="flex min-h-[112px] justify-center py-2">
+                <img
+                  class="hidden hover:cursor-pointer custom-shadow w-[96px] h-[96px]"
+                  src=""
+                />
+              </div>
+              <div class="filter-menu group">
+                <div
+                  class="types-flex min-h-[71px] group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
                 >
-                  <path
-                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
-                  ></path>
-                </svg>
-              </button>
-            </div>
+                  <div class="types-flex-inner">
+                    <img
+                      class="h-[25px] w-[92px] hidden"
+                      alt="type icon"
+                      src=""
+                    />
+                    <img
+                      class="h-[25px] w-[92px] hidden"
+                      alt="type icon"
+                      src=""
+                    />
+                  </div>
 
+                  <button title="Toggle moveset menu" class="moveset-menu-btn">
+                    <svg
+                      class="dark:fill-darkM-whiteIndigo"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 256 256"
+                    >
+                      <path
+                        d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
             <div class="moveset-menu group-[.hide-moveset]:moveset-hidden">
-              <div class="grid grid-cols-2 gap-2 h-full">
+              <div
+                class="moveset-menu-inner grid grid-cols-2 gap-2 h-full relative"
+              >
+                <div class="tooltip"></div>
                 <div class="slots-select">
                   <div class="slot-select slot-select-1 group">
                     <button class="slot-select_btn">
@@ -855,13 +743,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-2 group">
@@ -887,13 +768,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-3 group">
@@ -919,13 +793,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-4 group">
@@ -951,13 +818,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-ability group">
@@ -983,32 +843,15 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                 </div>
                 <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-2 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-3 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-4 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-ability bg-darkM-lightIndigo3">
-                    Pressure
-                  </div>
+                  <div class="slot slot-move-1 bg-fire"></div>
+                  <div class="slot slot-move-2 bg-fire"></div>
+                  <div class="slot slot-move-3 bg-fire"></div>
+                  <div class="slot slot-move-4 bg-fire"></div>
+                  <div class="slot slot-ability bg-darkM-lightIndigo3"></div>
                 </div>
               </div>
             </div>
@@ -1017,50 +860,55 @@
             class="team-member team-member-5 group hide-moveset"
             id="member-1"
           >
-            <h2
-              class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3"
-              id="arceus"
-              alt="pokèmon name"
-            >
-              Arceus
-            </h2>
-            <div class="flex justify-center py-2">
-              <img
-                alt="Pokèmon icon"
-                class="hover:cursor-pointer custom-shadow h-[96px] w-[96px]"
-                src="static/img/pokemon_sprites/10035.png"
-              />
-            </div>
-            <div
-              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
-            >
-              <img
-                class="h-[25px] w-[92px]"
-                alt="Electric type icon"
-                src="static/img/types_labels/electric.png"
-              />
-              <img
-                class="h-[25px] w-[92px]"
-                alt="Electric type icon"
-                src="static/img/types_labels/bug.png"
-              />
-              <button title="Toggle moveset menu" class="moveset-menu-btn">
-                <svg
-                  class="dark:fill-darkM-whiteIndigo"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 256 256"
+            <div class="team-member-5-inner">
+              <h2
+                class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3 min-h-[40px]"
+                id="${pokemon.id}"
+                alt="${pokemon.name}"
+              ></h2>
+              <div class="flex min-h-[112px] justify-center py-2">
+                <img
+                  class="hidden hover:cursor-pointer custom-shadow w-[96px] h-[96px]"
+                  src=""
+                />
+              </div>
+              <div class="filter-menu group">
+                <div
+                  class="types-flex min-h-[71px] group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
                 >
-                  <path
-                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
-                  ></path>
-                </svg>
-              </button>
+                  <div class="types-flex-inner">
+                    <img
+                      class="h-[25px] w-[92px] hidden"
+                      alt="type icon"
+                      src=""
+                    />
+                    <img
+                      class="h-[25px] w-[92px] hidden"
+                      alt="type icon"
+                      src=""
+                    />
+                  </div>
+                  <button title="Toggle moveset menu" class="moveset-menu-btn">
+                    <svg
+                      class="dark:fill-darkM-whiteIndigo"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 256 256"
+                    >
+                      <path
+                        d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
             </div>
-
             <div class="moveset-menu group-[.hide-moveset]:moveset-hidden">
-              <div class="grid grid-cols-2 gap-2 h-full">
+              <div
+                class="moveset-menu-inner grid grid-cols-2 gap-2 h-full relative"
+              >
+                <div class="tooltip"></div>
                 <div class="slots-select">
                   <div class="slot-select slot-select-1 group">
                     <button class="slot-select_btn">
@@ -1085,13 +933,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-2 group">
@@ -1117,13 +958,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-3 group">
@@ -1149,13 +983,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-4 group">
@@ -1181,13 +1008,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-ability group">
@@ -1213,32 +1033,15 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                 </div>
                 <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-2 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-3 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-4 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-ability bg-darkM-lightIndigo3">
-                    Pressure
-                  </div>
+                  <div class="slot slot-move-1 bg-fire"></div>
+                  <div class="slot slot-move-2 bg-fire"></div>
+                  <div class="slot slot-move-3 bg-fire"></div>
+                  <div class="slot slot-move-4 bg-fire"></div>
+                  <div class="slot slot-ability bg-darkM-lightIndigo3"></div>
                 </div>
               </div>
             </div>
@@ -1247,50 +1050,56 @@
             class="team-member team-member-6 group hide-moveset"
             id="member-1"
           >
-            <h2
-              class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3"
-              id="arceus"
-              alt="pokèmon name"
-            >
-              Arceus
-            </h2>
-            <div class="flex justify-center py-2">
-              <img
-                alt="Pokèmon icon"
-                class="hover:cursor-pointer custom-shadow h-[96px] w-[96px]"
-                src="static/img/pokemon_sprites/10035.png"
-              />
-            </div>
-            <div
-              class="types-flex group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
-            >
-              <img
-                class="h-[25px] w-[92px]"
-                alt="Electric type icon"
-                src="static/img/types_labels/electric.png"
-              />
-              <img
-                class="h-[25px] w-[92px]"
-                alt="Electric type icon"
-                src="static/img/types_labels/bug.png"
-              />
-              <button title="Toggle moveset menu" class="moveset-menu-btn">
-                <svg
-                  class="dark:fill-darkM-whiteIndigo"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 256 256"
+            <div class="team-member-6-inner">
+              <h2
+                class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3 min-h-[40px]"
+                id="${pokemon.id}"
+                alt="${pokemon.name}"
+              ></h2>
+              <div class="flex min-h-[112px] justify-center py-2">
+                <img
+                  class="hidden hover:cursor-pointer custom-shadow w-[96px] h-[96px]"
+                  src=""
+                />
+              </div>
+              <div class="filter-menu group">
+                <div
+                  class="types-flex min-h-[71px] group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
                 >
-                  <path
-                    d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
-                  ></path>
-                </svg>
-              </button>
-            </div>
+                  <div class="types-flex-inner">
+                    <img
+                      class="h-[25px] w-[92px] hidden"
+                      alt="type icon"
+                      src=""
+                    />
+                    <img
+                      class="h-[25px] w-[92px] hidden"
+                      alt="type icon"
+                      src=""
+                    />
+                  </div>
 
+                  <button title="Toggle moveset menu" class="moveset-menu-btn">
+                    <svg
+                      class="dark:fill-darkM-whiteIndigo"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 256 256"
+                    >
+                      <path
+                        d="M213.66,122.34a8,8,0,0,1,0,11.32l-80,80a8,8,0,0,1-11.32,0l-80-80a8,8,0,0,1,11.32-11.32L128,196.69l74.34-74.35A8,8,0,0,1,213.66,122.34Zm-91.32,11.32a8,8,0,0,0,11.32,0l80-80a8,8,0,0,0-11.32-11.32L128,116.69,53.66,42.34A8,8,0,0,0,42.34,53.66Z"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
             <div class="moveset-menu group-[.hide-moveset]:moveset-hidden">
-              <div class="grid grid-cols-2 gap-2 h-full">
+              <div
+                class="moveset-menu-inner grid grid-cols-2 gap-2 h-full relative"
+              >
+                <div class="tooltip"></div>
                 <div class="slots-select">
                   <div class="slot-select slot-select-1 group">
                     <button class="slot-select_btn">
@@ -1315,13 +1124,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-2 group">
@@ -1347,13 +1149,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-3 group">
@@ -1379,13 +1174,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-4 group">
@@ -1411,13 +1199,6 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                   <div class="slot-select slot-select-ability group">
@@ -1443,32 +1224,15 @@
                         type="text"
                         placeholder="Pick a move"
                       />
-                      <li
-                        class="slot-select_li"
-                        id="fire_punch"
-                        alt="Fire Punch\n Physical 75 power"
-                      >
-                        Fire Punch
-                      </li>
                     </ul>
                   </div>
                 </div>
                 <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-2 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-3 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-move-4 bg-fire">
-                    Hyperspace Hyperspace
-                  </div>
-                  <div class="slot slot-ability bg-darkM-lightIndigo3">
-                    Pressure
-                  </div>
+                  <div class="slot slot-move-1 bg-fire"></div>
+                  <div class="slot slot-move-2 bg-fire"></div>
+                  <div class="slot slot-move-3 bg-fire"></div>
+                  <div class="slot slot-move-4 bg-fire"></div>
+                  <div class="slot slot-ability bg-darkM-lightIndigo3"></div>
                 </div>
               </div>
             </div>
@@ -1499,10 +1263,13 @@
                 ></path>
               </svg>
             </button>
-            <ul class="filter-menu_ul group-[.activated]:flex">
-              <li class="flex" data-gen="generation-i">
+            <ul
+              class="filter-menu_ul filter-menu-gen_ul group-[.activated]:flex"
+            >
+              <li class="flex" data-gen="i">
                 <input
                   class="ml-2"
+                  data-gen="i"
                   type="checkbox"
                   id="gen-i"
                   checked="checked"
@@ -1511,10 +1278,11 @@
                   >Gen I</label
                 >
               </li>
-              <li class="flex" data-gen="generation-ii">
+              <li class="flex" data-gen="ii">
                 <input
                   class="ml-2"
                   type="checkbox"
+                  data-gen="ii"
                   id="gen-ii"
                   checked="checked"
                 />
@@ -1522,10 +1290,11 @@
                   >Gen II</label
                 >
               </li>
-              <li class="flex" data-gen="generation-iii">
+              <li class="flex" data-gen="iii">
                 <input
                   class="ml-2"
                   type="checkbox"
+                  data-gen="iii"
                   id="gen-iii"
                   checked="checked"
                 />
@@ -1533,10 +1302,11 @@
                   >Gen III</label
                 >
               </li>
-              <li class="flex" data-gen="generation-iv">
+              <li class="flex" data-gen="iv">
                 <input
                   class="ml-2"
                   type="checkbox"
+                  data-gen="iv"
                   id="gen-iv"
                   checked="checked"
                 />
@@ -1544,10 +1314,11 @@
                   >Gen IV</label
                 >
               </li>
-              <li class="flex" data-gen="generation-v">
+              <li class="flex" data-gen="v">
                 <input
                   class="ml-2"
                   type="checkbox"
+                  data-gen="v"
                   id="gen-v"
                   checked="checked"
                 />
@@ -1555,10 +1326,11 @@
                   >Gen V</label
                 >
               </li>
-              <li class="flex" data-gen="gen-vi">
+              <li class="flex" data-gen="vi">
                 <input
                   class="ml-2"
                   type="checkbox"
+                  data-gen="vi"
                   id="gen-vi"
                   checked="checked"
                 />
@@ -1566,10 +1338,11 @@
                   >Gen VI</label
                 >
               </li>
-              <li class="flex" data-gen="generation-vii">
+              <li class="flex" data-gen="vii">
                 <input
                   class="ml-2"
                   type="checkbox"
+                  data-gen="vii"
                   id="gen-vii"
                   checked="checked"
                 />
@@ -1577,10 +1350,11 @@
                   >Gen VII</label
                 >
               </li>
-              <li class="flex" data-gen="generation-viii">
+              <li class="flex" data-gen="viii">
                 <input
                   class="ml-2"
                   type="checkbox"
+                  data-gen="viii"
                   id="gen-viii"
                   checked="checked"
                 />
@@ -1588,10 +1362,11 @@
                   >Gen VIII</label
                 >
               </li>
-              <li class="flex" data-generation="gen-ix">
+              <li class="flex" data-generation="ix">
                 <input
                   class="ml-2"
                   type="checkbox"
+                  data-gen="ix"
                   id="gen-ix"
                   checked="checked"
                 />
@@ -1620,26 +1395,28 @@
                 ></path>
               </svg>
             </button>
-            <ul class="filter-menu_ul group-[.activated]:flex">
+            <ul
+              class="filter-menu_ul filter-menu-type_ul group-[.activated]:flex"
+            >
               <li class="flex" data-type="fire">
                 <input
                   class="ml-2"
                   type="checkbox"
+                  data-type="fire"
                   id="type-fire"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-fire"
-                  >Fire</label
-                >
+                <label class="hover:cursor-pointer ml-2" for="fire">Fire</label>
               </li>
               <li class="flex" data-type="water">
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-water"
+                  data-type="water"
+                  id="water"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-water"
+                <label class="hover:cursor-pointer ml-2" for="water"
                   >Water</label
                 >
               </li>
@@ -1647,10 +1424,11 @@
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-grass"
+                  data-type="grass"
+                  id="grass"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-grass"
+                <label class="hover:cursor-pointer ml-2" for="grass"
                   >Grass</label
                 >
               </li>
@@ -1658,32 +1436,31 @@
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-bug"
+                  data-type="bug"
+                  id="bug"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-bug"
-                  >Bug</label
-                >
+                <label class="hover:cursor-pointer ml-2" for="bug">Bug</label>
               </li>
               <li class="flex" data-type="dark">
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-dark"
+                  data-type="dark"
+                  id="dark"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-dark"
-                  >Dark</label
-                >
+                <label class="hover:cursor-pointer ml-2" for="dark">Dark</label>
               </li>
               <li class="flex" data-type="dragon">
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-dragon"
+                  data-type="dragon"
+                  id="dragon"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-dragon"
+                <label class="hover:cursor-pointer ml-2" for="dragon"
                   >Dragon</label
                 >
               </li>
@@ -1691,10 +1468,11 @@
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-flying"
+                  data-type="flying"
+                  id="flying"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-flying"
+                <label class="hover:cursor-pointer ml-2" for="flying"
                   >Flying</label
                 >
               </li>
@@ -1702,10 +1480,11 @@
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-electric"
+                  data-type="electric"
+                  id="electric"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-eletric"
+                <label class="hover:cursor-pointer ml-2" for="eletric"
                   >Electric</label
                 >
               </li>
@@ -1713,10 +1492,11 @@
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-fairy"
+                  data-type="fairy"
+                  id="fairy"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-fairy"
+                <label class="hover:cursor-pointer ml-2" for="fairy"
                   >Fairy</label
                 >
               </li>
@@ -1724,10 +1504,11 @@
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-fighting"
+                  data-type="fighting"
+                  id="fighting"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-fighting"
+                <label class="hover:cursor-pointer ml-2" for="fighting"
                   >Fighting</label
                 >
               </li>
@@ -1735,10 +1516,11 @@
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-ghost"
+                  data-type="ghost"
+                  id="ghost"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-ghost"
+                <label class="hover:cursor-pointer ml-2" for="ghost"
                   >Ghost</label
                 >
               </li>
@@ -1746,10 +1528,11 @@
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-ground"
+                  data-type="ground"
+                  id="ground"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-ground"
+                <label class="hover:cursor-pointer ml-2" for="ground"
                   >Ground</label
                 >
               </li>
@@ -1757,21 +1540,21 @@
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-ice"
+                  data-type="ice"
+                  id="ice"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-ice"
-                  >Ice</label
-                >
+                <label class="hover:cursor-pointer ml-2" for="ice">Ice</label>
               </li>
               <li class="flex" data-type="normal">
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-normal"
+                  data-type="normal"
+                  id="normal"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-normal"
+                <label class="hover:cursor-pointer ml-2" for="normal"
                   >Normal</label
                 >
               </li>
@@ -1779,10 +1562,11 @@
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-poison"
+                  data-type="poison"
+                  id="poison"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-poison"
+                <label class="hover:cursor-pointer ml-2" for="poison"
                   >Poison</label
                 >
               </li>
@@ -1790,10 +1574,11 @@
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-psychic"
+                  data-type="psychic"
+                  id="psychic"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-psychic"
+                <label class="hover:cursor-pointer ml-2" for="psychic"
                   >Psychic</label
                 >
               </li>
@@ -1801,21 +1586,21 @@
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-rock"
+                  data-type="rock"
+                  id="rock"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-rock"
-                  >Rock</label
-                >
+                <label class="hover:cursor-pointer ml-2" for="rock">Rock</label>
               </li>
               <li class="flex" data-type="steel">
                 <input
                   class="ml-2"
                   type="checkbox"
-                  id="type-steel"
+                  data-type="steel"
+                  id="steel"
                   checked="checked"
                 />
-                <label class="hover:cursor-pointer ml-2" for="type-steel"
+                <label class="hover:cursor-pointer ml-2" for="steel"
                   >Steel</label
                 >
               </li>
@@ -1838,160 +1623,22 @@
               ></span>
             </span>
           </div>
-          <button
-            class="col-span-2 tablet:order-3 tablet:col-span-1 tablet:row-span-2 text-lightM-blackPearl hover:text-white bg-lightM-middleBismark hover:bg-lightM-darkBismark dark:bg-darkM-purple py-1 transition-all duration-200 dark:hover:bg-darkM-violet dark:text-darkM-whiteIndigo font-semibold rounded-md mx-auto my-auto w-full max-w-[200px] h-fit"
-          >
-            Search!
-          </button>
+          <button class="search-btn">Search!</button>
         </div>
 
         <div
-          class="mt-3 results-container border w-full dark:bg-darkM-lightIndigo1 dark:border-darkM-lightIndigo3 rounded-md p-3 gap-1"
+          class="mt-3 border w-full dark:bg-darkM-lightIndigo1 dark:border-darkM-lightIndigo3 rounded-md p-3 gap-1"
         >
           <div
-            class="grid justify-around gap-x-1 gap-y-2 min-h-pick"
+            class="grid justify-around gap-x-1 gap-y-2 min-h-pick results-container"
             style="grid-template-columns: repeat(auto-fill, 60px)"
-          >
-            <div class="teamMember-add-container inline-block h-pick">
-              <a
-                class="teamMember-add hover:cursor-pointer h-pick inline-block"
-                title="Deoxys"
-                data-ID="10002"
-                data-NAME="deoxys"
-                data-FULLEVO="true"
-                data-TYPE1="Psychic"
-                data-TYPE2=""
-                ><div
-                  class="w-pick h-pick inline-block rounded-md bg-lightM-bermudaGray hover:bg-white dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
-                >
-                  <img
-                    alt="Pokèmon Icon"
-                    src="static/img/pokemon_sprites/10002.png"
-                    class="custom-shadow-sm w-[60px] h-[60px]"
-                  /></div
-              ></a>
-            </div>
-            <div class="teamMember-add-container inline-block h-pick">
-              <a
-                class="teamMember-add hover:cursor-pointer h-pick inline-block"
-                title="Deoxys"
-                data-ID="10002"
-                data-NAME="deoxys"
-                data-FULLEVO="true"
-                data-TYPE1="Psychic"
-                data-TYPE2=""
-                ><div
-                  class="w-pick h-pick inline-block rounded-md bg-lightM-bermudaGray hover:bg-white dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
-                >
-                  <img
-                    alt="Deoxys icon"
-                    src="static/img/pokemon_sprites/10002.png"
-                    class="custom-shadow-sm w-[60px] h-[60px]"
-                  /></div
-              ></a>
-            </div>
-            <div class="teamMember-add-container inline-block h-pick">
-              <a
-                class="teamMember-add hover:cursor-pointer h-pick inline-block"
-                title="Deoxys"
-                data-ID="10002"
-                data-NAME="deoxys"
-                data-FULLEVO="true"
-                data-TYPE1="Psychic"
-                data-TYPE2=""
-                ><div
-                  class="w-pick h-pick inline-block rounded-md bg-lightM-bermudaGray hover:bg-white dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
-                >
-                  <img
-                    alt="Deoxys icon"
-                    src="static/img/pokemon_sprites/10002.png"
-                    class="custom-shadow-sm w-[60px] h-[60px]"
-                  /></div
-              ></a>
-            </div>
-            <div class="teamMember-add-container inline-block h-pick">
-              <a
-                class="teamMember-add hover:cursor-pointer h-pick inline-block"
-                title="Deoxys"
-                data-ID="10002"
-                data-NAME="deoxys"
-                data-FULLEVO="true"
-                data-TYPE1="Psychic"
-                data-TYPE2=""
-                ><div
-                  class="w-pick h-pick inline-block rounded-md bg-lightM-bermudaGray hover:bg-white dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
-                >
-                  <img
-                    alt="Deoxys icon"
-                    src="static/img/pokemon_sprites/10002.png"
-                    class="custom-shadow-sm w-[60px] h-[60px]"
-                  /></div
-              ></a>
-            </div>
-            <div class="teamMember-add-container inline-block h-pick">
-              <a
-                class="teamMember-add hover:cursor-pointer h-pick inline-block"
-                title="Deoxys"
-                data-ID="10002"
-                data-NAME="deoxys"
-                data-FULLEVO="true"
-                data-TYPE1="Psychic"
-                data-TYPE2=""
-                ><div
-                  class="w-pick h-pick inline-block rounded-md bg-lightM-bermudaGray hover:bg-white dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
-                >
-                  <img
-                    alt="Deoxys icon"
-                    src="static/img/pokemon_sprites/10002.png"
-                    class="custom-shadow-sm w-[60px] h-[60px]"
-                  /></div
-              ></a>
-            </div>
-            <div class="teamMember-add-container inline-block h-pick">
-              <a
-                class="teamMember-add hover:cursor-pointer h-pick inline-block"
-                title="Deoxys"
-                data-ID="10002"
-                data-NAME="deoxys"
-                data-FULLEVO="true"
-                data-TYPE1="Psychic"
-                data-TYPE2=""
-                ><div
-                  class="w-pick h-pick inline-block rounded-md bg-lightM-bermudaGray hover:bg-white dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
-                >
-                  <img
-                    alt="Deoxys icon"
-                    src="static/img/pokemon_sprites/10002.png"
-                    class="custom-shadow-sm w-[60px] h-[60px]"
-                  /></div
-              ></a>
-            </div>
-            <div class="teamMember-add-container inline-block h-pick">
-              <a
-                class="teamMember-add hover:cursor-pointer h-pick inline-block"
-                title="Deoxys"
-                data-ID="10002"
-                data-NAME="deoxys"
-                data-FULLEVO="true"
-                data-TYPE1="Psychic"
-                data-TYPE2=""
-                ><div
-                  class="w-pick h-pick inline-block rounded-md bg-lightM-bermudaGray hover:bg-white dark:bg-darkM-lightIndigo2 hover:dark:bg-darkM-yellow transition-all duration-200"
-                >
-                  <img
-                    alt="Deoxys icon"
-                    src="static/img/pokemon_sprites/10002.png"
-                    class="custom-shadow-sm w-[60px] h-[60px]"
-                  /></div
-              ></a>
-            </div>
-          </div>
+          ></div>
         </div>
       </section>
     </main>
     <button title="Toggle sidemenu button" class="sidemenu-btn group">
       <svg
-        class="text-darkM-whiteBlue group-[.lift-sidemenu-btn]:hidden"
+        class="text-darkM-whiteBlue group-[.sidemenu-btn-lifted]:hidden"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 256 256"
       >
@@ -2028,7 +1675,7 @@
         />
       </svg>
       <svg
-        class="text-darkM-whiteBlue hidden group-[.lift-sidemenu-btn]:block"
+        class="text-darkM-whiteBlue hidden group-[.sidemenu-btn-lifted]:block"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 256 256"
       >
@@ -2056,7 +1703,7 @@
       </svg>
     </button>
     <div
-      class="teamsAndStats bg-lightM-bismark dark:bg-darkM-darkBlue w-full group fixed top-0 bigTablet:right-0 bigTablet:top-[26vh] h-[70vh] bigTablet:h-[74vh] bigTablet:w-1/2"
+      class="teamsAndStats bg-lightM-bismark dark:bg-darkM-darkBlue w-full group fixed top-0 bigTablet:right-0 bigTablet:top-[26vh] h-[70vh] bigTablet:h-[74vh] bigTablet:w-1/2 z-50"
     >
       <menu
         class="saved-teams hidden group-[.show-teams]:block group-[:not(.show-stats)]:min-h-full group-[:not(.show-stats)]:max-h-full m"

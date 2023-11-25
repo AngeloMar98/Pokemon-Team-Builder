@@ -1,4 +1,3 @@
-"use strict";
 /*
 USER STORIES:
 - Come utente voglio poter ricercare qualsiasi pokèmon con i 4 filtri, più fully evolved toggle;
@@ -25,10 +24,6 @@ FEATURES:
 - C'è un side menu che dispone i team salvati con icone da menu (se ce ne sono) E le statistiche del team corrente(coverage e difesa);
 - Al click di qualsiasi team salvato, viene disposto nello slot team nella pagina;
 
-
-
-
-
 QUERIES:
 1-1017 forme basi
 10_001-10_263 forme extra
@@ -43,131 +38,79 @@ QUERIES:
 Prendi tipo, gen, name, evoluto o no
 
 */
-// const createJSON = async function () {
-//   let JSON = "{";
-//   for (let i = 10_001; i < 10_267; i++) {
-//     console.log(i);
-//     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${i}/`);
-//     const data = await response.json();
-//     const name = `"name": "${data.name}"`;
-//     const types = `"types": [
-//      ${data.types.reduce(
-//        (acc: string, obj: any) => (acc += `"${obj.type.name}"`),
-//        ""
-//      )}
-//      ]`;
-//     const pokèmon = `"${i}": {
-//             "id": ${i},
-//             ${name},
-//             ${types},
-//              "ful-evo": "empty",
-//     },`;
-//     JSON += pokèmon;
-//   }
-//   JSON += "}";
-//   console.log(JSON);
-// };
-// createJSON();
-const solrock = require("../../static/img/icons_ui/solrock.png");
-const lunrock = require("../../static/img/icons_ui/lunrock.png");
-const sidemenuBtn = document.querySelector(".sidemenu-btn");
-const sidemenu = document.querySelector(".sidemenu");
-const savedTeamsBtn = document.querySelector(".saved-teams_btn");
-const savedTeams = document.querySelector(".saved-teams");
-const statisticsBtn = document.querySelector(".statistics_btn");
-const statistics = document.querySelector(".statistics");
-const teamsAndStats = document.querySelector(".teamsAndStats");
-savedTeamsBtn === null || savedTeamsBtn === void 0 ? void 0 : savedTeamsBtn.addEventListener("click", () => {
-    teamsAndStats.classList.toggle("show-teams");
-    teamsAndStats.classList.remove("hidden");
-});
-statisticsBtn === null || statisticsBtn === void 0 ? void 0 : statisticsBtn.addEventListener("click", () => {
-    teamsAndStats.classList.toggle("show-stats");
-    teamsAndStats.classList.remove("hidden");
-});
-sidemenuBtn === null || sidemenuBtn === void 0 ? void 0 : sidemenuBtn.addEventListener("click", () => {
-    teamsAndStats.classList.remove("show-teams");
-    teamsAndStats.classList.remove("show-stats");
-    sidemenu === null || sidemenu === void 0 ? void 0 : sidemenu.classList.toggle("sidemenu-hidden");
-    sidemenuBtn === null || sidemenuBtn === void 0 ? void 0 : sidemenuBtn.classList.toggle("lift-sidemenu-btn");
-});
-const toggleDarkMode = document.querySelector(".toggle-darkMode");
-const toggleDMIcon = toggleDarkMode.querySelector("img");
-toggleDarkMode === null || toggleDarkMode === void 0 ? void 0 : toggleDarkMode.addEventListener("click", () => {
-    var _a;
-    toggleDMIcon.src = ((_a = toggleDMIcon.src.split("/").at(-1)) === null || _a === void 0 ? void 0 : _a.includes("solrock"))
-        ? lunrock
-        : solrock;
-    document.documentElement.classList.toggle("dark");
-});
-const movesetMenuBtns = Array.from(document.querySelectorAll(".moveset-menu-btn"));
-movesetMenuBtns.forEach((movesetMenuBtn) => {
-    const teamMember = movesetMenuBtn.closest(".team-member");
-    movesetMenuBtn.addEventListener("click", () => {
-        teamMember === null || teamMember === void 0 ? void 0 : teamMember.classList.toggle("hide-moveset");
-        movesetMenuBtn.classList.toggle("moveset-menu-btn-open");
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
-});
-const movesetMenus = Array.from(document.querySelectorAll(".moveset-menu"));
-movesetMenus.forEach((movesetMenu) => {
-    const slotSelect = Array.from(movesetMenu.querySelectorAll(".slot-select"));
-    slotSelect.forEach((slot) => {
-        const slotInput = slot.querySelector(".slot-select_input");
-        const slotBtn = slot.querySelector(".slot-select_btn");
-        slotBtn.addEventListener("click", () => {
-            slot.classList.toggle("activated");
-            slotSelect.forEach((otherSlot) => {
-                console.log(slot !== otherSlot);
-                if (slot !== otherSlot)
-                    otherSlot.classList.remove("activated");
-            });
-        });
-        slotInput.addEventListener("keyup", function () {
-            const value = slotInput.value;
-            const listOptions = slot.querySelectorAll("li");
-            for (const li of Array.from(listOptions)) {
-                const option = (li === null || li === void 0 ? void 0 : li.textContent) || (li === null || li === void 0 ? void 0 : li.innerText);
-                li.style.display = option.toUpperCase().includes(value.toUpperCase())
-                    ? ""
-                    : "none";
-            }
-        });
-    });
-});
-const teamMemberPicks = Array.from(document.querySelectorAll(".team-members-pick"));
-teamMemberPicks.forEach((teamMemberPick) => {
-    const teamNameLabel = teamMemberPick.querySelector(".team-name-label");
-    const teamNameInput = teamMemberPick.querySelector(".team-name-input");
-    teamNameInput.value = (teamNameLabel === null || teamNameLabel === void 0 ? void 0 : teamNameLabel.textContent) || "";
-    console.log(teamNameInput.value);
-    teamNameLabel === null || teamNameLabel === void 0 ? void 0 : teamNameLabel.addEventListener("click", () => {
-        teamNameLabel.classList.add("hidden");
-        teamNameInput.classList.remove("hidden");
-    });
-    teamNameInput === null || teamNameInput === void 0 ? void 0 : teamNameInput.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-            teamNameLabel.textContent = teamNameInput.value || "Default Team Name";
-            teamNameLabel.classList.remove("hidden");
-            teamNameInput.classList.add("hidden");
-        }
-    });
-});
-const filterMenuBtns = Array.from(document.querySelectorAll(".filter-menu_btn"));
-filterMenuBtns.forEach((filterMenuBtn) => {
-    const filterMenu = filterMenuBtn.closest(".filter-menu");
-    filterMenuBtn.addEventListener("click", () => filterMenu === null || filterMenu === void 0 ? void 0 : filterMenu.classList.toggle("activated"));
-});
-const filterFullyEvo = document.querySelector(".filter-fullyEvo");
-const toggleFullyEvo = document.querySelector(".toggle-fully-evo");
-filterFullyEvo === null || filterFullyEvo === void 0 ? void 0 : filterFullyEvo.addEventListener("click", () => {
-    filterFullyEvo.classList.toggle("fullyEvo-only");
-});
-["hashchange", "load"].forEach((event) => window.addEventListener(event, (e) => {
-    e.preventDefault();
-    const pokemozzo = window.location.hash;
-    console.log(`added ${pokemozzo}`);
-}));
-const teamMemberAdds = Array.from(document.querySelectorAll(".teamMember-add"));
-teamMemberAdds.forEach((teamMemberAdd) => teamMemberAdd.addEventListener("click", () => (window.location.href =
-    window.location + `#${teamMemberAdd.title} ` || "")));
+};
+// // FIX WHEN DEPLOYING
+// import "node_modules/core-js/stable";
+// import "regenerator-runtime/runtime";
 //
+import * as model from "./model.js";
+import toggleDarkModeView from "./Views/Views_Toggles/toggleDarkModeView.js";
+import toggleFullEvoView from "./Views/Views_Toggles/toggleFullEvoView.js";
+import sideMenuBtnView from "./Views/Views_Btns/sideMenuBtnView.js";
+import filterMenusView from "./Views/Views_Btns/filterMenusView.js";
+import statisticsBtnView from "./Views/Views_Btns/statisticsBtnView.js";
+import savedTeamsBtnView from "./Views/Views_Btns/savedTeamsBtnView.js";
+import movesetMenuBtnsView from "./Views/Views_Btns/movesetMenuBtnsView.js";
+import slotSelectBtnView from "./Views/Views_Btns/slotSelectBtnView.js";
+import teamMemberPickBtnsView from "./Views/Views_Btns/teamMemberPickBtnsView.js";
+import searchBtnView from "./Views/Views_Btns/searchBtnView.js";
+import filterContainerView from "./Views/Views_Btns/filterContainerView.js";
+import slotInputView from "./Views/View_Inputs/slotInputView.js";
+import slotSelectUlView from "./Views/slotSelectUlView.js";
+import teamNameInputView from "./Views/View_Inputs/teamNameInputView.js";
+import resultsContainerView from "./Views/resultsContainerView.js";
+import teamMembersView from "./Views/teamMembersView.js";
+import tooltipView from "./Views/tooltipView.js";
+const handleUIMenus = function () {
+    toggleDarkModeView.addHandlerClick();
+    toggleFullEvoView.addHandlerClick();
+    filterMenusView.addHandlerClickMultiple();
+    sideMenuBtnView.addHandlerClick();
+    statisticsBtnView.addHandlerClick();
+    savedTeamsBtnView.addHandlerClick();
+    teamMemberPickBtnsView.addHandlerClick();
+    movesetMenuBtnsView.addHandlerClickMultiple();
+    slotSelectBtnView.addHandlerClickMultiple();
+    slotInputView.addHandlerKeyupMultiple();
+    teamNameInputView.addHandlerNameChange();
+    slotSelectUlView.addHandlerHover();
+    tooltipView.addHandlerHover();
+};
+const handleAppLogic = function () {
+    searchBtnView.addHandlerClick(controlSearchResults);
+    teamMembersView.addHandlerLoad(controlTeamMemberAdd);
+};
+const init = function () {
+    handleUIMenus();
+    handleAppLogic();
+};
+const controlSearchResults = function () {
+    const filterData = filterContainerView.getFilterData();
+    const result = model.pokedeFilter.filterAll(filterData.searchedTypes, filterData.searchedGens, filterData.toggledFullEvo, filterData.searchedName);
+    resultsContainerView.render(model.state.searchResults);
+};
+let previousString = "";
+const controlTeamMemberAdd = function () {
+    return __awaiter(this, void 0, void 0, function* () {
+        const windowHash = window.location.hash;
+        const modifiedHash = windowHash.replace(previousString, "");
+        const teamMembersId = modifiedHash.split("#").slice(1);
+        if (teamMembersId.length === 0)
+            return;
+        previousString = windowHash;
+        yield Promise.all(teamMembersId.slice(-6).map((id) => __awaiter(this, void 0, void 0, function* () {
+            yield model.fetchPokemon(Number(id));
+            teamMembersView.update(model.state.currentTeam.teamMembers[model.state.currentTeamAdd - 1], model.state.currentTeamAdd);
+        })));
+        // teamMembersView.update();
+    });
+};
+init();

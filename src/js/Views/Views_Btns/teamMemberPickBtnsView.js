@@ -1,0 +1,68 @@
+class teamMemberPickBtnsView {
+    constructor() {
+        this.smallPickBtns = Array.from(document.querySelector(".pick-container-1").querySelectorAll(".pick-btn"));
+        this.bigPickBtns = Array.from(document.querySelector(".pick-container-2").querySelectorAll(".pick-btn"));
+        this.pickBtnsContainer = document.querySelector(".team-members-pick");
+        this.allBtns = Array.from(document.querySelectorAll(".pick-btn"));
+    }
+    addHandlerClick() {
+        var _a;
+        (_a = this.pickBtnsContainer) === null || _a === void 0 ? void 0 : _a.addEventListener("click", (e) => {
+            if (!e.target.classList.contains("pick-btn"))
+                return;
+            const pickBtn = e.target;
+            const tabsNum = pickBtn.classList[0].split("-").slice(1);
+            this.toggleMenus(tabsNum);
+            this.closeEverythingElse(tabsNum);
+        });
+    }
+    toggleMenus(tabsNum) {
+        var _a, _b, _c, _d, _e, _f;
+        this.smallPickBtns[Number(tabsNum[0]) - 1].classList.add("pick-btn-active");
+        this.bigPickBtns[tabsNum.length === 2
+            ? Number(tabsNum[1]) / 2 - 1
+            : Math.ceil(Number(tabsNum[0]) / 2 - 1)].classList.add("pick-btn-active");
+        //  hard active, uses !important meaning we want it to be present in the mobile-sized site
+        // soft active, uses !important behind screen query we want to see it only from the tablet view point on
+        // SWAP SOFT-HARD BETWEEN DUOS OF TABS
+        (_a = document
+            .querySelector(`.team-member-${Number(tabsNum[0])}`)) === null || _a === void 0 ? void 0 : _a.classList.remove("soft-active");
+        (_b = document
+            .querySelector(`.team-member-${Number(tabsNum[0])}`)) === null || _b === void 0 ? void 0 : _b.classList.add("hard-active");
+        if (Number(tabsNum[0]) % 2 !== 0) {
+            (_c = document
+                .querySelector(`.team-member-${Number(tabsNum[0]) + 1}`)) === null || _c === void 0 ? void 0 : _c.classList.add("soft-active");
+            (_d = document
+                .querySelector(`.team-member-${Number(tabsNum[0]) + 1}`)) === null || _d === void 0 ? void 0 : _d.classList.remove("hard-active");
+        }
+        else {
+            (_e = document
+                .querySelector(`.team-member-${Number(tabsNum[0]) - 1}`)) === null || _e === void 0 ? void 0 : _e.classList.add("soft-active");
+            (_f = document
+                .querySelector(`.team-member-${Number(tabsNum[0]) - 1}`)) === null || _f === void 0 ? void 0 : _f.classList.remove("hard-active");
+        }
+    }
+    closeEverythingElse(tabsNum) {
+        Array.from(document.querySelectorAll(".team-member")).forEach((teamMember) => teamMember.classList.add(".hide-moveset"));
+        this.allBtns.forEach((otherBtn) => {
+            var _a, _b;
+            const otherTabs = otherBtn.classList[0].split("-").slice(1);
+            if (!otherTabs.includes(tabsNum[0])) {
+                this.smallPickBtns[Number(otherTabs[0]) - 1].classList.remove("pick-btn-active");
+                if (otherTabs.length > 1) {
+                    this.bigPickBtns[Math.ceil(Number(otherTabs[0]) / 2) - 1].classList.remove("pick-btn-active");
+                }
+                if ((Number(tabsNum[0]) % 2 === 0 &&
+                    Number(otherTabs[0]) === Number(tabsNum[0]) - 1) ||
+                    (Number(tabsNum[0]) % 2 !== 0 &&
+                        Number(otherTabs[0]) === Number(tabsNum[0]) + 1))
+                    return;
+                (_a = document
+                    .querySelector(`.team-member-${Number(otherTabs[0])}`)) === null || _a === void 0 ? void 0 : _a.classList.remove("hard-active");
+                (_b = document
+                    .querySelector(`.team-member-${Number(otherTabs[0])}`)) === null || _b === void 0 ? void 0 : _b.classList.remove("soft-active");
+            }
+        });
+    }
+}
+export default new teamMemberPickBtnsView();
