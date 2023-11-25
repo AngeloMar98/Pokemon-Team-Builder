@@ -10,13 +10,13 @@ import {
 } from "./interfaces.js";
 
 import * as pokedex from "./pokèdex/pokedex.js";
-
 import forms from "./pokèdex/forms.js";
-
 import megas from "./pokèdex/megas.js";
-
 import variants from "./pokèdex/variants.js";
 
+console.log(forms);
+console.log(megas);
+console.log(variants);
 const searchResults: Pokemon[] = [];
 const savedTeams: Team[] = [];
 const currentTeam: Team = {
