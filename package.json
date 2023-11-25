@@ -20,10 +20,10 @@
   "devDependencies": {
     "@babel/core": "^7.22.10",
     "@babel/preset-env": "^7.22.10",
+    "@parcel/optimizer-terser": "^2.10.3",
     "@types/core-js": "^2.5.8",
     "@types/node": "^20.9.3",
     "@types/regenerator-runtime": "^0.13.4",
-    "@webpack-cli/generators": "^3.0.7",
     "babel-loader": "^9.1.3",
     "css-loader": "^6.8.1",
     "html-webpack-plugin": "^5.5.3",
