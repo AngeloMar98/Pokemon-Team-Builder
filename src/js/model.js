@@ -11,6 +11,8 @@ import * as pokedex from "./pokèdex/pokedex.js";
 import forms from "./pokèdex/forms.js";
 import megas from "./pokèdex/megas.js";
 import variants from "./pokèdex/variants.js";
+const formsId = forms.map((formPokemon) => formPokemon.originId);
+const megasId = megas.map((megaPokemon) => megaPokemon.originId);
 const searchResults = [];
 const savedTeams = [];
 const currentTeam = {
@@ -107,19 +109,15 @@ const fetchMoves = function (moves = []) {
     });
 };
 class PokedexFilter {
-    constructor() {
-        this.formsId = forms.map((formPokemon) => formPokemon.originId);
-        this.megasId = megas.map((megaPokemon) => megaPokemon.originId);
-    }
     filterAll(types, generations, fullEvo, name) {
         const filteredGens = generations.flatMap((gen) => pokedex[gen].list);
         const filteredEvo = fullEvo
             ? this.filterFullEvo(filteredGens)
             : filteredGens;
         const addedMega = generations.includes("vi")
-            ? this.addMega(filteredEvo, this.megasId, megas)
+            ? this.addMega(filteredEvo, megasId, megas)
             : filteredEvo;
-        const addedForms = this.addForms(addedMega, this.formsId, forms);
+        const addedForms = this.addForms(addedMega, formsId, forms);
         const addedVariants = this.addVariants(addedForms, variants, generations, fullEvo);
         const filteredTypes = this.filterTypes(addedVariants, types);
         const filteredNames = this.filterNames(filteredTypes, name.replace(/\s/g, ""));
