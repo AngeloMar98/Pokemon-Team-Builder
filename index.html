@@ -30,6 +30,39 @@
   <body
     class="bg-lightM-lightBismark dark:bg-darkM-indigo font-default font-normal relative min-h-screen"
   >
+    <div class="prompt-team hidden group newfav">
+      <span class="hidden group-[.newfav]:block"> Save current team?</span>
+      <span class="hidden group-[.oldfav]:block"> Update or eliminate?</span>
+      <div
+        class="hidden group-[.newfav]:flex w-1/2 mx-auto justify-evenly gap-2 mt-3"
+      >
+        <button
+          class="prompt_btn prompt_btn-yes py-1 px-3 rounded-lg bg-lightM-lightBismark dark:bg-darkM-lightIndigo1 text-lightM-blackPearl dark:text-darkM-whiteIndigo"
+        >
+          Yes
+        </button>
+        <button
+          class="prompt_btn prompt_btn-no py-1 px-3 rounded-lg bg-lightM-lightBismark dark:bg-darkM-lightIndigo1 text-lightM-blackPearl dark:text-darkM-whiteIndigo"
+        >
+          No
+        </button>
+      </div>
+      <div
+        class="hidden group-[.oldfav]:flex flex-col w-full mx-auto justify-evenly gap-2 mt-3"
+      >
+        <button
+          class="prompt_btn prompt_btn-upd py-1 px-3 rounded-lg bg-lightM-lightBismark dark:bg-darkM-lightIndigo1 text-lightM-blackPearl dark:text-darkM-whiteIndigo"
+        >
+          Update saved team
+        </button>
+        <button
+          class="prompt_btn prompt_btn-unfav py-1 px-3 rounded-lg bg-lightM-lightBismark dark:bg-darkM-lightIndigo1 text-lightM-blackPearl dark:text-darkM-whiteIndigo"
+        >
+          Unfavorite
+        </button>
+      </div>
+    </div>
+
     <header class="text-center flex items-center p-3 mx-auto w-fit" id="title">
       <a href="#">
         <img
@@ -44,7 +77,7 @@
         </h1>
       </a>
     </header>
-    <main class="laptop:grid laptop:grid-cols-2 relative pb-16">
+    <main class="laptop:grid laptop:grid-cols-2 relative pb-[8rem]">
       <section class="p-3">
         <div
           class="team-members-pick dark:text-darkM-whiteIndigo border border-lightM-darkBismark dark:border-darkM-lightIndigo2 rounded-md overflow-hidden"
@@ -73,9 +106,11 @@
               5 &nbsp;&nbsp; - &nbsp;&nbsp; 6
             </button>
           </div>
-          <div class="bg-white dark:bg-darkM-lightIndigo3">
+          <div
+            class="bg-white dark:bg-darkM-lightIndigo3 relative overflow-hidden"
+          >
             <div
-              class="team-name-container flex flex-col justify-center p-2 mx-auto w-fit"
+              class="team-name-container flex flex-col justify-center p-2 mx-auto w-fit overflow-hidden"
             >
               <label
                 class="team-name-label font-semibold text-base"
@@ -88,6 +123,20 @@
                 id="teamName"
                 type="text"
               />
+
+              <svg
+                class="favorite-team-btn w-[45px] h-[45px] absolute right-[2px] top-[-6px] stroke-lightM-blackPearl hover:cursor-pointer fill-[#d3425fa2] hover:fill-fighting transition-all duration-200"
+                xmlns="http://www.w3.org/2000/svg"
+                class="ionicon"
+                viewBox="0 0 512 512"
+              >
+                <path
+                  d="M352 48H160a48 48 0 00-48 48v368l144-128 144 128V96a48 48 0 00-48-48z"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="32"
+                />
+              </svg>
             </div>
           </div>
         </div>
@@ -95,9 +144,20 @@
           class="mt-3 team-members-container grid tablet:grid-cols-2 gap-2 relative"
         >
           <article
-            class="team-member hidden hard-active team-member-1 group hide-moveset"
+            class="team-member team-member-1 hidden hard-active group hide-moveset"
           >
-            <div class="team-member-1-inner">
+            <div class="team-member-1-inner relative">
+              <svg
+                class="delete-member-btn opacity-70 hover:opacity-100 hidden absolute top-1 right-1 p-1 fill-darkM-whiteIndigo hover:cursor-pointer rounded-full dark:bg-darkM-lightIndigo1 bg-lightM-bismark"
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+                ></path>
+              </svg>
               <h2
                 class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3 min-h-[40px]"
                 id="${pokemon.id}"
@@ -113,7 +173,7 @@
                 <div
                   class="types-flex min-h-[71px] group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
                 >
-                  <div class="types-flex-inner">
+                  <div class="types-flex-inner group">
                     <img
                       class="h-[25px] w-[92px] hidden"
                       alt="type icon"
@@ -276,10 +336,18 @@
                   </div>
                 </div>
                 <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire"></div>
-                  <div class="slot slot-move-2 bg-fire"></div>
-                  <div class="slot slot-move-3 bg-fire"></div>
-                  <div class="slot slot-move-4 bg-fire"></div>
+                  <div
+                    class="slot slot-move-1 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-2 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-3 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-4 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
                   <div class="slot slot-ability bg-darkM-lightIndigo3"></div>
                 </div>
               </div>
@@ -289,7 +357,18 @@
             class="team-member team-member-2 group soft-active hide-moveset"
             id="member-1"
           >
-            <div class="team-member-2-inner">
+            <div class="team-member-2-inner relative">
+              <svg
+                class="delete-member-btn opacity-70 hover:opacity-100 hidden absolute top-1 right-1 p-1 fill-darkM-whiteIndigo hover:cursor-pointer rounded-full dark:bg-darkM-lightIndigo1 bg-lightM-bismark"
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+                ></path>
+              </svg>
               <h2
                 class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3 min-h-[40px]"
                 id="${pokemon.id}"
@@ -305,7 +384,7 @@
                 <div
                   class="types-flex min-h-[71px] group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
                 >
-                  <div class="types-flex-inner">
+                  <div class="types-flex-inner group">
                     <img
                       class="h-[25px] w-[92px] hidden"
                       alt="type icon"
@@ -466,10 +545,18 @@
                   </div>
                 </div>
                 <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire"></div>
-                  <div class="slot slot-move-2 bg-fire"></div>
-                  <div class="slot slot-move-3 bg-fire"></div>
-                  <div class="slot slot-move-4 bg-fire"></div>
+                  <div
+                    class="slot slot-move-1 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-2 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-3 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-4 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
                   <div class="slot slot-ability bg-darkM-lightIndigo3"></div>
                 </div>
               </div>
@@ -479,7 +566,18 @@
             class="team-member team-member-3 group hide-moveset"
             id="member-1"
           >
-            <div class="team-member-3-inner">
+            <div class="team-member-3-inner relative">
+              <svg
+                class="delete-member-btn opacity-70 hover:opacity-100 hidden absolute top-1 right-1 p-1 fill-darkM-whiteIndigo hover:cursor-pointer rounded-full dark:bg-darkM-lightIndigo1 bg-lightM-bismark"
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+                ></path>
+              </svg>
               <h2
                 class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3 min-h-[40px]"
                 id="${pokemon.id}"
@@ -495,7 +593,7 @@
                 <div
                   class="types-flex min-h-[71px] group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
                 >
-                  <div class="types-flex-inner">
+                  <div class="types-flex-inner group">
                     <img
                       class="h-[25px] w-[92px] hidden"
                       alt="type icon"
@@ -656,10 +754,18 @@
                   </div>
                 </div>
                 <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire"></div>
-                  <div class="slot slot-move-2 bg-fire"></div>
-                  <div class="slot slot-move-3 bg-fire"></div>
-                  <div class="slot slot-move-4 bg-fire"></div>
+                  <div
+                    class="slot slot-move-1 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigoe"
+                  ></div>
+                  <div
+                    class="slot slot-move-2 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-3 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-4 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
                   <div class="slot slot-ability bg-darkM-lightIndigo3"></div>
                 </div>
               </div>
@@ -669,7 +775,18 @@
             class="team-member team-member-4 group hide-moveset"
             id="member-1"
           >
-            <div class="team-member-4-inner">
+            <div class="team-member-4-inner relative">
+              <svg
+                class="delete-member-btn opacity-70 hover:opacity-100 hidden absolute top-1 right-1 p-1 fill-darkM-whiteIndigo hover:cursor-pointer rounded-full dark:bg-darkM-lightIndigo1 bg-lightM-bismark"
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+                ></path>
+              </svg>
               <h2
                 class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3 min-h-[40px]"
                 id="${pokemon.id}"
@@ -685,7 +802,7 @@
                 <div
                   class="types-flex min-h-[71px] group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
                 >
-                  <div class="types-flex-inner">
+                  <div class="types-flex-inner group">
                     <img
                       class="h-[25px] w-[92px] hidden"
                       alt="type icon"
@@ -847,10 +964,18 @@
                   </div>
                 </div>
                 <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire"></div>
-                  <div class="slot slot-move-2 bg-fire"></div>
-                  <div class="slot slot-move-3 bg-fire"></div>
-                  <div class="slot slot-move-4 bg-fire"></div>
+                  <div
+                    class="slot slot-move-1 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-2 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-3 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-4 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
                   <div class="slot slot-ability bg-darkM-lightIndigo3"></div>
                 </div>
               </div>
@@ -860,7 +985,18 @@
             class="team-member team-member-5 group hide-moveset"
             id="member-1"
           >
-            <div class="team-member-5-inner">
+            <div class="team-member-5-inner relative">
+              <svg
+                class="delete-member-btn opacity-70 hover:opacity-100 hidden absolute top-1 right-1 p-1 fill-darkM-whiteIndigo hover:cursor-pointer rounded-full dark:bg-darkM-lightIndigo1 bg-lightM-bismark"
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+                ></path>
+              </svg>
               <h2
                 class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3 min-h-[40px]"
                 id="${pokemon.id}"
@@ -876,7 +1012,7 @@
                 <div
                   class="types-flex min-h-[71px] group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
                 >
-                  <div class="types-flex-inner">
+                  <div class="types-flex-inner group">
                     <img
                       class="h-[25px] w-[92px] hidden"
                       alt="type icon"
@@ -1037,10 +1173,18 @@
                   </div>
                 </div>
                 <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire"></div>
-                  <div class="slot slot-move-2 bg-fire"></div>
-                  <div class="slot slot-move-3 bg-fire"></div>
-                  <div class="slot slot-move-4 bg-fire"></div>
+                  <div
+                    class="slot slot-move-1 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-2 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-3 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-4 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
                   <div class="slot slot-ability bg-darkM-lightIndigo3"></div>
                 </div>
               </div>
@@ -1050,7 +1194,18 @@
             class="team-member team-member-6 group hide-moveset"
             id="member-1"
           >
-            <div class="team-member-6-inner">
+            <div class="team-member-6-inner relative">
+              <svg
+                class="delete-member-btn opacity-70 hover:opacity-100 hidden absolute top-1 right-1 p-1 fill-darkM-whiteIndigo hover:cursor-pointer rounded-full dark:bg-darkM-lightIndigo1 bg-lightM-bismark"
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+                ></path>
+              </svg>
               <h2
                 class="text-center rounded-t-[0.3rem] laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3 min-h-[40px]"
                 id="${pokemon.id}"
@@ -1066,7 +1221,7 @@
                 <div
                   class="types-flex min-h-[71px] group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
                 >
-                  <div class="types-flex-inner">
+                  <div class="types-flex-inner group">
                     <img
                       class="h-[25px] w-[92px] hidden"
                       alt="type icon"
@@ -1228,10 +1383,18 @@
                   </div>
                 </div>
                 <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire"></div>
-                  <div class="slot slot-move-2 bg-fire"></div>
-                  <div class="slot slot-move-3 bg-fire"></div>
-                  <div class="slot slot-move-4 bg-fire"></div>
+                  <div
+                    class="slot slot-move-1 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-2 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-3 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
+                  <div
+                    class="slot slot-move-4 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo"
+                  ></div>
                   <div class="slot slot-ability bg-darkM-lightIndigo3"></div>
                 </div>
               </div>
@@ -1703,10 +1866,10 @@
       </svg>
     </button>
     <div
-      class="teamsAndStats bg-lightM-bismark dark:bg-darkM-darkBlue w-full group fixed top-0 bigTablet:right-0 bigTablet:top-[26vh] h-[70vh] bigTablet:h-[74vh] bigTablet:w-1/2 z-50"
+      class="teamsAndStats bg-lightM-bismark dark:bg-darkM-darkBlue w-full group fixed top-0 bigTablet:right-0 bigTablet:top-[26vh] h-[70vh] bigTablet:h-[74vh] bigTablet:w-1/2 z-50 transition-transform duration-200"
     >
       <menu
-        class="saved-teams hidden group-[.show-teams]:block group-[:not(.show-stats)]:min-h-full group-[:not(.show-stats)]:max-h-full m"
+        class="saved-teams hidden group-[.show-teams]:block group-[:not(.show-stats)]:min-h-full group-[:not(.show-stats)]:max-h-full"
       >
         <h2 class="text-darkM-whiteBlue pb-1">
           Saved Teams
@@ -1723,22 +1886,6 @@
             />
           </svg>
         </h2>
-        <div
-          class="saved-team grid grid-cols-6 rounded-md bg-lightM-lightBismark dark:bg-darkM-lightIndigo3 mb-2 pb-2 hover:cursor-pointer"
-          data-teamName="Team_#1"
-        >
-          <h3
-            class="col-span-6 text-center text-lightM-blackPearl dark:text-darkM-whiteBlue border-b border-darkM-whiteBlue"
-          >
-            Team #1
-          </h3>
-          <img src="static/img/pokemon_icons/10012.png" />
-          <img src="static/img/pokemon_icons/1.png" />
-          <img src="static/img/pokemon_icons/10009.png" />
-          <img src="static/img/pokemon_icons/10018.png" />
-          <img src="static/img/pokemon_icons/10020.png" />
-          <img src="static/img/pokemon_icons/10.png" />
-        </div>
       </menu>
       <menu
         class="statistics hidden group-[.show-stats]:grid group-[:not(.show-teams)]:min-h-full group-[:not(.show-teams)]:max-h-full"
@@ -1760,11 +1907,11 @@
           </svg>
         </h2>
 
-        <div class="coverage-container">
-          <h2 class="text-darkM-whiteIndigo pb-2">Coverage</h2>
-          <ul class="coverage_ul flex flex-col gap-2">
+        <div class="offensive-container">
+          <h2 class="text-darkM-whiteIndigo pb-2">Offensive Coverage</h2>
+          <ul class="offensive_ul flex flex-col gap-2">
             <li
-              class="coverage-bug grid gap-4"
+              class="offensive-bug grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -1775,31 +1922,31 @@
               />
 
               <div
-                class="coverage-bug_inner grid gap-1 h-[30px]"
+                class="offensive-bug_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
-              class="coverage-dark grid gap-4"
+              class="offensive-dark grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -1810,31 +1957,31 @@
               />
 
               <div
-                class="coverage-dark_inner grid gap-1 h-[30px]"
+                class="offensive-dark_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
-              class="coverage-dragon grid gap-4"
+              class="offensive-dragon grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -1845,31 +1992,31 @@
               />
 
               <div
-                class="coverage-dragon_inner grid gap-1 h-[30px]"
+                class="offensive-dragon_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
-              class="coverage-electric grid gap-4"
+              class="offensive-electric grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -1880,31 +2027,31 @@
               />
 
               <div
-                class="coverage-electric_inner grid gap-1 h-[30px]"
+                class="offensive-electric_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
-              class="coverage-fairy grid gap-4"
+              class="offensive-fairy grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -1915,31 +2062,31 @@
               />
 
               <div
-                class="coverage-fairy_inner grid gap-1 h-[30px]"
+                class="offensive-fairy_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
-              class="coverage-fighting grid gap-4"
+              class="offensive-fighting grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -1950,31 +2097,31 @@
               />
 
               <div
-                class="coverage-fighting_inner grid gap-1 h-[30px]"
+                class="offensive-fighting_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
-              class="coverage-fire grid gap-4"
+              class="offensive-fire grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -1985,31 +2132,31 @@
               />
 
               <div
-                class="coverage-fire_inner grid gap-1 h-[30px]"
+                class="offensive-fire_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
-              class="coverage-flying grid gap-4"
+              class="offensive-flying grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -2020,33 +2167,33 @@
               />
 
               <div
-                class="coverage-flying_inner grid gap-1 h-[30px]"
+                class="offensive-flying_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
               title="ghost"
               alt="ghost"
-              class="coverage-ghost grid gap-4"
+              class="offensive-ghost grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -2055,33 +2202,33 @@
               />
 
               <div
-                class="coverage-ghost_inner grid gap-1 h-[30px]"
+                class="offensive-ghost_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
               title="grass"
               alt="grass"
-              class="coverage-grass grid gap-4"
+              class="offensive-grass grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -2090,33 +2237,33 @@
               />
 
               <div
-                class="coverage-grass_inner grid gap-1 h-[30px]"
+                class="offensive-grass_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
               title="ground"
               alt="ground"
-              class="coverage-ground grid gap-4"
+              class="offensive-ground grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -2125,33 +2272,33 @@
               />
 
               <div
-                class="coverage-ground_inner grid gap-1 h-[30px]"
+                class="offensive-ground_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
               title="ice"
               alt="ice"
-              class="coverage-ice grid gap-4"
+              class="offensive-ice grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -2160,33 +2307,33 @@
               />
 
               <div
-                class="coverage-ice_inner grid gap-1 h-[30px]"
+                class="offensive-ice_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
               title="normal"
               alt="normal"
-              class="coverage-normal grid gap-4"
+              class="offensive-normal grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -2195,31 +2342,31 @@
               />
 
               <div
-                class="coverage-normal_inner grid gap-1 h-[30px]"
+                class="offensive-normal_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
-              class="coverage-poison grid gap-4"
+              class="offensive-poison grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -2230,31 +2377,31 @@
               />
 
               <div
-                class="coverage-poison_inner grid gap-1 h-[30px]"
+                class="offensive-poison_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
-              class="coverage-psychic grid gap-4"
+              class="offensive-psychic grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -2265,31 +2412,31 @@
               />
 
               <div
-                class="coverage-psychic_inner grid gap-1 h-[30px]"
+                class="offensive-psychic_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
-              class="coverage-rock grid gap-4"
+              class="offensive-rock grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -2300,31 +2447,31 @@
               />
 
               <div
-                class="coverage-rock_inner grid gap-1 h-[30px]"
+                class="offensive-rock_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
-              class="coverage-steel grid gap-4"
+              class="offensive-steel grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -2335,31 +2482,31 @@
               />
 
               <div
-                class="coverage-steel_inner grid gap-1 h-[30px]"
+                class="offensive-steel_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
             <li
-              class="coverage-water grid gap-4"
+              class="offensive-water grid gap-4"
               style="grid-template-columns: 30px auto"
             >
               <img
@@ -2370,33 +2517,33 @@
               />
 
               <div
-                class="coverage-water_inner grid gap-1 h-[30px]"
+                class="offensive-water_inner grid gap-1 h-[30px]"
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-stabeff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-eff dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
           </ul>
         </div>
         <div class="defense-container">
-          <h2 class="text-darkM-whiteIndigo pb-2">Defense</h2>
+          <h2 class="text-darkM-whiteIndigo pb-2">Defensive Coverage</h2>
           <ul class="defense_ul flex flex-col gap-2">
             <li
               class="defense-bug grid gap-4"
@@ -2414,22 +2561,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2449,22 +2596,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2484,22 +2631,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2519,22 +2666,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2554,22 +2701,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2589,22 +2736,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2624,22 +2771,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2659,22 +2806,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2694,22 +2841,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2729,22 +2876,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2764,22 +2911,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2799,22 +2946,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2834,22 +2981,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2869,22 +3016,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2904,22 +3051,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2939,22 +3086,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -2974,22 +3121,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>
@@ -3009,22 +3156,22 @@
                 style="grid-template-columns: repeat(auto-fill, 11px)"
               >
                 <div
-                  class="border-2 bar-immune dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar-resist dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
                 <div
-                  class="border-2 bar dark:border-darkM-whiteBlue rounded-md"
+                  class="border-2 dark:border-darkM-whiteBlue rounded-md"
                 ></div>
               </div>
             </li>

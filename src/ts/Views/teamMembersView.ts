@@ -11,6 +11,51 @@ import {
 class teamMembersView {
   _parentElement = document.querySelector(".team-members-container");
 
+  clear(memberNum: string) {
+    const currentMember = this._parentElement?.querySelector(
+      `.team-member-${memberNum}`
+    );
+    /* REMOVE NAME */
+    currentMember!.querySelector("h2")!.innerHTML = "";
+
+    /* HIDE BUTTON */
+    currentMember?.querySelector(".delete-member-btn")?.classList.add("hidden");
+
+    /* REMOVE IMG  */
+    const pokemonImg = currentMember!.querySelector("img");
+    pokemonImg!.src = "#";
+    pokemonImg!.alt = "";
+    pokemonImg!.classList.add("hidden");
+
+    /* REMOVE TYPES */
+
+    currentMember!.querySelector(".types-flex-inner")!.innerHTML = `<img
+                      class="h-[25px] w-[92px] hidden"
+                      alt="type icon"
+                      src="#"
+                    />
+                    <img
+                      class="h-[25px] w-[92px] hidden"
+                      alt="type icon"
+                      src="#"
+                    />`;
+
+    /* REMOVE SLOTS */
+    Array.from(currentMember!.querySelectorAll(`.slot-select_li`)).forEach(
+      (li) => li.remove()
+    );
+
+    Array.from(currentMember!.querySelectorAll(`.slot`)).forEach(
+      (slot) => (slot.innerHTML = "")
+    );
+  }
+
+  clearAll() {
+    Array.from(document.querySelectorAll(".team-member")).forEach((_, i) => {
+      this.clear(String(i + 1));
+    });
+  }
+
   addHandlerLoad(handler: () => void) {
     ["hashchange", "load"].forEach((event) =>
       window.addEventListener(event, (e) => {
@@ -20,13 +65,14 @@ class teamMembersView {
     );
   }
 
-  _generateMarkup(pokemon: Pokemon, num: number) {
-    const teachableMovesUl = pokemon.teachableMoves!.reduce(
+  _createTeachableMoves(teachableMoves: Move[]) {
+    return teachableMoves!.reduce(
       (acc, move) =>
         acc +
         `<li class="slot-select_li"
-                       alt="${move.name}">
-                        ${move.name}
+                       data-name="${move.name}"
+                        data-type="${move.type}">
+                 <span>${move.name} </span>
             <p class="hidden">
             <b class="pointer-events-none">Type:</b> ${move.type} <br />
             <b class="pointer-events-none">Power: </b> ${
@@ -41,16 +87,20 @@ class teamMembersView {
             
             <b class="pointer-events-none"> Effect: </b> ${move.effect}
             </p>
-          </li>`,
+          </li>
+          `,
       ""
     );
+  }
 
-    const possibleAbilitiesUl = pokemon.possibleAbilities!.reduce(
+  _createPossibleAbilites(possibleAbilities: Ability[]) {
+    return possibleAbilities!.reduce(
       (acc, ability) =>
         acc +
         `<li class="slot-select_li group"
-                        alt="${ability.name}">
-                        ${ability.name}
+                        data-name="${ability.name}"
+                        data-type="ability">
+                    <span>${ability.name}</span>
             <p class="hidden">
             <b class="pointer-events-none">Effect: </b> ${ability.effect} <br /> 
             </p>
@@ -58,35 +108,16 @@ class teamMembersView {
           </li>`,
       ""
     );
+  }
 
-    return `<article class="team-member team-member-${num} group hide-moveset">
-    <div class="team-member-${num}-inner">
-       <h2 class="text-center rounded-t-[0.3rem]
-       laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b
-        dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3"
-              id="${pokemon.id}"
-              alt="${pokemon.name}"
-            >
-              ${pokemon.name}
-            </h2>
-            <div class="flex min-h-[112px] justify-center py-2">
-              <img
-                alt="${pokemon.name} icon"
-                class="hover:cursor-pointer custom-shadow w-[96px] h-[96px]"
-                src="static/img/pokemon_sprites/${pokemon.id}.png"
-              />
-            </div>
-            <div class="filter-menu group">
-              <div
-                class="types-flex min-h-[71px] group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
-              >
-               <div class="types-flex-inner">    
-                ${
-                  pokemon.typeChoice
-                    ? `<button
-                  class="filter-menu_btn h-[25px] w-[120px] bg-lightM-lightBismark text-lightM-blackPearl dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 px-1 rounded-lg"
+  _createTypes(typeChoice: boolean, types: Type[]) {
+    return typeChoice
+      ? `
+                    <img class="h-[25px] w-[90px]" alt="bug type icon" src="static/img/types_labels/${types[0]}.png">
+                    <button
+                  class="filter-menu_btn h-[25px] w-[90px] font-medium text-xs rounded-full bg-lightM-lightBismark text-lightM-blackPearl dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 px-1 flex items-center justify-center"
                 >
-                  <span>Type </span>
+                  <span>TYPE </span>
                   <svg
                     class="carret-down dark:fill-darkM-whiteIndigo rotate-180 group-[.activated]:rotate-0 inline-block transition-all duration-300"
                     xmlns="http://www.w3.org/2000/svg"
@@ -99,8 +130,9 @@ class teamMembersView {
                     ></path>
                   </svg>
                 </button>
+                
                 <ul
-                  class="filter-menu_ul custom-type_ul mt-2 w-[120px] group-[.activated]:flex z-20"
+                  class="filter-menu_ul top-[60px] custom-type_ul mt-2 w-[120px] group-[.activated]:flex z-20"
                 >
                   <li class="flex" data-type="fire">
                     <input
@@ -301,14 +333,58 @@ class teamMembersView {
                     >
                   </li>
                        </ul>`
-                    : `${pokemon.types.reduce(
-                        (acc, type) =>
-                          acc +
-                          `<img class="h-[25px] w-[92px]" alt="${type} type icon" 
+      : `${types.reduce(
+          (acc, type) =>
+            acc +
+            `<img class="h-[25px] w-[92px]" alt="${type} type icon" 
                         src="static/img/types_labels/${type}.png">`,
-                        ""
-                      )}`
-                }
+          ""
+        )}`;
+  }
+
+  _generateMarkup(pokemon: Pokemon, num: number) {
+    const teachableMovesUl = this._createTeachableMoves(
+      pokemon.teachableMoves || []
+    );
+
+    const possibleAbilitiesUl = this._createPossibleAbilites(
+      pokemon.possibleAbilities || []
+    );
+
+    return `<article class="team-member team-member-${num} group hide-moveset">
+              <div class="team-member-${num}-inner relative">
+              <svg
+                class="delete-member-btn hidden absolute top-1 right-1 p-1 fill-darkM-whiteIndigo hover:cursor-pointer rounded-full dark:bg-darkM-lightIndigo1 bg-lightM-bismark"
+                xmlns="http://www.w3.org/2000/svg"
+                width="28"
+                height="28"
+                viewBox="0 0 256 256"
+              >
+                <path
+                  d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"
+                ></path>
+              </svg>
+       <h2 class="text-center rounded-t-[0.3rem]
+       laptop:group-[:not(.hide-moveset)]:rounded-tr-none dark:text-darkM-whiteIndigo py-1 border-b
+        dark:border-darkM-lightIndigo3 bg-white dark:bg-darkM-lightIndigo3"
+              id="${pokemon.id}"
+              alt="${pokemon.name}"
+            >
+              ${pokemon.name}
+            </h2>
+            <div class="flex min-h-[112px] justify-center py-2">
+              <img
+                alt="${pokemon.name} icon"
+                class="hover:cursor-pointer custom-shadow w-[96px] h-[96px]"
+                src="static/img/pokemon_sprites/${pokemon.id}.png"
+              />
+            </div>
+            <div class="filter-menu group">
+              <div
+                class="types-flex min-h-[71px] group-[.hide-moveset]:rounded-b-md laptop:group-[:not(.hide-moveset)]:rounded-bl-md"
+              >
+               <div class="types-flex-inner group">    
+                ${this._createTypes(pokemon.typeChoice || false, pokemon.types)}
               </div>            
                 <button class="moveset-menu-btn"  title="Toggle moveset menu">
                   <svg
@@ -462,20 +538,20 @@ class teamMembersView {
                   </div>
                 </div>
                 <div class="slots mr-3 leading-5">
-                  <div class="slot slot-move-1 bg-fire">
-                    
+                  <div class="slot slot-move-1 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo">
+                    ${pokemon.move1!.name || ""}
                   </div>
-                  <div class="slot slot-move-2 bg-fire">
-                    
+                  <div class="slot slot-move-2 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo">
+                    ${pokemon.move2!.name || ""}
                   </div>
-                  <div class="slot slot-move-3 bg-fire">
-                    
+                  <div class="slot slot-move-3 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo">
+                    ${pokemon.move3!.name || ""}
                   </div>
-                  <div class="slot slot-move-4 bg-fire">
-                    
+                  <div class="slot slot-move-4 dark:bg-darkM-whiteIndigo bg-lightM-darkBismark dark:text-lightM-blackPearl text-darkM-whiteIndigo">
+                    ${pokemon.move4!.name || ""}
                   </div>
                   <div class="slot slot-ability bg-darkM-lightIndigo3">
-                    Pressure
+                    ${pokemon.ability!.name || ""}
                   </div>
                 </div>
               </div>
@@ -483,9 +559,21 @@ class teamMembersView {
         </article>`;
   }
 
-  render() {}
+  displayCurrentTeam(
+    team: Team,
+    handleTypeChoice: (memberNum: number, type: Type) => void
+  ) {
+    team.teamMembers.forEach((savedMember, id) => {
+      this.update(savedMember, id + 1, handleTypeChoice);
+    });
+  }
 
-  update(pokemon: Pokemon, num: number) {
+  update(
+    pokemon: Pokemon | null,
+    num: number,
+    handleTypeChoice: (memberNum: number, type: Type) => void
+  ) {
+    if (pokemon === null) return;
     const newMarkup = this._generateMarkup(pokemon, num);
     const newDOM = document.createRange().createContextualFragment(newMarkup);
 
@@ -496,6 +584,12 @@ class teamMembersView {
     /* UPDATE NAME */
     currentMember!.querySelector("h2")!.innerHTML =
       newDOM.querySelector("h2")?.innerHTML || "";
+
+    /* REVEAL DELETE BUTTON */
+
+    currentMember
+      ?.querySelector(".delete-member-btn")
+      ?.classList.remove("hidden");
 
     /* UPDATE IMG  */
 
@@ -511,21 +605,51 @@ class teamMembersView {
     typesFlexInner!.innerHTML =
       newDOM.querySelector(".types-flex-inner")?.innerHTML || "";
 
-    /* UPDATE SLOTS */
-    const allSlotSelect = Array.from(
+    /* UPDATE SLOTS CHOICES */
+    const allSlotSelectChoice = Array.from(
       currentMember!.querySelectorAll(`.slot-select_ul`)
     );
 
-    const updatedSlotSlect = Array.from(
+    const updatedSlotSlectChoice = Array.from(
       newDOM!.querySelectorAll(`.team-member-${num} .slot-select_ul`)
     );
 
-    allSlotSelect.forEach((slotSelect, i: number) => {
+    allSlotSelectChoice.forEach((slotSelect, i: number) => {
       const slotsChoices = Array.from(
-        updatedSlotSlect[i].querySelectorAll("li")
+        updatedSlotSlectChoice[i].querySelectorAll("li")
       );
       slotsChoices.forEach((slotChoice) => slotSelect.append(slotChoice));
     });
+
+    /* UPDATE SLOTS */
+
+    const allSlots = Array.from(currentMember!.querySelectorAll(".slot"));
+
+    const allUpdatedSlots = Array.from(newDOM!.querySelectorAll(`.slot`));
+
+    allSlots.forEach((slot, i) => {
+      slot.textContent = allUpdatedSlots[i].textContent || "";
+    });
+
+    if (pokemon.typeChoice) {
+      typesFlexInner
+        ?.querySelector(".filter-menu_btn")
+        ?.addEventListener("click", function () {
+          typesFlexInner.classList.toggle("activated");
+        });
+
+      typesFlexInner
+        ?.querySelector(".filter-menu_ul")
+        ?.addEventListener("click", (e: any) => {
+          const li = e.target.closest("li");
+          if (li) {
+            handleTypeChoice(num, li.dataset.type);
+            typesFlexInner.querySelector(
+              "img"
+            )!.src = `static/img/types_labels/${li.dataset.type}.png`;
+          }
+        });
+    }
   }
 }
 export default new teamMembersView();

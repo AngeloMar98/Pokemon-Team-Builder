@@ -36,69 +36,54 @@
 // Prendi tipo, gen, name, evoluto o no
 
 // // FIX WHEN DEPLOYING
-import "core-js/stable";
-import "regenerator-runtime/runtime";
-
-//
+// import "core-js/stable";
+// import "regenerator-runtime/runtime";
 
 import * as model from "./model.js";
+import { Type } from "./interfaces.js";
 
+/* DARK/LIGHT MODE */
 import toggleDarkModeView from "./Views/Views_Toggles/toggleDarkModeView.js";
-import toggleFullEvoView from "./Views/Views_Toggles/toggleFullEvoView.js";
+
+/* SIDEMENU AND ITS SUBMENUS */
 import sideMenuBtnView from "./Views/Views_Btns/sideMenuBtnView.js";
 import filterMenusView from "./Views/Views_Btns/filterMenusView.js";
 import statisticsBtnView from "./Views/Views_Btns/statisticsBtnView.js";
 import savedTeamsBtnView from "./Views/Views_Btns/savedTeamsBtnView.js";
+
+import favoriteTeamBtnView from "./Views/Views_Btns/favoriteTeamBtnView.js";
+import savedTeamsView from "./Views/savedTeamsView.js";
+import statisticsView from "./Views/statisticsView.js";
+
+/* MOVESET AND SLOTS */
 import movesetMenuBtnsView from "./Views/Views_Btns/movesetMenuBtnsView.js";
 import slotSelectBtnView from "./Views/Views_Btns/slotSelectBtnView.js";
 import teamMemberPickBtnsView from "./Views/Views_Btns/teamMemberPickBtnsView.js";
-
-import searchBtnView from "./Views/Views_Btns/searchBtnView.js";
-
-import filterContainerView from "./Views/Views_Btns/filterContainerView.js";
 import slotInputView from "./Views/View_Inputs/slotInputView.js";
 import slotSelectUlView from "./Views/slotSelectUlView.js";
-import teamNameInputView from "./Views/View_Inputs/teamNameInputView.js";
-
-import resultsContainerView from "./Views/resultsContainerView.js";
-import teamMembersView from "./Views/teamMembersView.js";
+import slotSelectNameView from "./Views/View_Inputs/slotSelectNameView.js";
 import tooltipView from "./Views/tooltipView.js";
 
-const handleUIMenus = function () {
-  toggleDarkModeView.addHandlerClick();
+/* FILTERS */
+import toggleFullEvoView from "./Views/Views_Toggles/toggleFullEvoView.js";
+import filterContainerView from "./Views/Views_Btns/filterContainerView.js";
 
-  toggleFullEvoView.addHandlerClick();
-  filterMenusView.addHandlerClickMultiple();
+/* SEARCHES*/
+import searchBtnView from "./Views/Views_Btns/searchBtnView.js";
+import resultsContainerView from "./Views/resultsContainerView.js";
 
-  sideMenuBtnView.addHandlerClick();
-  statisticsBtnView.addHandlerClick();
-  savedTeamsBtnView.addHandlerClick();
-  teamMemberPickBtnsView.addHandlerClick();
-  movesetMenuBtnsView.addHandlerClickMultiple();
-  slotSelectBtnView.addHandlerClickMultiple();
+/* TEAM MEMBERS */
+import teamNameInputView from "./Views/View_Inputs/teamNameInputView.js";
 
-  slotInputView.addHandlerKeyupMultiple();
-  teamNameInputView.addHandlerNameChange();
+import teamMembersView from "./Views/teamMembersView.js";
+import deleteMemberBtnsView from "./Views/Views_Btns/deleteMemberBtnsView.js";
 
-  slotSelectUlView.addHandlerHover();
-  tooltipView.addHandlerHover();
-};
-
-const handleAppLogic = function () {
-  searchBtnView.addHandlerClick(controlSearchResults);
-  teamMembersView.addHandlerLoad(controlTeamMemberAdd);
-};
-
-const init = function () {
-  handleUIMenus();
-
-  handleAppLogic();
-};
+let previousString = "";
 
 const controlSearchResults = function () {
   const filterData = filterContainerView.getFilterData();
 
-  const result = model.pokedeFilter.filterAll(
+  model.filterAll(
     filterData.searchedTypes,
     filterData.searchedGens,
     filterData.toggledFullEvo,
@@ -108,27 +93,178 @@ const controlSearchResults = function () {
   resultsContainerView.render(model.state.searchResults);
 };
 
-let previousString = "";
-
 const controlTeamMemberAdd = async function () {
   const windowHash = window.location.hash;
   const modifiedHash = windowHash.replace(previousString, "");
-  const teamMembersId = modifiedHash.split("#").slice(1);
+  const teamMembersId = modifiedHash
+    .split("#")
+    .slice(1)
+    .filter((el) => !isNaN(Number(el)) && el !== "");
 
   if (teamMembersId.length === 0) return;
   previousString = windowHash;
 
   await Promise.all(
     teamMembersId.slice(-6).map(async (id) => {
-      await model.fetchPokemon(Number(id));
+      await model.addTeamMember(Number(id));
       teamMembersView.update(
         model.state.currentTeam.teamMembers[model.state.currentTeamAdd - 1],
-        model.state.currentTeamAdd
+        model.state.currentTeamAdd,
+        controlTypeChange
       );
     })
   );
 
-  // teamMembersView.update();
+  await model.setCurrentTeamStats(model.state.currentTeam.teamMembers);
+
+  statisticsView.updateStatistics(
+    model.state.currentTeam.teamDefense,
+    model.state.currentTeam.teamOffense
+  );
+};
+
+const controlSavedTeams = function (id: number) {
+  window.location.hash = "";
+  clearAll();
+  model.state.currentTeamSavedId = id;
+
+  favoriteTeamBtnView.oldFav();
+  model.retrieveSavedTeam();
+  statisticsView.updateStatistics(
+    model.state.currentTeam.teamDefense,
+    model.state.currentTeam.teamOffense
+  );
+  teamNameInputView.updateName(model.state.currentTeam.teamName);
+  teamMembersView.displayCurrentTeam(
+    model.state.currentTeam,
+    controlTypeChange
+  );
+};
+
+const controlTeamSave = function (promptType: string) {
+  sideMenuBtnView.closeAll();
+  if (promptType === "yes") {
+    if (model.state.currentTeam.teamMembers.length === 0) return;
+    model.saveCurrentTeam();
+    savedTeamsView.addNewSaved(
+      model.state.currentTeam,
+      model.state.teamIDstart - 1
+    );
+    clearAll();
+  } else if (promptType === "upd") {
+    favoriteTeamBtnView.newFav();
+    if (model.state.currentTeam.teamMembers.length === 0) return;
+    savedTeamsView.deleteSaved(model.state.currentTeamSavedId);
+    savedTeamsView.addNewSaved(
+      model.state.currentTeam,
+      model.state.currentTeamSavedId
+    );
+    model.updateCurrentSavedTeam();
+    clearAll();
+  } else if (promptType === "unfav") {
+    favoriteTeamBtnView.newFav();
+    model.eliminateCurrentSavedTeam();
+    savedTeamsView.deleteSaved(model.state.currentTeamSavedId);
+  }
+};
+
+const controlTypeChange = async function (memberNum: number, type: Type) {
+  await model.changeType(memberNum, type);
+  statisticsView.updateStatistics(
+    model.state.currentTeam.teamDefense,
+    model.state.currentTeam.teamOffense
+  );
+};
+
+const controlAddSlot = function (
+  name: string,
+  type: string,
+  slotType: string,
+  memberNum: number
+) {
+  model.updateTeamMember(name, type, slotType, memberNum);
+  slotSelectNameView.updateSlot(name, type, slotType, memberNum);
+};
+
+const controlDeleteBtn = function (memberNum: string) {
+  // first of all clear the member from the state and from view
+  teamMembersView.clear(memberNum);
+  model.eliminateTeamMember(memberNum);
+
+  statisticsView.updateStatistics(
+    model.state.currentTeam.teamDefense,
+    model.state.currentTeam.teamOffense
+  );
+
+  // quit if there are no member in state to show OR we eliminated the last member
+  if (
+    model.state.currentTeam.teamMembers.length === 0 ||
+    model.state.currentTeam.teamMembers.length + 1 === Number(memberNum)
+  )
+    return;
+
+  // eliminate the last element we duplicated
+  teamMembersView.clear(model.state.currentTeam.teamMembers.length + 1 + "");
+
+  // and SHOW that member again
+  teamMembersView.update(
+    model.state.currentTeam.teamMembers[Number(memberNum) - 1] || null,
+    Number(memberNum),
+    controlTypeChange
+  );
+};
+
+const clearAll = function () {
+  statisticsView.clear();
+  model.cleanCurrentTeam();
+  teamMembersView.clearAll();
+};
+
+/* simple close and open menus */
+const handleUIMenus = function () {
+  toggleDarkModeView.addHandlerClick();
+
+  toggleFullEvoView.addHandlerClick();
+  filterMenusView.addHandlerClickMultiple();
+
+  sideMenuBtnView.addHandlerClick();
+  statisticsBtnView.addHandlerClick();
+  savedTeamsBtnView.addHandlerClick();
+
+  teamMemberPickBtnsView.addHandlerClick();
+  movesetMenuBtnsView.addHandlerClickMultiple();
+
+  slotSelectBtnView.addHandlerClickMultiple();
+  slotSelectUlView.addHandlerHover();
+  slotInputView.addHandlerKeyupMultiple();
+  tooltipView.addHandlerHover();
+};
+
+/* handle data and fetching requests, modify UI as needed*/
+const handleAppLogic = function () {
+  searchBtnView.addHandlerClick(controlSearchResults);
+  teamNameInputView.addHandlerNameChange(model.changeCurrentTeamName);
+  teamMembersView.addHandlerLoad(controlTeamMemberAdd);
+  deleteMemberBtnsView.addHandlerClick(controlDeleteBtn);
+  slotSelectUlView.addHandlerClick(controlAddSlot);
+  favoriteTeamBtnView.addHandlerClick(
+    sideMenuBtnView.closeAll,
+    controlTeamSave
+  );
+  savedTeamsView.addHandlerClick(controlSavedTeams);
+};
+
+const checkStorage = function () {
+  model.getLocalStorage();
+  model.state.savedTeams.forEach((savedTeam) => {
+    savedTeamsView.addNewSaved(savedTeam, savedTeam.teamID || 0);
+  });
+};
+
+const init = function () {
+  handleUIMenus();
+  handleAppLogic();
+  checkStorage();
 };
 
 init();

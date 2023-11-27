@@ -4,33 +4,25 @@ class slotSelectUlView {
         this._timeoutTooltip = null;
     }
     _startTimeout(tooltip) {
-        console.log(`started timeout`);
         clearTimeout(this._timeoutTooltip || "");
         this._timeoutTooltip = setTimeout(() => {
-            console.log(`executing`);
             tooltip === null || tooltip === void 0 ? void 0 : tooltip.classList.remove("block");
-        }, 1500);
+        }, 200);
     }
     _interruptTimeout() {
         clearTimeout(this._timeoutTooltip || "");
-        console.log("interrupted timeout");
     }
     addHandlerHover() {
         this._slotsSelects.forEach((slotSelect) => {
             var _a;
             const tooltip = (_a = slotSelect
                 .closest(".moveset-menu-inner")) === null || _a === void 0 ? void 0 : _a.querySelector(".tooltip");
-            console.log(tooltip);
             tooltip.addEventListener("mouseout", (e) => {
-                console.log(`mouseout1`);
                 if (e.target.closest(".tooltip"))
                     return;
-                console.log(`mouseout2`);
-                console.log(`out toolptip`);
                 this._startTimeout(tooltip);
             });
             tooltip.addEventListener("mouseover", (e) => {
-                console.log(`in toolptip`);
                 this._interruptTimeout();
             });
             Array.from(slotSelect.querySelectorAll(".slot-select_ul")).forEach((slotSelectUl) => {
@@ -49,6 +41,21 @@ class slotSelectUlView {
                             : "";
                     }
                 });
+            });
+        });
+    }
+    addHandlerClick(handler) {
+        this._slotsSelects.forEach((slotSelect) => {
+            slotSelect.addEventListener("click", (e) => {
+                var _a, _b;
+                const li = e.target.closest(".slot-select_li");
+                if (li) {
+                    const name = li.dataset.name || "";
+                    const type = li.dataset.type || "";
+                    const slotType = ((_a = li.closest(".slot-select")) === null || _a === void 0 ? void 0 : _a.classList[1].split("-")[2]) || "";
+                    const memberNum = Number((_b = li.closest(".team-member")) === null || _b === void 0 ? void 0 : _b.classList[1].split("-")[2]) || 1;
+                    handler(name, type, slotType, memberNum);
+                }
             });
         });
     }

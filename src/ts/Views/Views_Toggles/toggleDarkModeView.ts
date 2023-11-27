@@ -6,6 +6,11 @@ class toggleDarkModeView {
   _iconLunrock = "src/img/icons_ui/lunrock.png";
 
   addHandlerClick() {
+    this._btnToggleIcon!.src = document.documentElement.classList.contains(
+      "dark"
+    )
+      ? this._iconLunrock
+      : this._iconSolrock;
     this._btnToggle?.addEventListener("click", () => {
       this._btnToggleIcon!.src = this._btnToggleIcon!.src.split("/")
         .at(-1)

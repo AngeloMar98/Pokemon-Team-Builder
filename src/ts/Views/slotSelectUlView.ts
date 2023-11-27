@@ -1,21 +1,17 @@
-import { time } from "console";
-
+import { Type } from "../interfaces";
 class slotSelectUlView {
   _slotsSelects = Array.from(document.querySelectorAll(".slots-select"));
   _timeoutTooltip: ReturnType<typeof setTimeout> | null = null;
 
   _startTimeout(tooltip: HTMLElement) {
-    console.log(`started timeout`);
     clearTimeout(this._timeoutTooltip || "");
     this._timeoutTooltip = setTimeout(() => {
-      console.log(`executing`);
       tooltip?.classList.remove("block");
-    }, 1500);
+    }, 200);
   }
 
   _interruptTimeout() {
     clearTimeout(this._timeoutTooltip || "");
-    console.log("interrupted timeout");
   }
 
   addHandlerHover() {
@@ -23,17 +19,12 @@ class slotSelectUlView {
       const tooltip: HTMLElement = slotSelect
         .closest(".moveset-menu-inner")
         ?.querySelector(".tooltip")!;
-
-      console.log(tooltip);
       tooltip!.addEventListener("mouseout", (e: any) => {
-        console.log(`mouseout1`);
         if (e.target.closest(".tooltip")) return;
-        console.log(`mouseout2`);
-        console.log(`out toolptip`);
+
         this._startTimeout(tooltip);
       });
       tooltip!.addEventListener("mouseover", (e: any) => {
-        console.log(`in toolptip`);
         this._interruptTimeout();
       });
 
@@ -58,6 +49,33 @@ class slotSelectUlView {
           });
         }
       );
+    });
+  }
+
+  addHandlerClick(
+    handler: (
+      name: string,
+      type: string,
+      slotType: string,
+      memberNum: number
+    ) => void
+  ) {
+    this._slotsSelects.forEach((slotSelect) => {
+      slotSelect.addEventListener("click", (e: any) => {
+        const li: HTMLElement = e.target.closest(".slot-select_li");
+
+        if (li) {
+          const name: string = li.dataset.name || "";
+          const type: string = li.dataset.type || "";
+
+          const slotType: string =
+            li.closest(".slot-select")?.classList[1]!.split("-")[2] || "";
+          const memberNum: number =
+            Number(li.closest(".team-member")?.classList[1].split("-")[2]) || 1;
+
+          handler(name, type, slotType, memberNum);
+        }
+      });
     });
   }
 }

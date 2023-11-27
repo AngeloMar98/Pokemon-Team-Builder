@@ -14,5 +14,14 @@ class sidemenuBtnView extends ToggleMenus {
     this._everythingELse?.classList.remove("show-teams");
     this._everythingELse?.classList.remove("show-stats");
   }
+
+  closeAll() {
+    document.querySelector(".sidemenu")!.classList.add("sidemenu-hidden");
+    document
+      .querySelector(".sidemenu-btn")!
+      .classList.remove("sidemenu-btn-lifted");
+    document.querySelector(".teamsAndStats")?.classList.remove("show-teams");
+    document.querySelector(".teamsAndStats")?.classList.remove("show-stats");
+  }
 }
 export default new sidemenuBtnView();

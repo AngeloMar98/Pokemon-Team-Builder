@@ -16,5 +16,14 @@ class sidemenuBtnView extends ToggleMenus {
         (_a = this._everythingELse) === null || _a === void 0 ? void 0 : _a.classList.remove("show-teams");
         (_b = this._everythingELse) === null || _b === void 0 ? void 0 : _b.classList.remove("show-stats");
     }
+    closeAll() {
+        var _a, _b;
+        document.querySelector(".sidemenu").classList.add("sidemenu-hidden");
+        document
+            .querySelector(".sidemenu-btn")
+            .classList.remove("sidemenu-btn-lifted");
+        (_a = document.querySelector(".teamsAndStats")) === null || _a === void 0 ? void 0 : _a.classList.remove("show-teams");
+        (_b = document.querySelector(".teamsAndStats")) === null || _b === void 0 ? void 0 : _b.classList.remove("show-stats");
+    }
 }
 export default new sidemenuBtnView();

@@ -38,6 +38,7 @@ module.exports = {
         electric: "#f2d94e",
         fairy: "#ee90e6",
         fighting: "#d3425f",
+
         fire: "#fba54c",
         flying: "#a1bbec",
         ghost: "#5f6dbc",
@@ -70,7 +71,16 @@ module.exports = {
     },
   },
   safelist: [
+    "w-[90px]",
+    "h-[25px]",
+    "pointer-events-none",
+    "mt-auto",
+    "col-span-6",
+    "fill-fighting",
+    "text-xs",
+    "w-[120px]",
     "left-[-28px]",
+    "top-[60px]",
     "rotate-0",
     "-rotate-90",
     "rotate-180",
@@ -89,5 +99,6 @@ module.exports = {
     "hard-active",
     "pointer-events-none",
     "teamMember-add-inner",
+    "font-medium",
   ],
 };

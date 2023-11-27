@@ -6,7 +6,6 @@ export type Type =
   | "fairy"
   | "fighting"
   | "fire"
-  | "fighting"
   | "flying"
   | "ghost"
   | "grass"
@@ -34,15 +33,15 @@ export type GenerationNum =
 
 export interface Move {
   name: String;
-  type: Type;
+  type: String;
   power?: Number | null;
-  accuracy: Number | null;
+  accuracy?: Number | null;
   category?: MoveCategory;
-  effect: String;
+  effect?: String;
 }
 
 export interface Ability {
-  effect: String;
+  effect?: String;
   name: String;
 }
 
@@ -69,8 +68,15 @@ export interface Generation {
   gen: GenerationNum;
   list: Pokemon[];
 }
+export interface Stat {
+  type: string;
+  value: number;
+}
 
 export interface Team {
   teamName: String;
   teamMembers: Pokemon[];
+  teamID?: number;
+  teamDefense: Array<Stat[]>;
+  teamOffense: Array<Stat[]>;
 }
