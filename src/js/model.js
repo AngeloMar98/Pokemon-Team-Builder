@@ -438,6 +438,7 @@ export const eliminateTeamMember = function (memberNum) {
     state.currentTeam.teamMembers.pop();
     state.currentTeam.teamDefense.pop();
     state.currentTeam.teamOffense.pop();
+    state.cycleCount = 0;
     state.currentTeamAdd--;
 };
 export const changeCurrentTeamName = function (newName) {
