@@ -16,7 +16,7 @@ class savedTeamsView {
 
           
           ${team.teamMembers.reduce((acc, pokemon) => acc +
-            `<img class="mx-auto mt-auto col-span-1" src="static/img/pokemon_icons/${pokemon.id}.png" />`, "")}     
+            `<img class="mx-auto mt-auto col-span-1" src="img/pokemon_icons/${pokemon.id}.png" />`, "")}     
               
         </div>`);
     }

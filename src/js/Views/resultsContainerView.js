@@ -29,7 +29,7 @@ class resultsContainerView {
                 >
                   <img loading="lazy"
                     alt="${pokemon.name}"
-                    src="static/img/pokemon_sprites/${pokemon.id}.png"
+                    src="img/pokemon_sprites/${pokemon.id}.png"
                     class="custom-shadow-sm w-[60px] h-[60px]"
                   /></div
               ></a>

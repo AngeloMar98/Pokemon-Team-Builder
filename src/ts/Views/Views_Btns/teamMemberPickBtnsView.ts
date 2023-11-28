@@ -1,5 +1,3 @@
-import { CLIENT_RENEG_LIMIT } from "tls";
-
 class teamMemberPickBtnsView {
   smallPickBtns = Array.from(
     document.querySelector(".pick-container-1")!.querySelectorAll(".pick-btn")

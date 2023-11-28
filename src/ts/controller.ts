@@ -36,7 +36,7 @@
 // Prendi tipo, gen, name, evoluto o no
 
 // // FIX WHEN DEPLOYING
-import "core-js/stable";
+// import "core-js/stable";
 // import "regenerator-runtime/runtime";
 
 import * as model from "./model.js";

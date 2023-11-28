@@ -72,7 +72,7 @@ class teamMembersView {
     _createTypes(typeChoice, types) {
         return typeChoice
             ? `
-                    <img class="h-[25px] w-[90px]" alt="bug type icon" src="static/img/types_labels/${types[0]}.png">
+                    <img class="h-[25px] w-[90px]" alt="bug type icon" src="img/types_labels/${types[0]}.png">
                     <button
                   class="filter-menu_btn h-[25px] w-[90px] font-medium text-xs rounded-full bg-lightM-lightBismark text-lightM-blackPearl dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 px-1 flex items-center justify-center"
                 >
@@ -294,7 +294,7 @@ class teamMembersView {
                        </ul>`
             : `${types.reduce((acc, type) => acc +
                 `<img class="h-[25px] w-[92px]" alt="${type} type icon" 
-                        src="static/img/types_labels/${type}.png">`, "")}`;
+                        src="img/types_labels/${type}.png">`, "")}`;
     }
     _generateMarkup(pokemon, num) {
         const teachableMovesUl = this._createTeachableMoves(pokemon.teachableMoves || []);
@@ -324,7 +324,7 @@ class teamMembersView {
               <img
                 alt="${pokemon.name} icon"
                 class="hover:cursor-pointer custom-shadow w-[96px] h-[96px]"
-                src="static/img/pokemon_sprites/${pokemon.id}.png"
+                src="img/pokemon_sprites/${pokemon.id}.png"
               />
             </div>
             <div class="filter-menu group">
@@ -550,7 +550,7 @@ class teamMembersView {
                 const li = e.target.closest("li");
                 if (li) {
                     handleTypeChoice(num, li.dataset.type);
-                    typesFlexInner.querySelector("img").src = `static/img/types_labels/${li.dataset.type}.png`;
+                    typesFlexInner.querySelector("img").src = `img/types_labels/${li.dataset.type}.png`;
                 }
             });
         }

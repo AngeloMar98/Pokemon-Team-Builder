@@ -11,6 +11,7 @@
   "author": "Angelo Marciano",
   "license": "ISC",
   "dependencies": {
+    "@parcel/resolver-glob": "^2.10.3",
     "common-js": "^0.3.8",
     "core-js": "^3.33.2",
     "deepcopy": "^2.1.0",
