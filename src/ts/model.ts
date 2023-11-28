@@ -432,6 +432,7 @@ const calcStats = async function (types: Type[]) {
 };
 
 const setLocalStorage = function () {
+  if (state.savedTeams.length === 0) state.uniqueid = 0;
   localStorage.setItem("savedTeams", JSON.stringify([...state.savedTeams]));
   localStorage.setItem("teamIDstart", JSON.stringify(state.teamIDstart));
   localStorage.setItem("uniqueid", JSON.stringify(state.uniqueid));
