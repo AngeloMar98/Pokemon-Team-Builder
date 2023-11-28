@@ -2,15 +2,15 @@ class teamMembersView {
     constructor() {
         this._parentElement = document.querySelector(".team-members-container");
     }
-    clear(uniqueID, position) {
+    clear(uniqueid, position) {
         var _a, _b, _c;
         const currentMember = position
             ? (_a = this._parentElement) === null || _a === void 0 ? void 0 : _a.querySelector(`.team-member-${position}`)
-            : (_b = this._parentElement) === null || _b === void 0 ? void 0 : _b.querySelector(`[data-uniqueID="${uniqueID}"]`);
+            : (_b = this._parentElement) === null || _b === void 0 ? void 0 : _b.querySelector(`[data-uniqueid="${uniqueid}"]`);
         /* REMOVE NAME */
         currentMember.querySelector("h2").innerHTML = "";
         /* REMOVE ID */
-        currentMember.dataset.uniqueID = "";
+        currentMember.dataset.uniqueid = "";
         /* HIDE BUTTON */
         (_c = currentMember === null || currentMember === void 0 ? void 0 : currentMember.querySelector(".delete-member-btn")) === null || _c === void 0 ? void 0 : _c.classList.add("hidden");
         /* REMOVE IMG  */
@@ -304,7 +304,7 @@ class teamMembersView {
         const teachableMovesUl = this._createTeachableMoves(pokemon.teachableMoves || []);
         const possibleAbilitiesUl = this._createPossibleAbilites(pokemon.possibleAbilities || []);
         return `<article id="member-${num}"
-     data-uniqueID="${pokemon.uniqueID}" class="team-member team-member-${num} group hide-moveset" >
+     data-uniqueid="${pokemon.uniqueid}" class="team-member team-member-${num} group hide-moveset" >
               <div class="team-member-${num}-inner relative">
               <svg
                 class="delete-member-btn hidden absolute top-1 right-1 p-1 fill-darkM-whiteIndigo hover:cursor-pointer rounded-full dark:bg-darkM-lightIndigo1 bg-lightM-bismark"
@@ -525,8 +525,8 @@ class teamMembersView {
         const newDOM = document.createRange().createContextualFragment(newMarkup);
         const currentMember = this._parentElement.querySelector(`.team-member-${num}`);
         /* UPDATE ID */
-        currentMember.dataset.uniqueID =
-            (_a = newDOM.querySelector("article")) === null || _a === void 0 ? void 0 : _a.dataset.uniqueID;
+        currentMember.dataset.uniqueid =
+            (_a = newDOM.querySelector("article")) === null || _a === void 0 ? void 0 : _a.dataset.uniqueid;
         console.log(newDOM.querySelector("article"));
         /* UPDATE NAME */
         currentMember.querySelector("h2").innerHTML =
@@ -559,8 +559,8 @@ class teamMembersView {
             (_f = typesFlexInner === null || typesFlexInner === void 0 ? void 0 : typesFlexInner.querySelector(".filter-menu_ul")) === null || _f === void 0 ? void 0 : _f.addEventListener("click", (e) => {
                 const li = e.target.closest("li");
                 if (li) {
-                    const currUniqueID = Number(li.closest(".team-member").dataset.uniqueID);
-                    handleTypeChoice(currUniqueID, li.dataset.type);
+                    const currUniqueid = Number(li.closest(".team-member").dataset.uniqueid);
+                    handleTypeChoice(currUniqueid, li.dataset.type);
                     typesFlexInner.querySelector("img").src = `img/types_labels/${li.dataset.type}.png`;
                 }
             });

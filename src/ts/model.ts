@@ -40,7 +40,7 @@ let cycleCount = 0;
 
 let currentTeamSavedId: number = 0;
 let teamIDstart: number = 0;
-let uniqueID: number = 0;
+let uniqueid: number = 0;
 export const state = {
   searchResults,
   savedTeams,
@@ -49,7 +49,7 @@ export const state = {
 
   currentTeamSavedId,
   teamIDstart,
-  uniqueID,
+  uniqueid,
 };
 
 const fetchPokemon = async function (id: number) {
@@ -87,9 +87,9 @@ const fetchPokemon = async function (id: number) {
       ability: {
         name: "",
       },
-      uniqueID: state.uniqueID,
+      uniqueid: state.uniqueid,
     };
-    state.uniqueID++;
+    state.uniqueid++;
     return fullPokemon;
   } catch (error) {
     console.error("Failed pokèmon fetching");
@@ -434,7 +434,7 @@ const calcStats = async function (types: Type[]) {
 const setLocalStorage = function () {
   localStorage.setItem("savedTeams", JSON.stringify([...state.savedTeams]));
   localStorage.setItem("teamIDstart", JSON.stringify(state.teamIDstart));
-  localStorage.setItem("uniqueID", JSON.stringify(state.uniqueID));
+  localStorage.setItem("uniqueid", JSON.stringify(state.uniqueid));
 };
 
 export const addTeamMember = async function (id: number) {
@@ -445,10 +445,10 @@ export const addTeamMember = async function (id: number) {
     if (state.currentTeam.teamMembers?.length === 6) {
       state.currentTeam.teamMembers = state.currentTeam.teamMembers.filter(
         (teamMember) =>
-          teamMember.uniqueID !==
+          teamMember.uniqueid !==
           Math.min(
             ...state.currentTeam.teamMembers.map(
-              (teamMember) => teamMember.uniqueID
+              (teamMember) => teamMember.uniqueid
             )
           )
       );
@@ -463,12 +463,12 @@ export const addTeamMember = async function (id: number) {
 export const getLocalStorage = function () {
   const previousSavedTeams = localStorage.getItem("savedTeams");
   const previousTeamIDstart = localStorage.getItem("teamIDstart") || "";
-  const previousUniqueID = localStorage.getItem("uniqueID") || "";
+  const previousUniqueid = localStorage.getItem("uniqueid") || "";
 
-  if (previousSavedTeams && previousTeamIDstart && previousUniqueID) {
+  if (previousSavedTeams && previousTeamIDstart && previousUniqueid) {
     state.savedTeams = JSON.parse(previousSavedTeams);
     state.teamIDstart = Number(JSON.parse(previousTeamIDstart));
-    state.uniqueID = Number(JSON.parse(previousUniqueID));
+    state.uniqueid = Number(JSON.parse(previousUniqueid));
   }
 };
 
@@ -533,9 +533,9 @@ export const updateTeamMember = function (
   return { name, type, slotType, memberNum };
 };
 
-export const changeType = async function (currUniqueID: number, type: Type) {
+export const changeType = async function (currUniqueid: number, type: Type) {
   const pos = state.currentTeam.teamMembers.findIndex(
-    (teamMember) => teamMember.uniqueID === currUniqueID
+    (teamMember) => teamMember.uniqueid === currUniqueid
   );
   state.currentTeam.teamMembers[pos].types[0] = type;
   const stats = await calcStats([type]);
@@ -543,9 +543,9 @@ export const changeType = async function (currUniqueID: number, type: Type) {
   state.currentTeam.teamDefense[pos] = stats.defencePokemon;
 };
 
-export const eliminateTeamMember = function (eliUniqueID: number) {
+export const eliminateTeamMember = function (eliUniqueid: number) {
   const delPosNum = state.currentTeam.teamMembers.findIndex(
-    (teamMember) => teamMember.uniqueID === eliUniqueID
+    (teamMember) => teamMember.uniqueid === eliUniqueid
   );
 
   state.currentTeam.teamMembers.splice(delPosNum, 1);

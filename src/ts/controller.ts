@@ -168,8 +168,8 @@ const controlTeamSave = function (promptType: string) {
   }
 };
 
-const controlTypeChange = async function (uniqueID: number, type: Type) {
-  await model.changeType(uniqueID, type);
+const controlTypeChange = async function (uniqueid: number, type: Type) {
+  await model.changeType(uniqueid, type);
   statisticsView.updateStatistics(
     model.state.currentTeam.teamDefense,
     model.state.currentTeam.teamOffense
@@ -186,10 +186,10 @@ const controlAddSlot = function (
   slotSelectNameView.updateSlot(name, type, slotType, memberNum);
 };
 
-const controlDeleteBtn = function (uniqueID: number) {
+const controlDeleteBtn = function (uniqueid: number) {
   // first of all clear the member from the state and from view
 
-  model.eliminateTeamMember(uniqueID);
+  model.eliminateTeamMember(uniqueid);
 
   statisticsView.updateStatistics(
     model.state.currentTeam.teamDefense,

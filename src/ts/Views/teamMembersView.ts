@@ -11,16 +11,16 @@ import {
 class teamMembersView {
   _parentElement = document.querySelector(".team-members-container");
 
-  clear(uniqueID: number, position?: number) {
+  clear(uniqueid: number, position?: number) {
     const currentMember: HTMLElement = position
       ? this._parentElement?.querySelector(`.team-member-${position}`)!
-      : this._parentElement?.querySelector(`[data-uniqueID="${uniqueID}"]`)!;
+      : this._parentElement?.querySelector(`[data-uniqueid="${uniqueid}"]`)!;
     /* REMOVE NAME */
     currentMember!.querySelector("h2")!.innerHTML = "";
 
     /* REMOVE ID */
 
-    currentMember.dataset.uniqueID = "";
+    currentMember.dataset.uniqueid = "";
 
     /* HIDE BUTTON */
     currentMember?.querySelector(".delete-member-btn")?.classList.add("hidden");
@@ -356,8 +356,8 @@ class teamMembersView {
     );
 
     return `<article id="member-${num}"
-     data-uniqueID="${
-       pokemon.uniqueID
+     data-uniqueid="${
+       pokemon.uniqueid
      }" class="team-member team-member-${num} group hide-moveset" >
               <div class="team-member-${num}-inner relative">
               <svg
@@ -578,7 +578,7 @@ class teamMembersView {
   update(
     pokemon: Pokemon | null,
     num: number,
-    handleTypeChoice: (uniqueID: number, type: Type) => void
+    handleTypeChoice: (uniqueid: number, type: Type) => void
   ) {
     if (pokemon === null) return;
     const newMarkup = this._generateMarkup(pokemon, num);
@@ -591,8 +591,8 @@ class teamMembersView {
 
     /* UPDATE ID */
 
-    currentMember.dataset.uniqueID =
-      newDOM.querySelector("article")?.dataset.uniqueID;
+    currentMember.dataset.uniqueid =
+      newDOM.querySelector("article")?.dataset.uniqueid;
 
     console.log(newDOM.querySelector("article"));
     /* UPDATE NAME */
@@ -657,10 +657,10 @@ class teamMembersView {
         ?.addEventListener("click", (e: any) => {
           const li = e.target.closest("li");
           if (li) {
-            const currUniqueID: number = Number(
-              li.closest(".team-member").dataset.uniqueID
+            const currUniqueid: number = Number(
+              li.closest(".team-member").dataset.uniqueid
             );
-            handleTypeChoice(currUniqueID, li.dataset.type);
+            handleTypeChoice(currUniqueid, li.dataset.type);
             typesFlexInner.querySelector(
               "img"
             )!.src = `img/types_labels/${li.dataset.type}.png`;

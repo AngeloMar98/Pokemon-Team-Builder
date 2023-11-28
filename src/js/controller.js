@@ -130,9 +130,9 @@ const controlTeamSave = function (promptType) {
         savedTeamsView.deleteSaved(model.state.currentTeamSavedId);
     }
 };
-const controlTypeChange = function (uniqueID, type) {
+const controlTypeChange = function (uniqueid, type) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield model.changeType(uniqueID, type);
+        yield model.changeType(uniqueid, type);
         statisticsView.updateStatistics(model.state.currentTeam.teamDefense, model.state.currentTeam.teamOffense);
     });
 };
@@ -140,9 +140,9 @@ const controlAddSlot = function (name, type, slotType, memberNum) {
     model.updateTeamMember(name, type, slotType, memberNum);
     slotSelectNameView.updateSlot(name, type, slotType, memberNum);
 };
-const controlDeleteBtn = function (uniqueID) {
+const controlDeleteBtn = function (uniqueid) {
     // first of all clear the member from the state and from view
-    model.eliminateTeamMember(uniqueID);
+    model.eliminateTeamMember(uniqueid);
     statisticsView.updateStatistics(model.state.currentTeam.teamDefense, model.state.currentTeam.teamOffense);
     teamMembersView.clearAll();
     addAll();

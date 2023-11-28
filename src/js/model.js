@@ -38,7 +38,7 @@ const currentTeam = {
 let cycleCount = 0;
 let currentTeamSavedId = 0;
 let teamIDstart = 0;
-let uniqueID = 0;
+let uniqueid = 0;
 export const state = {
     searchResults,
     savedTeams,
@@ -46,7 +46,7 @@ export const state = {
     cycleCount,
     currentTeamSavedId,
     teamIDstart,
-    uniqueID,
+    uniqueid,
 };
 const fetchPokemon = function (id) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -80,9 +80,9 @@ const fetchPokemon = function (id) {
                 ability: {
                     name: "",
                 },
-                uniqueID: state.uniqueID,
+                uniqueid: state.uniqueid,
             };
-            state.uniqueID++;
+            state.uniqueid++;
             return fullPokemon;
         }
         catch (error) {
@@ -343,7 +343,7 @@ const calcStats = function (types) {
 const setLocalStorage = function () {
     localStorage.setItem("savedTeams", JSON.stringify([...state.savedTeams]));
     localStorage.setItem("teamIDstart", JSON.stringify(state.teamIDstart));
-    localStorage.setItem("uniqueID", JSON.stringify(state.uniqueID));
+    localStorage.setItem("uniqueid", JSON.stringify(state.uniqueid));
 };
 export const addTeamMember = function (id) {
     var _a, _b;
@@ -352,8 +352,8 @@ export const addTeamMember = function (id) {
             const fullPokemon = yield fetchPokemon(id);
             // when max lenght is reached, find oldest member and filter it out
             if (((_a = state.currentTeam.teamMembers) === null || _a === void 0 ? void 0 : _a.length) === 6) {
-                state.currentTeam.teamMembers = state.currentTeam.teamMembers.filter((teamMember) => teamMember.uniqueID !==
-                    Math.min(...state.currentTeam.teamMembers.map((teamMember) => teamMember.uniqueID)));
+                state.currentTeam.teamMembers = state.currentTeam.teamMembers.filter((teamMember) => teamMember.uniqueid !==
+                    Math.min(...state.currentTeam.teamMembers.map((teamMember) => teamMember.uniqueid)));
             }
             (_b = state.currentTeam.teamMembers) === null || _b === void 0 ? void 0 : _b.push(fullPokemon);
         }
@@ -365,11 +365,11 @@ export const addTeamMember = function (id) {
 export const getLocalStorage = function () {
     const previousSavedTeams = localStorage.getItem("savedTeams");
     const previousTeamIDstart = localStorage.getItem("teamIDstart") || "";
-    const previousUniqueID = localStorage.getItem("uniqueID") || "";
-    if (previousSavedTeams && previousTeamIDstart && previousUniqueID) {
+    const previousUniqueid = localStorage.getItem("uniqueid") || "";
+    if (previousSavedTeams && previousTeamIDstart && previousUniqueid) {
         state.savedTeams = JSON.parse(previousSavedTeams);
         state.teamIDstart = Number(JSON.parse(previousTeamIDstart));
-        state.uniqueID = Number(JSON.parse(previousUniqueID));
+        state.uniqueid = Number(JSON.parse(previousUniqueid));
     }
 };
 export const saveCurrentTeam = function () {
@@ -418,17 +418,17 @@ export const updateTeamMember = function (name, type, slotType, memberNum) {
     }
     return { name, type, slotType, memberNum };
 };
-export const changeType = function (currUniqueID, type) {
+export const changeType = function (currUniqueid, type) {
     return __awaiter(this, void 0, void 0, function* () {
-        const pos = state.currentTeam.teamMembers.findIndex((teamMember) => teamMember.uniqueID === currUniqueID);
+        const pos = state.currentTeam.teamMembers.findIndex((teamMember) => teamMember.uniqueid === currUniqueid);
         state.currentTeam.teamMembers[pos].types[0] = type;
         const stats = yield calcStats([type]);
         state.currentTeam.teamOffense[pos] = stats.offensePokemon;
         state.currentTeam.teamDefense[pos] = stats.defencePokemon;
     });
 };
-export const eliminateTeamMember = function (eliUniqueID) {
-    const delPosNum = state.currentTeam.teamMembers.findIndex((teamMember) => teamMember.uniqueID === eliUniqueID);
+export const eliminateTeamMember = function (eliUniqueid) {
+    const delPosNum = state.currentTeam.teamMembers.findIndex((teamMember) => teamMember.uniqueid === eliUniqueid);
     state.currentTeam.teamMembers.splice(delPosNum, 1);
     state.currentTeam.teamDefense.splice(delPosNum, 1);
     state.currentTeam.teamOffense.splice(delPosNum, 1);
