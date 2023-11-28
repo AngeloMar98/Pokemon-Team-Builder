@@ -4,7 +4,6 @@
   ],
   "reporters": [
     "...",
-    "parcel-reporter-static-files-copy",
-    "parcel-reporter-resolver-glob"
+    "parcel-reporter-static-files-copy"
   ]
 }
