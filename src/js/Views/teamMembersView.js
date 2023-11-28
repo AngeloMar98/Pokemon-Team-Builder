@@ -2,13 +2,17 @@ class teamMembersView {
     constructor() {
         this._parentElement = document.querySelector(".team-members-container");
     }
-    clear(memberNum) {
-        var _a, _b;
-        const currentMember = (_a = this._parentElement) === null || _a === void 0 ? void 0 : _a.querySelector(`.team-member-${memberNum}`);
+    clear(uniqueID, position) {
+        var _a, _b, _c;
+        const currentMember = position
+            ? (_a = this._parentElement) === null || _a === void 0 ? void 0 : _a.querySelector(`.team-member-${position + 1}`)
+            : (_b = this._parentElement) === null || _b === void 0 ? void 0 : _b.querySelector(`[data-uniqueID="${uniqueID}"]`);
         /* REMOVE NAME */
         currentMember.querySelector("h2").innerHTML = "";
+        /* REMOVE ID */
+        currentMember.dataset.uniqueID = "";
         /* HIDE BUTTON */
-        (_b = currentMember === null || currentMember === void 0 ? void 0 : currentMember.querySelector(".delete-member-btn")) === null || _b === void 0 ? void 0 : _b.classList.add("hidden");
+        (_c = currentMember === null || currentMember === void 0 ? void 0 : currentMember.querySelector(".delete-member-btn")) === null || _c === void 0 ? void 0 : _c.classList.add("hidden");
         /* REMOVE IMG  */
         const pokemonImg = currentMember.querySelector("img");
         pokemonImg.src = "#";
@@ -31,7 +35,7 @@ class teamMembersView {
     }
     clearAll() {
         Array.from(document.querySelectorAll(".team-member")).forEach((_, i) => {
-            this.clear(String(i + 1));
+            this.clear(0, i);
         });
     }
     addHandlerLoad(handler) {
@@ -299,7 +303,7 @@ class teamMembersView {
     _generateMarkup(pokemon, num) {
         const teachableMovesUl = this._createTeachableMoves(pokemon.teachableMoves || []);
         const possibleAbilitiesUl = this._createPossibleAbilites(pokemon.possibleAbilities || []);
-        return `<article id="member-${num}" class="team-member team-member-${num} group hide-moveset">
+        return `<article id="member-${num}" data-uniqueID="${pokemon.uniqueId}" class="team-member team-member-${num} group hide-moveset" >
               <div class="team-member-${num}-inner relative">
               <svg
                 class="delete-member-btn hidden absolute top-1 right-1 p-1 fill-darkM-whiteIndigo hover:cursor-pointer rounded-full dark:bg-darkM-lightIndigo1 bg-lightM-bismark"
@@ -512,23 +516,26 @@ class teamMembersView {
         });
     }
     update(pokemon, num, handleTypeChoice) {
-        var _a, _b, _c, _d, _e;
+        var _a, _b, _c, _d, _e, _f;
         if (pokemon === null)
             return;
         const newMarkup = this._generateMarkup(pokemon, num);
         const newDOM = document.createRange().createContextualFragment(newMarkup);
         const currentMember = this._parentElement.querySelector(`.team-member-${num}`);
+        /* UPDATE ID */
+        currentMember.dataset.uniqueID =
+            (_a = newDOM.querySelector("article")) === null || _a === void 0 ? void 0 : _a.dataset.uniqueID;
         /* UPDATE NAME */
         currentMember.querySelector("h2").innerHTML =
-            ((_a = newDOM.querySelector("h2")) === null || _a === void 0 ? void 0 : _a.innerHTML) || "";
+            ((_b = newDOM.querySelector("h2")) === null || _b === void 0 ? void 0 : _b.innerHTML) || "";
         /* REVEAL DELETE BUTTON */
-        (_b = currentMember === null || currentMember === void 0 ? void 0 : currentMember.querySelector(".delete-member-btn")) === null || _b === void 0 ? void 0 : _b.classList.remove("hidden");
+        (_c = currentMember === null || currentMember === void 0 ? void 0 : currentMember.querySelector(".delete-member-btn")) === null || _c === void 0 ? void 0 : _c.classList.remove("hidden");
         /* UPDATE IMG  */
         Array.from(newDOM.querySelector("img").attributes).forEach((attr) => currentMember.querySelector("img").setAttribute(attr.name, attr.value));
         /* UPDATE TYPES */
         const typesFlexInner = this._parentElement.querySelector(`.team-member-${num}-inner .types-flex-inner`);
         typesFlexInner.innerHTML =
-            ((_c = newDOM.querySelector(".types-flex-inner")) === null || _c === void 0 ? void 0 : _c.innerHTML) || "";
+            ((_d = newDOM.querySelector(".types-flex-inner")) === null || _d === void 0 ? void 0 : _d.innerHTML) || "";
         /* UPDATE SLOTS CHOICES */
         const allSlotSelectChoice = Array.from(currentMember.querySelectorAll(`.slot-select_ul`));
         const updatedSlotSlectChoice = Array.from(newDOM.querySelectorAll(`.team-member-${num} .slot-select_ul`));
@@ -543,10 +550,10 @@ class teamMembersView {
             slot.textContent = allUpdatedSlots[i].textContent || "";
         });
         if (pokemon.typeChoice) {
-            (_d = typesFlexInner === null || typesFlexInner === void 0 ? void 0 : typesFlexInner.querySelector(".filter-menu_btn")) === null || _d === void 0 ? void 0 : _d.addEventListener("click", function () {
+            (_e = typesFlexInner === null || typesFlexInner === void 0 ? void 0 : typesFlexInner.querySelector(".filter-menu_btn")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", function () {
                 typesFlexInner.classList.toggle("activated");
             });
-            (_e = typesFlexInner === null || typesFlexInner === void 0 ? void 0 : typesFlexInner.querySelector(".filter-menu_ul")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", (e) => {
+            (_f = typesFlexInner === null || typesFlexInner === void 0 ? void 0 : typesFlexInner.querySelector(".filter-menu_ul")) === null || _f === void 0 ? void 0 : _f.addEventListener("click", (e) => {
                 const li = e.target.closest("li");
                 if (li) {
                     handleTypeChoice(num, li.dataset.type);

@@ -36,17 +36,17 @@ const currentTeam = {
     teamOffense: [],
 };
 let cycleCount = 0;
-let currentTeamAdd = 0;
 let currentTeamSavedId = 0;
 let teamIDstart = 0;
+let uniqueID = 0;
 export const state = {
     searchResults,
     savedTeams,
     currentTeam,
     cycleCount,
-    currentTeamAdd,
     currentTeamSavedId,
     teamIDstart,
+    uniqueID,
 };
 const fetchPokemon = function (id) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -80,7 +80,9 @@ const fetchPokemon = function (id) {
                 ability: {
                     name: "",
                 },
+                uniqueId: state.uniqueID,
             };
+            state.uniqueID++;
             return fullPokemon;
         }
         catch (error) {
@@ -341,18 +343,17 @@ const calcStats = function (types) {
 const setLocalStorage = function () {
     localStorage.setItem("savedTeams", JSON.stringify([...state.savedTeams]));
     localStorage.setItem("teamIDstart", JSON.stringify(state.teamIDstart));
+    localStorage.setItem("uniqueID", JSON.stringify(state.uniqueID));
 };
 export const addTeamMember = function (id) {
     var _a, _b;
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const fullPokemon = yield fetchPokemon(id);
-            state.currentTeamAdd =
-                state.currentTeamAdd > 5 ? 1 : state.currentTeamAdd + 1;
+            // when max lenght is reached, find oldest member and filter it out
             if (((_a = state.currentTeam.teamMembers) === null || _a === void 0 ? void 0 : _a.length) === 6) {
-                state.currentTeam.teamMembers[state.cycleCount] = fullPokemon;
-                state.cycleCount = state.cycleCount >= 5 ? 0 : state.cycleCount + 1;
-                return;
+                state.currentTeam.teamMembers = state.currentTeam.teamMembers.filter((teamMember) => teamMember.uniqueId !==
+                    Math.max(...state.currentTeam.teamMembers.map((teamMember) => teamMember.uniqueId)));
             }
             (_b = state.currentTeam.teamMembers) === null || _b === void 0 ? void 0 : _b.push(fullPokemon);
         }
@@ -364,9 +365,11 @@ export const addTeamMember = function (id) {
 export const getLocalStorage = function () {
     const previousSavedTeams = localStorage.getItem("savedTeams");
     const previousTeamIDstart = localStorage.getItem("teamIDstart") || "";
+    const previousUniqueId = localStorage.getItem("uniqueID") || "";
     if (previousSavedTeams) {
         state.savedTeams = JSON.parse(previousSavedTeams);
         state.teamIDstart = Number(JSON.parse(previousTeamIDstart));
+        state.uniqueID = Number(JSON.parse(previousUniqueId));
     }
 };
 export const saveCurrentTeam = function () {
@@ -383,7 +386,6 @@ export const cleanCurrentTeam = function () {
         teamDefense: [],
         teamOffense: [],
     };
-    state.currentTeamAdd = 0;
 };
 export const updateTeamMember = function (name, type, slotType, memberNum) {
     const slot = slotType === "ability" ? "ability" : `move${slotType}`;
@@ -424,22 +426,11 @@ export const changeType = function (memberNum, type) {
         state.currentTeam.teamDefense[Number(memberNum) - 1] = stats.defencePokemon;
     });
 };
-export const eliminateTeamMember = function (memberNum) {
-    // We assign to the slot we want to eliminate the last index content (if there is any),
-    // this we OVERWRITE the member to eliminate, and we just need to eliminate the duplicate
-    if (state.currentTeam.teamMembers.length > 1) {
-        state.currentTeam.teamMembers[Number(memberNum) - 1] =
-            state.currentTeam.teamMembers.at(-1);
-        state.currentTeam.teamDefense[Number(memberNum) - 1] =
-            state.currentTeam.teamDefense.at(-1);
-        state.currentTeam.teamOffense[Number(memberNum) - 1] =
-            state.currentTeam.teamOffense.at(-1);
-    }
-    state.currentTeam.teamMembers.pop();
-    state.currentTeam.teamDefense.pop();
-    state.currentTeam.teamOffense.pop();
-    state.cycleCount = 0;
-    state.currentTeamAdd--;
+export const eliminateTeamMember = function (eliUniqueID) {
+    const delPosNum = state.currentTeam.teamMembers.findIndex((teamMember) => teamMember.uniqueId === eliUniqueID);
+    state.currentTeam.teamMembers.splice(delPosNum, 1);
+    state.currentTeam.teamDefense.splice(delPosNum, 1);
+    state.currentTeam.teamOffense.splice(delPosNum, 1);
 };
 export const changeCurrentTeamName = function (newName) {
     state.currentTeam.teamName = newName;

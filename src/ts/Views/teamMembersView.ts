@@ -11,12 +11,16 @@ import {
 class teamMembersView {
   _parentElement = document.querySelector(".team-members-container");
 
-  clear(memberNum: string) {
-    const currentMember = this._parentElement?.querySelector(
-      `.team-member-${memberNum}`
-    );
+  clear(uniqueID: number, position?: number) {
+    const currentMember: HTMLElement = position
+      ? this._parentElement?.querySelector(`.team-member-${position + 1}`)!
+      : this._parentElement?.querySelector(`[data-uniqueID="${uniqueID}"]`)!;
     /* REMOVE NAME */
     currentMember!.querySelector("h2")!.innerHTML = "";
+
+    /* REMOVE ID */
+
+    currentMember.dataset.uniqueID = "";
 
     /* HIDE BUTTON */
     currentMember?.querySelector(".delete-member-btn")?.classList.add("hidden");
@@ -52,7 +56,7 @@ class teamMembersView {
 
   clearAll() {
     Array.from(document.querySelectorAll(".team-member")).forEach((_, i) => {
-      this.clear(String(i + 1));
+      this.clear(0, i);
     });
   }
 
@@ -351,7 +355,9 @@ class teamMembersView {
       pokemon.possibleAbilities || []
     );
 
-    return `<article id="member-${num}" class="team-member team-member-${num} group hide-moveset">
+    return `<article id="member-${num}" data-uniqueID="${
+      pokemon.uniqueId
+    }" class="team-member team-member-${num} group hide-moveset" >
               <div class="team-member-${num}-inner relative">
               <svg
                 class="delete-member-btn hidden absolute top-1 right-1 p-1 fill-darkM-whiteIndigo hover:cursor-pointer rounded-full dark:bg-darkM-lightIndigo1 bg-lightM-bismark"
@@ -577,9 +583,14 @@ class teamMembersView {
     const newMarkup = this._generateMarkup(pokemon, num);
     const newDOM = document.createRange().createContextualFragment(newMarkup);
 
-    const currentMember = this._parentElement!.querySelector(
+    const currentMember: HTMLElement = this._parentElement!.querySelector(
       `.team-member-${num}`
-    );
+    )!;
+
+    /* UPDATE ID */
+
+    currentMember.dataset.uniqueID =
+      newDOM.querySelector("article")?.dataset.uniqueID;
 
     /* UPDATE NAME */
     currentMember!.querySelector("h2")!.innerHTML =

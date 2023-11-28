@@ -37,17 +37,19 @@ const currentTeam: Team = {
 };
 
 let cycleCount = 0;
-let currentTeamAdd = 0;
+
 let currentTeamSavedId: number = 0;
 let teamIDstart: number = 0;
+let uniqueID: number = 0;
 export const state = {
   searchResults,
   savedTeams,
   currentTeam,
   cycleCount,
-  currentTeamAdd,
+
   currentTeamSavedId,
   teamIDstart,
+  uniqueID,
 };
 
 const fetchPokemon = async function (id: number) {
@@ -85,7 +87,9 @@ const fetchPokemon = async function (id: number) {
       ability: {
         name: "",
       },
+      uniqueId: state.uniqueID,
     };
+    state.uniqueID++;
     return fullPokemon;
   } catch (error) {
     console.error("Failed pokèmon fetching");
@@ -430,19 +434,24 @@ const calcStats = async function (types: Type[]) {
 const setLocalStorage = function () {
   localStorage.setItem("savedTeams", JSON.stringify([...state.savedTeams]));
   localStorage.setItem("teamIDstart", JSON.stringify(state.teamIDstart));
+  localStorage.setItem("uniqueID", JSON.stringify(state.uniqueID));
 };
 
 export const addTeamMember = async function (id: number) {
   try {
     const fullPokemon = await fetchPokemon(id);
-    state.currentTeamAdd =
-      state.currentTeamAdd > 5 ? 1 : state.currentTeamAdd + 1;
 
+    // when max lenght is reached, find oldest member and filter it out
     if (state.currentTeam.teamMembers?.length === 6) {
-      state.currentTeam.teamMembers[state.cycleCount] = fullPokemon;
-      state.cycleCount = state.cycleCount >= 5 ? 0 : state.cycleCount + 1;
-
-      return;
+      state.currentTeam.teamMembers = state.currentTeam.teamMembers.filter(
+        (teamMember) =>
+          teamMember.uniqueId !==
+          Math.max(
+            ...state.currentTeam.teamMembers.map(
+              (teamMember) => teamMember.uniqueId
+            )
+          )
+      );
     }
 
     state.currentTeam.teamMembers?.push(fullPokemon);
@@ -454,10 +463,12 @@ export const addTeamMember = async function (id: number) {
 export const getLocalStorage = function () {
   const previousSavedTeams = localStorage.getItem("savedTeams");
   const previousTeamIDstart = localStorage.getItem("teamIDstart") || "";
+  const previousUniqueId = localStorage.getItem("uniqueID") || "";
 
   if (previousSavedTeams) {
     state.savedTeams = JSON.parse(previousSavedTeams);
     state.teamIDstart = Number(JSON.parse(previousTeamIDstart));
+    state.uniqueID = Number(JSON.parse(previousUniqueId));
   }
 };
 
@@ -476,7 +487,6 @@ export const cleanCurrentTeam = function () {
     teamDefense: [],
     teamOffense: [],
   };
-  state.currentTeamAdd = 0;
 };
 
 export const updateTeamMember = function (
@@ -530,24 +540,14 @@ export const changeType = async function (memberNum: number, type: Type) {
   state.currentTeam.teamDefense[Number(memberNum) - 1] = stats.defencePokemon;
 };
 
-export const eliminateTeamMember = function (memberNum: string) {
-  // We assign to the slot we want to eliminate the last index content (if there is any),
-  // this we OVERWRITE the member to eliminate, and we just need to eliminate the duplicate
-  if (state.currentTeam.teamMembers.length > 1) {
-    state.currentTeam.teamMembers[Number(memberNum) - 1] =
-      state.currentTeam.teamMembers.at(-1)!;
-    state.currentTeam.teamDefense[Number(memberNum) - 1] =
-      state.currentTeam.teamDefense.at(-1)!;
-    state.currentTeam.teamOffense[Number(memberNum) - 1] =
-      state.currentTeam.teamOffense.at(-1)!;
-  }
+export const eliminateTeamMember = function (eliUniqueID: number) {
+  const delPosNum = state.currentTeam.teamMembers.findIndex(
+    (teamMember) => teamMember.uniqueId === eliUniqueID
+  );
 
-  state.currentTeam.teamMembers.pop();
-  state.currentTeam.teamDefense.pop();
-  state.currentTeam.teamOffense.pop();
-
-  state.cycleCount = 0;
-  state.currentTeamAdd--;
+  state.currentTeam.teamMembers.splice(delPosNum, 1);
+  state.currentTeam.teamDefense.splice(delPosNum, 1);
+  state.currentTeam.teamOffense.splice(delPosNum, 1);
 };
 
 export const changeCurrentTeamName = function (newName: string) {

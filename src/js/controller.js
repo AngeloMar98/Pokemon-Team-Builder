@@ -90,7 +90,6 @@ const controlTeamMemberAdd = function () {
         previousString = windowHash;
         yield Promise.all(teamMembersId.slice(-6).map((id) => __awaiter(this, void 0, void 0, function* () {
             yield model.addTeamMember(Number(id));
-            teamMembersView.update(model.state.currentTeam.teamMembers[model.state.currentTeamAdd - 1], model.state.currentTeamAdd, controlTypeChange);
         })));
         yield model.setCurrentTeamStats(model.state.currentTeam.teamMembers);
         statisticsView.updateStatistics(model.state.currentTeam.teamDefense, model.state.currentTeam.teamOffense);
@@ -140,24 +139,20 @@ const controlAddSlot = function (name, type, slotType, memberNum) {
     model.updateTeamMember(name, type, slotType, memberNum);
     slotSelectNameView.updateSlot(name, type, slotType, memberNum);
 };
-const controlDeleteBtn = function (memberNum) {
+const controlDeleteBtn = function (uniqueId) {
     // first of all clear the member from the state and from view
-    teamMembersView.clear(memberNum);
-    model.eliminateTeamMember(memberNum);
+    model.eliminateTeamMember(uniqueId);
     statisticsView.updateStatistics(model.state.currentTeam.teamDefense, model.state.currentTeam.teamOffense);
-    // quit if there are no member in state to show OR we eliminated the last member
-    if (model.state.currentTeam.teamMembers.length === 0 ||
-        model.state.currentTeam.teamMembers.length + 1 === Number(memberNum))
-        return;
-    // eliminate the last element we duplicated
-    teamMembersView.clear(model.state.currentTeam.teamMembers.length + 1 + "");
-    // and SHOW that member again
-    teamMembersView.update(model.state.currentTeam.teamMembers[Number(memberNum) - 1] || null, Number(memberNum), controlTypeChange);
+    teamMembersView.clearAll();
+    addAll();
 };
 const clearAll = function () {
     statisticsView.clear();
     model.cleanCurrentTeam();
     teamMembersView.clearAll();
+};
+const addAll = function () {
+    model.state.currentTeam.teamMembers.forEach((pokemon, i) => teamMembersView.update(pokemon, i, controlTypeChange));
 };
 /* simple close and open menus */
 const handleUIMenus = function () {

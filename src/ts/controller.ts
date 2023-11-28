@@ -107,11 +107,6 @@ const controlTeamMemberAdd = async function () {
   await Promise.all(
     teamMembersId.slice(-6).map(async (id) => {
       await model.addTeamMember(Number(id));
-      teamMembersView.update(
-        model.state.currentTeam.teamMembers[model.state.currentTeamAdd - 1],
-        model.state.currentTeamAdd,
-        controlTypeChange
-      );
     })
   );
 
@@ -186,38 +181,31 @@ const controlAddSlot = function (
   slotSelectNameView.updateSlot(name, type, slotType, memberNum);
 };
 
-const controlDeleteBtn = function (memberNum: string) {
+const controlDeleteBtn = function (uniqueId: number) {
   // first of all clear the member from the state and from view
-  teamMembersView.clear(memberNum);
-  model.eliminateTeamMember(memberNum);
+
+  model.eliminateTeamMember(uniqueId);
 
   statisticsView.updateStatistics(
     model.state.currentTeam.teamDefense,
     model.state.currentTeam.teamOffense
   );
 
-  // quit if there are no member in state to show OR we eliminated the last member
-  if (
-    model.state.currentTeam.teamMembers.length === 0 ||
-    model.state.currentTeam.teamMembers.length + 1 === Number(memberNum)
-  )
-    return;
+  teamMembersView.clearAll();
 
-  // eliminate the last element we duplicated
-  teamMembersView.clear(model.state.currentTeam.teamMembers.length + 1 + "");
-
-  // and SHOW that member again
-  teamMembersView.update(
-    model.state.currentTeam.teamMembers[Number(memberNum) - 1] || null,
-    Number(memberNum),
-    controlTypeChange
-  );
+  addAll();
 };
 
 const clearAll = function () {
   statisticsView.clear();
   model.cleanCurrentTeam();
   teamMembersView.clearAll();
+};
+
+const addAll = function () {
+  model.state.currentTeam.teamMembers.forEach((pokemon, i) =>
+    teamMembersView.update(pokemon, i, controlTypeChange)
+  );
 };
 
 /* simple close and open menus */

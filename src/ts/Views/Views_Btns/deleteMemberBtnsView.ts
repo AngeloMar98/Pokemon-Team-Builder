@@ -1,13 +1,13 @@
 class deleteMemberBtnsView {
   _deleteBtns = Array.from(document.querySelectorAll(".delete-member-btn"));
 
-  addHandlerClick(handler: (memberNum: string) => void) {
+  addHandlerClick(handler: (uniqueID: number) => void) {
     this._deleteBtns.forEach((deleteBtn) => {
-      const memberNum = deleteBtn.closest(".team-member")?.id.split("-")[1];
       deleteBtn.addEventListener("click", () => {
-        console.log(memberNum);
+        const teamMember: HTMLElement = deleteBtn.closest(".team-member")!;
+        const uniqueID: number = Number(teamMember.dataset.uniqueID);
         deleteBtn.classList.add("hidden");
-        handler(memberNum || "");
+        handler(uniqueID);
       });
     });
   }
