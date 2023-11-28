@@ -867,17 +867,6 @@ h3 {
   }
 }
 
-.bar-immune {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 195 0 / var(--tw-bg-opacity));
-}
-
-.bar-resist,
-  .bar-eff {
-  --tw-bg-opacity: 1;
-  background-color: rgb(233 232 237 / var(--tw-bg-opacity));
-}
-
 .pick-btn {
   border-bottom-width: 4px;
   border-color: transparent;
@@ -1916,6 +1905,10 @@ h3 {
 
 .stroke-lightM-blackPearl {
   stroke: #030708;
+}
+
+.stroke-\[32px\] {
+  stroke-width: 32px;
 }
 
 .p-1 {
