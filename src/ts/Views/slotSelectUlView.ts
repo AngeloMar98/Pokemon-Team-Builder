@@ -69,9 +69,9 @@ class slotSelectUlView {
           const type: string = li.dataset.type || "";
 
           const slotType: string =
-            li.closest(".slot-select")?.classList[1]!.split("-")[2] || "";
+            li.closest(".slot-select")?.classList[2]!.split("-")[2] || "";
           const memberNum: number =
-            Number(li.closest(".team-member")?.classList[1].split("-")[2]) || 1;
+            Number(li.closest(".team-member")?.classList[2].split("-")[2]) || 1;
 
           handler(name, type, slotType, memberNum);
         }
