@@ -446,7 +446,7 @@ export const addTeamMember = async function (id: number) {
       state.currentTeam.teamMembers = state.currentTeam.teamMembers.filter(
         (teamMember) =>
           teamMember.uniqueId !==
-          Math.max(
+          Math.min(
             ...state.currentTeam.teamMembers.map(
               (teamMember) => teamMember.uniqueId
             )
