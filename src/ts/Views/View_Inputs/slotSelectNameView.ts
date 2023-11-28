@@ -14,7 +14,8 @@ class slotSelectNameView {
         slotName.textContent = "";
       }
     });
-
+    console.log(this.teamMembers);
+    console.log(slot);
     this.teamMembers[memberNum - 1].querySelector(slot)!.textContent = name;
   }
 }
