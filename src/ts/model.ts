@@ -350,8 +350,8 @@ class PokedexFilter {
 const pokedexFilter = new PokedexFilter();
 
 const calcTeamStats = async function (teamMembers: Pokemon[]) {
-  const teamDefense = [];
-  const teamOffense = [];
+  const teamDefense: Array<Stat[]> = [];
+  const teamOffense: Array<Stat[]> = [];
   for await (const pokemon of teamMembers) {
     const stats = await calcStats(pokemon.types);
     teamDefense.push(stats.defencePokemon);

@@ -1,5 +1,22 @@
 import { Stat, Type } from "../interfaces";
-import { emitKeypressEvents } from "readline";
+import bug from "../../img/types_icons/bug.svg";
+import dark from "../../img/types_icons/dark.svg";
+import dragon from "../../img/types_icons/dragon.svg";
+import electric from "../../img/types_icons/electric.svg";
+import fairy from "../../img/types_icons/fairy.svg";
+import fighting from "../../img/types_icons/fighting.svg";
+import fire from "../../img/types_icons/fire.svg";
+import flying from "../../img/types_icons/flying.svg";
+import ghost from "../../img/types_icons/ghost.svg";
+import grass from "../../img/types_icons/grass.svg";
+import ground from "../../img/types_icons/ground.svg";
+import ice from "../../img/types_icons/ice.svg";
+import normal from "../../img/types_icons/normal.svg";
+import poison from "../../img/types_icons/poison.svg";
+import psychic from "../../img/types_icons/psychic.svg";
+import rock from "../../img/types_icons/rock.svg";
+import steel from "../../img/types_icons/steel.svg";
+import water from "../../img/types_icons/water.svg";
 
 class statisticsView {
   _defense: HTMLElement | null = document.querySelector(".defense_ul");
@@ -57,7 +74,7 @@ class statisticsView {
               <img
                 title="bug"
                 alt="bug"
-                src="src/img/types_icons/bug.svg"
+                src="${bug}"
                 class="inline w-[30px] rounded-full bg-bug p-1"
               />
 
@@ -104,7 +121,7 @@ class statisticsView {
               <img
                 title="dark"
                 alt="dark"
-                src="src/img/types_icons/dark.svg"
+                src="${dark}"
                 class="inline w-[30px] rounded-full bg-dark p-1"
               />
 
@@ -151,7 +168,7 @@ class statisticsView {
               <img
                 title="dragon"
                 alt="dragon"
-                src="src/img/types_icons/dragon.svg"
+                src="${dragon}"
                 class="inline w-[30px] rounded-full bg-dragon p-1"
               />
 
@@ -198,7 +215,7 @@ class statisticsView {
               <img
                 title="electric"
                 alt="electric"
-                src="src/img/types_icons/electric.svg"
+                src="${electric}"
                 class="inline w-[30px] rounded-full bg-electric p-1"
               />
 
@@ -245,7 +262,7 @@ class statisticsView {
               <img
                 title="fairy"
                 alt="fairy"
-                src="src/img/types_icons/fairy.svg"
+                src="${fairy}"
                 class="inline w-[30px] rounded-full bg-fairy p-1"
               />
 
@@ -292,7 +309,7 @@ class statisticsView {
               <img
                 title="fighting"
                 alt="fighting"
-                src="src/img/types_icons/fighting.svg"
+                src="${fighting}"
                 class="inline w-[30px] rounded-full bg-fighting p-1"
               />
 
@@ -339,7 +356,7 @@ class statisticsView {
               <img
                 title="fire"
                 alt="fire"
-                src="src/img/types_icons/fire.svg"
+                src="${fire}"
                 class="inline w-[30px] rounded-full bg-fire p-1"
               />
              <div
@@ -386,7 +403,7 @@ class statisticsView {
               <img
                 title="flying"
                 alt="flying"
-                src="src/img/types_icons/flying.svg"
+                src="${flying}"
                 class="inline w-[30px] rounded-full bg-flying p-1"
               />
 <div
@@ -433,7 +450,7 @@ class statisticsView {
               style="grid-template-columns: 30px auto"
             >
               <img
-                src="src/img/types_icons/ghost.svg"
+                src="${ghost}"
                 class="inline w-[30px] rounded-full bg-ghost p-1"
               />
 <div
@@ -480,7 +497,7 @@ class statisticsView {
               style="grid-template-columns: 30px auto"
             >
               <img
-                src="src/img/types_icons/grass.svg"
+                src="${grass}"
                 class="inline w-[30px] rounded-full bg-grass p-1"
               />
 
@@ -527,7 +544,7 @@ class statisticsView {
               style="grid-template-columns: 30px auto"
             >
               <img
-                src="src/img/types_icons/ground.svg"
+                src="${ground}"
                 class="inline w-[30px] rounded-full bg-ground p-1"
               />
 
@@ -574,7 +591,7 @@ class statisticsView {
               style="grid-template-columns: 30px auto"
             >
               <img
-                src="src/img/types_icons/ice.svg"
+                src="${ice}"
                 class="inline w-[30px] rounded-full bg-ice p-1"
               />
 <div
@@ -621,7 +638,7 @@ class statisticsView {
               style="grid-template-columns: 30px auto"
             >
               <img
-                src="src/img/types_icons/normal.svg"
+                src="${normal}"
                 class="inline w-[30px] rounded-full bg-normal p-1"
               />
 
@@ -668,7 +685,7 @@ class statisticsView {
               <img
                 title="poison"
                 alt="poison"
-                src="src/img/types_icons/poison.svg"
+                src="${poison}"
                 class="inline w-[30px] rounded-full bg-poison p-1"
               />
 
@@ -715,7 +732,7 @@ class statisticsView {
               <img
                 title="psychic"
                 alt="psychic"
-                src="src/img/types_icons/psychic.svg"
+                src="${psychic}"
                 class="inline w-[30px] rounded-full bg-psychic p-1"
               />
 
@@ -762,7 +779,7 @@ class statisticsView {
               <img
                 title="rock"
                 alt="rock"
-                src="src/img/types_icons/rock.svg"
+                src="${rock}"
                 class="inline w-[30px] rounded-full bg-rock p-1"
               />
 
@@ -809,7 +826,7 @@ class statisticsView {
               <img
                 title="steel"
                 alt="steel"
-                src="src/img/types_icons/steel.svg"
+                src="${steel}"
                 class="inline w-[30px] rounded-full bg-steel p-1"
               />
 
@@ -856,7 +873,7 @@ class statisticsView {
               <img
                 title="water"
                 alt="water"
-                src="src/img/types_icons/water.svg"
+                src="${water}"
                 class="inline w-[30px] rounded-full bg-water p-1"
               />
 
@@ -906,7 +923,7 @@ class statisticsView {
               <img
                 title="bug"
                 alt="bug"
-                src="src/img/types_icons/bug.svg"
+                src="${bug}"
                 class="inline w-[30px] rounded-full bg-bug p-1"
               />
 
@@ -945,7 +962,7 @@ class statisticsView {
               <img
                 title="dark"
                 alt="dark"
-                src="src/img/types_icons/dark.svg"
+                src="${dark}"
                 class="inline w-[30px] rounded-full bg-dark p-1"
               />
 
@@ -980,7 +997,7 @@ class statisticsView {
               <img
                 title="dragon"
                 alt="dragon"
-                src="src/img/types_icons/dragon.svg"
+                src="${dragon}"
                 class="inline w-[30px] rounded-full bg-dragon p-1"
               />
 
@@ -1015,7 +1032,7 @@ class statisticsView {
               <img
                 title="electric"
                 alt="electric"
-                src="src/img/types_icons/electric.svg"
+                src="${electric}"
                 class="inline w-[30px] rounded-full bg-electric p-1"
               />
 
@@ -1050,7 +1067,7 @@ class statisticsView {
               <img
                 title="fairy"
                 alt="fairy"
-                src="src/img/types_icons/fairy.svg"
+                src="${fairy}"
                 class="inline w-[30px] rounded-full bg-fairy p-1"
               />
 
@@ -1085,7 +1102,7 @@ class statisticsView {
               <img
                 title="fighting"
                 alt="fighting"
-                src="src/img/types_icons/fighting.svg"
+                src="${fighting}"
                 class="inline w-[30px] rounded-full bg-fighting p-1"
               />
 
@@ -1120,7 +1137,7 @@ class statisticsView {
               <img
                 title="fire"
                 alt="fire"
-                src="src/img/types_icons/fire.svg"
+                src="${fire}"
                 class="inline w-[30px] rounded-full bg-fire p-1"
               />
              <div
@@ -1155,7 +1172,7 @@ class statisticsView {
               <img
                 title="flying"
                 alt="flying"
-                src="src/img/types_icons/flying.svg"
+                src="${flying}"
                 class="inline w-[30px] rounded-full bg-flying p-1"
               />
 <div
@@ -1190,7 +1207,7 @@ class statisticsView {
               style="grid-template-columns: 30px auto"
             >
               <img
-                src="src/img/types_icons/ghost.svg"
+                src="${ghost}"
                 class="inline w-[30px] rounded-full bg-ghost p-1"
               />
 <div
@@ -1231,7 +1248,7 @@ class statisticsView {
               style="grid-template-columns: 30px auto"
             >
               <img
-                src="src/img/types_icons/grass.svg"
+                src="${grass}"
                 class="inline w-[30px] rounded-full bg-grass p-1"
               />
 
@@ -1272,7 +1289,7 @@ class statisticsView {
               style="grid-template-columns: 30px auto"
             >
               <img
-                src="src/img/types_icons/ground.svg"
+                src="${ground}"
                 class="inline w-[30px] rounded-full bg-ground p-1"
               />
 
@@ -1313,7 +1330,7 @@ class statisticsView {
               style="grid-template-columns: 30px auto"
             >
               <img
-                src="src/img/types_icons/ice.svg"
+                src="${ice}"
                 class="inline w-[30px] rounded-full bg-ice p-1"
               />
 <div
@@ -1354,7 +1371,7 @@ class statisticsView {
               style="grid-template-columns: 30px auto"
             >
               <img
-                src="src/img/types_icons/normal.svg"
+                src="${normal}"
                 class="inline w-[30px] rounded-full bg-normal p-1"
               />
 
@@ -1395,7 +1412,7 @@ class statisticsView {
               <img
                 title="poison"
                 alt="poison"
-                src="src/img/types_icons/poison.svg"
+                src="${poison}"
                 class="inline w-[30px] rounded-full bg-poison p-1"
               />
 
@@ -1436,7 +1453,7 @@ class statisticsView {
               <img
                 title="psychic"
                 alt="psychic"
-                src="src/img/types_icons/psychic.svg"
+                src="${psychic}"
                 class="inline w-[30px] rounded-full bg-psychic p-1"
               />
 
@@ -1477,7 +1494,7 @@ class statisticsView {
               <img
                 title="rock"
                 alt="rock"
-                src="src/img/types_icons/rock.svg"
+                src="${rock}"
                 class="inline w-[30px] rounded-full bg-rock p-1"
               />
 
@@ -1518,7 +1535,7 @@ class statisticsView {
               <img
                 title="steel"
                 alt="steel"
-                src="src/img/types_icons/steel.svg"
+                src="${steel}"
                 class="inline w-[30px] rounded-full bg-steel p-1"
               />
 
@@ -1559,7 +1576,7 @@ class statisticsView {
               <img
                 title="water"
                 alt="water"
-                src="src/img/types_icons/water.svg"
+                src="${water}"
                 class="inline w-[30px] rounded-full bg-water p-1"
               />
 
