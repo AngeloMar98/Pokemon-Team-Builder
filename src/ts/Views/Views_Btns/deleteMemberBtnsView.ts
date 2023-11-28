@@ -5,7 +5,7 @@ class deleteMemberBtnsView {
     this._deleteBtns.forEach((deleteBtn) => {
       const memberNum = deleteBtn
         .closest(".team-member")
-        ?.classList[1].split("-")[2];
+        ?.classList[2].split("-")[2];
       deleteBtn.addEventListener("click", () => {
         console.log(memberNum);
         deleteBtn.classList.add("hidden");
