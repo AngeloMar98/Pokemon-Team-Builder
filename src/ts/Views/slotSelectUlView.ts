@@ -71,7 +71,7 @@ class slotSelectUlView {
           const slotType: string =
             li.closest(".slot-select")?.classList[2]!.split("-")[2] || "";
           const memberNum: number =
-            Number(li.closest(".team-member")?.classList[2].split("-")[2]) || 1;
+            Number(li.closest(".team-member")?.id.split("-")[1]) || 1;
 
           handler(name, type, slotType, memberNum);
         }

@@ -53,7 +53,7 @@ class slotSelectUlView {
                     const name = li.dataset.name || "";
                     const type = li.dataset.type || "";
                     const slotType = ((_a = li.closest(".slot-select")) === null || _a === void 0 ? void 0 : _a.classList[2].split("-")[2]) || "";
-                    const memberNum = Number((_b = li.closest(".team-member")) === null || _b === void 0 ? void 0 : _b.classList[2].split("-")[2]) || 1;
+                    const memberNum = Number((_b = li.closest(".team-member")) === null || _b === void 0 ? void 0 : _b.id.split("-")[1]) || 1;
                     handler(name, type, slotType, memberNum);
                 }
             });

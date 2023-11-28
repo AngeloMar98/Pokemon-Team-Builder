@@ -299,7 +299,7 @@ class teamMembersView {
     _generateMarkup(pokemon, num) {
         const teachableMovesUl = this._createTeachableMoves(pokemon.teachableMoves || []);
         const possibleAbilitiesUl = this._createPossibleAbilites(pokemon.possibleAbilities || []);
-        return `<article class="team-member team-member-${num} group hide-moveset">
+        return `<article id="member-${num}" class="team-member team-member-${num} group hide-moveset">
               <div class="team-member-${num}-inner relative">
               <svg
                 class="delete-member-btn hidden absolute top-1 right-1 p-1 fill-darkM-whiteIndigo hover:cursor-pointer rounded-full dark:bg-darkM-lightIndigo1 bg-lightM-bismark"
