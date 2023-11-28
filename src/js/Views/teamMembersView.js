@@ -5,7 +5,7 @@ class teamMembersView {
     clear(uniqueID, position) {
         var _a, _b, _c;
         const currentMember = position
-            ? (_a = this._parentElement) === null || _a === void 0 ? void 0 : _a.querySelector(`.team-member-${position + 1}`)
+            ? (_a = this._parentElement) === null || _a === void 0 ? void 0 : _a.querySelector(`.team-member-${position}`)
             : (_b = this._parentElement) === null || _b === void 0 ? void 0 : _b.querySelector(`[data-uniqueID="${uniqueID}"]`);
         /* REMOVE NAME */
         currentMember.querySelector("h2").innerHTML = "";
@@ -35,7 +35,7 @@ class teamMembersView {
     }
     clearAll() {
         Array.from(document.querySelectorAll(".team-member")).forEach((_, i) => {
-            this.clear(0, i);
+            this.clear(0, i + 1);
         });
     }
     addHandlerLoad(handler) {

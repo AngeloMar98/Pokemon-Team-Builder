@@ -13,7 +13,7 @@ class teamMembersView {
 
   clear(uniqueID: number, position?: number) {
     const currentMember: HTMLElement = position
-      ? this._parentElement?.querySelector(`.team-member-${position + 1}`)!
+      ? this._parentElement?.querySelector(`.team-member-${position}`)!
       : this._parentElement?.querySelector(`[data-uniqueID="${uniqueID}"]`)!;
     /* REMOVE NAME */
     currentMember!.querySelector("h2")!.innerHTML = "";
@@ -56,7 +56,7 @@ class teamMembersView {
 
   clearAll() {
     Array.from(document.querySelectorAll(".team-member")).forEach((_, i) => {
-      this.clear(0, i);
+      this.clear(0, i + 1);
     });
   }
 
