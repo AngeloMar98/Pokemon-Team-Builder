@@ -54,7 +54,7 @@ export interface Pokemon {
   fullEvo?: boolean;
   forms?: boolean;
   typeChoice?: boolean;
-  uniqueId: number;
+  uniqueID: number;
 
   teachableMoves?: Move[];
   possibleAbilities?: Ability[];

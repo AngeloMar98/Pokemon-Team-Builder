@@ -80,7 +80,7 @@ const fetchPokemon = function (id) {
                 ability: {
                     name: "",
                 },
-                uniqueId: state.uniqueID,
+                uniqueID: state.uniqueID,
             };
             state.uniqueID++;
             return fullPokemon;
@@ -352,8 +352,8 @@ export const addTeamMember = function (id) {
             const fullPokemon = yield fetchPokemon(id);
             // when max lenght is reached, find oldest member and filter it out
             if (((_a = state.currentTeam.teamMembers) === null || _a === void 0 ? void 0 : _a.length) === 6) {
-                state.currentTeam.teamMembers = state.currentTeam.teamMembers.filter((teamMember) => teamMember.uniqueId !==
-                    Math.min(...state.currentTeam.teamMembers.map((teamMember) => teamMember.uniqueId)));
+                state.currentTeam.teamMembers = state.currentTeam.teamMembers.filter((teamMember) => teamMember.uniqueID !==
+                    Math.min(...state.currentTeam.teamMembers.map((teamMember) => teamMember.uniqueID)));
             }
             (_b = state.currentTeam.teamMembers) === null || _b === void 0 ? void 0 : _b.push(fullPokemon);
         }
@@ -365,11 +365,11 @@ export const addTeamMember = function (id) {
 export const getLocalStorage = function () {
     const previousSavedTeams = localStorage.getItem("savedTeams");
     const previousTeamIDstart = localStorage.getItem("teamIDstart") || "";
-    const previousUniqueId = localStorage.getItem("uniqueID") || "";
-    if (previousSavedTeams && previousTeamIDstart && previousUniqueId) {
+    const previousUniqueID = localStorage.getItem("uniqueID") || "";
+    if (previousSavedTeams && previousTeamIDstart && previousUniqueID) {
         state.savedTeams = JSON.parse(previousSavedTeams);
         state.teamIDstart = Number(JSON.parse(previousTeamIDstart));
-        state.uniqueID = Number(JSON.parse(previousUniqueId));
+        state.uniqueID = Number(JSON.parse(previousUniqueID));
     }
 };
 export const saveCurrentTeam = function () {
@@ -420,7 +420,7 @@ export const updateTeamMember = function (name, type, slotType, memberNum) {
 };
 export const changeType = function (currUniqueID, type) {
     return __awaiter(this, void 0, void 0, function* () {
-        const pos = state.currentTeam.teamMembers.findIndex((teamMember) => teamMember.uniqueId === currUniqueID);
+        const pos = state.currentTeam.teamMembers.findIndex((teamMember) => teamMember.uniqueID === currUniqueID);
         state.currentTeam.teamMembers[pos].types[0] = type;
         const stats = yield calcStats([type]);
         state.currentTeam.teamOffense[pos] = stats.offensePokemon;
@@ -428,7 +428,7 @@ export const changeType = function (currUniqueID, type) {
     });
 };
 export const eliminateTeamMember = function (eliUniqueID) {
-    const delPosNum = state.currentTeam.teamMembers.findIndex((teamMember) => teamMember.uniqueId === eliUniqueID);
+    const delPosNum = state.currentTeam.teamMembers.findIndex((teamMember) => teamMember.uniqueID === eliUniqueID);
     state.currentTeam.teamMembers.splice(delPosNum, 1);
     state.currentTeam.teamDefense.splice(delPosNum, 1);
     state.currentTeam.teamOffense.splice(delPosNum, 1);

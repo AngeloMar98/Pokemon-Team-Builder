@@ -303,7 +303,8 @@ class teamMembersView {
     _generateMarkup(pokemon, num) {
         const teachableMovesUl = this._createTeachableMoves(pokemon.teachableMoves || []);
         const possibleAbilitiesUl = this._createPossibleAbilites(pokemon.possibleAbilities || []);
-        return `<article id="member-${num}" data-uniqueID="${pokemon.uniqueId}" class="team-member team-member-${num} group hide-moveset" >
+        return `<article id="member-${num}"
+     data-uniqueID="${pokemon.uniqueID}" class="team-member team-member-${num} group hide-moveset" >
               <div class="team-member-${num}-inner relative">
               <svg
                 class="delete-member-btn hidden absolute top-1 right-1 p-1 fill-darkM-whiteIndigo hover:cursor-pointer rounded-full dark:bg-darkM-lightIndigo1 bg-lightM-bismark"
@@ -556,7 +557,7 @@ class teamMembersView {
             (_f = typesFlexInner === null || typesFlexInner === void 0 ? void 0 : typesFlexInner.querySelector(".filter-menu_ul")) === null || _f === void 0 ? void 0 : _f.addEventListener("click", (e) => {
                 const li = e.target.closest("li");
                 if (li) {
-                    const currUniqueID = li.closest(".team-member").dataset.uniqueID;
+                    const currUniqueID = Number(li.closest(".team-member").dataset.uniqueID);
                     handleTypeChoice(currUniqueID, li.dataset.type);
                     typesFlexInner.querySelector("img").src = `img/types_labels/${li.dataset.type}.png`;
                 }

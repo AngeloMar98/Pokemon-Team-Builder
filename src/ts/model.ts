@@ -87,7 +87,7 @@ const fetchPokemon = async function (id: number) {
       ability: {
         name: "",
       },
-      uniqueId: state.uniqueID,
+      uniqueID: state.uniqueID,
     };
     state.uniqueID++;
     return fullPokemon;
@@ -445,10 +445,10 @@ export const addTeamMember = async function (id: number) {
     if (state.currentTeam.teamMembers?.length === 6) {
       state.currentTeam.teamMembers = state.currentTeam.teamMembers.filter(
         (teamMember) =>
-          teamMember.uniqueId !==
+          teamMember.uniqueID !==
           Math.min(
             ...state.currentTeam.teamMembers.map(
-              (teamMember) => teamMember.uniqueId
+              (teamMember) => teamMember.uniqueID
             )
           )
       );
@@ -463,12 +463,12 @@ export const addTeamMember = async function (id: number) {
 export const getLocalStorage = function () {
   const previousSavedTeams = localStorage.getItem("savedTeams");
   const previousTeamIDstart = localStorage.getItem("teamIDstart") || "";
-  const previousUniqueId = localStorage.getItem("uniqueID") || "";
+  const previousUniqueID = localStorage.getItem("uniqueID") || "";
 
-  if (previousSavedTeams && previousTeamIDstart && previousUniqueId) {
+  if (previousSavedTeams && previousTeamIDstart && previousUniqueID) {
     state.savedTeams = JSON.parse(previousSavedTeams);
     state.teamIDstart = Number(JSON.parse(previousTeamIDstart));
-    state.uniqueID = Number(JSON.parse(previousUniqueId));
+    state.uniqueID = Number(JSON.parse(previousUniqueID));
   }
 };
 
@@ -535,7 +535,7 @@ export const updateTeamMember = function (
 
 export const changeType = async function (currUniqueID: number, type: Type) {
   const pos = state.currentTeam.teamMembers.findIndex(
-    (teamMember) => teamMember.uniqueId === currUniqueID
+    (teamMember) => teamMember.uniqueID === currUniqueID
   );
   state.currentTeam.teamMembers[pos].types[0] = type;
   const stats = await calcStats([type]);
@@ -545,7 +545,7 @@ export const changeType = async function (currUniqueID: number, type: Type) {
 
 export const eliminateTeamMember = function (eliUniqueID: number) {
   const delPosNum = state.currentTeam.teamMembers.findIndex(
-    (teamMember) => teamMember.uniqueId === eliUniqueID
+    (teamMember) => teamMember.uniqueID === eliUniqueID
   );
 
   state.currentTeam.teamMembers.splice(delPosNum, 1);

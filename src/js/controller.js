@@ -140,9 +140,9 @@ const controlAddSlot = function (name, type, slotType, memberNum) {
     model.updateTeamMember(name, type, slotType, memberNum);
     slotSelectNameView.updateSlot(name, type, slotType, memberNum);
 };
-const controlDeleteBtn = function (uniqueId) {
+const controlDeleteBtn = function (uniqueID) {
     // first of all clear the member from the state and from view
-    model.eliminateTeamMember(uniqueId);
+    model.eliminateTeamMember(uniqueID);
     statisticsView.updateStatistics(model.state.currentTeam.teamDefense, model.state.currentTeam.teamOffense);
     teamMembersView.clearAll();
     addAll();
