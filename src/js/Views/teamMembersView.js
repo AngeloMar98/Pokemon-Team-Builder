@@ -521,11 +521,13 @@ class teamMembersView {
         if (pokemon === null)
             return;
         const newMarkup = this._generateMarkup(pokemon, num);
+        console.log(newMarkup);
         const newDOM = document.createRange().createContextualFragment(newMarkup);
         const currentMember = this._parentElement.querySelector(`.team-member-${num}`);
         /* UPDATE ID */
         currentMember.dataset.uniqueID =
             (_a = newDOM.querySelector("article")) === null || _a === void 0 ? void 0 : _a.dataset.uniqueID;
+        console.log(newDOM.querySelector("article"));
         /* UPDATE NAME */
         currentMember.querySelector("h2").innerHTML =
             ((_b = newDOM.querySelector("h2")) === null || _b === void 0 ? void 0 : _b.innerHTML) || "";

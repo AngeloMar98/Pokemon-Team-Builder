@@ -582,6 +582,7 @@ class teamMembersView {
   ) {
     if (pokemon === null) return;
     const newMarkup = this._generateMarkup(pokemon, num);
+    console.log(newMarkup);
     const newDOM = document.createRange().createContextualFragment(newMarkup);
 
     const currentMember: HTMLElement = this._parentElement!.querySelector(
@@ -593,6 +594,7 @@ class teamMembersView {
     currentMember.dataset.uniqueID =
       newDOM.querySelector("article")?.dataset.uniqueID;
 
+    console.log(newDOM.querySelector("article"));
     /* UPDATE NAME */
     currentMember!.querySelector("h2")!.innerHTML =
       newDOM.querySelector("h2")?.innerHTML || "";
