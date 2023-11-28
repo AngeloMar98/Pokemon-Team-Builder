@@ -90,6 +90,10 @@ const controlTeamMemberAdd = function () {
         previousString = windowHash;
         yield Promise.all(teamMembersId.slice(-6).map((id) => __awaiter(this, void 0, void 0, function* () {
             yield model.addTeamMember(Number(id));
+            if (model.state.currentTeam.teamMembers.length === 6) {
+                teamMembersView.clearAll();
+                teamMembersView.addAll(model.state.currentTeam.teamMembers, controlTypeChange);
+            }
             teamMembersView.update(model.state.currentTeam.teamMembers.at(-1) || null, model.state.currentTeam.teamMembers.length, controlTypeChange);
         })));
         yield model.setCurrentTeamStats(model.state.currentTeam.teamMembers);
@@ -145,15 +149,12 @@ const controlDeleteBtn = function (uniqueid) {
     model.eliminateTeamMember(uniqueid);
     statisticsView.updateStatistics(model.state.currentTeam.teamDefense, model.state.currentTeam.teamOffense);
     teamMembersView.clearAll();
-    addAll();
+    teamMembersView.addAll(model.state.currentTeam.teamMembers, controlTypeChange);
 };
 const clearAll = function () {
     statisticsView.clear();
     model.cleanCurrentTeam();
     teamMembersView.clearAll();
-};
-const addAll = function () {
-    model.state.currentTeam.teamMembers.forEach((pokemon, i) => teamMembersView.update(pokemon, i + 1, controlTypeChange));
 };
 /* simple close and open menus */
 const handleUIMenus = function () {

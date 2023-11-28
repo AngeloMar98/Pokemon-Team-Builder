@@ -443,14 +443,6 @@ export const addTeamMember = async function (id: number) {
 
     // when max lenght is reached, find oldest member and filter it out
     if (state.currentTeam.teamMembers?.length === 6) {
-      console.log(
-        Math.min(
-          ...state.currentTeam.teamMembers.map(
-            (teamMember) => teamMember.uniqueid
-          )
-        )
-      );
-      console.log(state.currentTeam.teamMembers);
       state.currentTeam.teamMembers = state.currentTeam.teamMembers.filter(
         (teamMember) =>
           teamMember.uniqueid !==
@@ -460,7 +452,6 @@ export const addTeamMember = async function (id: number) {
             )
           )
       );
-      console.log(state.currentTeam.teamMembers);
     }
 
     state.currentTeam.teamMembers?.push(fullPokemon);

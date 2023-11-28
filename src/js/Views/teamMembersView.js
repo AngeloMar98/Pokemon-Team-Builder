@@ -38,6 +38,9 @@ class teamMembersView {
             this.clear(0, i + 1);
         });
     }
+    addAll(teamMembers, handleTypeChoice) {
+        teamMembers.forEach((pokemon, i) => this.update(pokemon, i + 1, handleTypeChoice));
+    }
     addHandlerLoad(handler) {
         ["hashchange", "load"].forEach((event) => window.addEventListener(event, (e) => {
             e.preventDefault();

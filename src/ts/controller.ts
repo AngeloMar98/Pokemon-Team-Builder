@@ -107,6 +107,13 @@ const controlTeamMemberAdd = async function () {
   await Promise.all(
     teamMembersId.slice(-6).map(async (id) => {
       await model.addTeamMember(Number(id));
+      if (model.state.currentTeam.teamMembers.length === 6) {
+        teamMembersView.clearAll();
+        teamMembersView.addAll(
+          model.state.currentTeam.teamMembers,
+          controlTypeChange
+        );
+      }
       teamMembersView.update(
         model.state.currentTeam.teamMembers.at(-1) || null,
         model.state.currentTeam.teamMembers.length,
@@ -198,19 +205,16 @@ const controlDeleteBtn = function (uniqueid: number) {
 
   teamMembersView.clearAll();
 
-  addAll();
+  teamMembersView.addAll(
+    model.state.currentTeam.teamMembers,
+    controlTypeChange
+  );
 };
 
 const clearAll = function () {
   statisticsView.clear();
   model.cleanCurrentTeam();
   teamMembersView.clearAll();
-};
-
-const addAll = function () {
-  model.state.currentTeam.teamMembers.forEach((pokemon, i) =>
-    teamMembersView.update(pokemon, i + 1, controlTypeChange)
-  );
 };
 
 /* simple close and open menus */

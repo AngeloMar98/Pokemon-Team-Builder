@@ -60,6 +60,15 @@ class teamMembersView {
     });
   }
 
+  addAll(
+    teamMembers: Pokemon[],
+    handleTypeChoice: (memberNum: number, type: Type) => void
+  ) {
+    teamMembers.forEach((pokemon, i) =>
+      this.update(pokemon, i + 1, handleTypeChoice)
+    );
+  }
+
   addHandlerLoad(handler: () => void) {
     ["hashchange", "load"].forEach((event) =>
       window.addEventListener(event, (e) => {
