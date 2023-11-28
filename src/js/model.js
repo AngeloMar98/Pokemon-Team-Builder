@@ -352,8 +352,11 @@ export const addTeamMember = function (id) {
             const fullPokemon = yield fetchPokemon(id);
             // when max lenght is reached, find oldest member and filter it out
             if (((_a = state.currentTeam.teamMembers) === null || _a === void 0 ? void 0 : _a.length) === 6) {
+                console.log(Math.min(...state.currentTeam.teamMembers.map((teamMember) => teamMember.uniqueid)));
+                console.log(state.currentTeam.teamMembers);
                 state.currentTeam.teamMembers = state.currentTeam.teamMembers.filter((teamMember) => teamMember.uniqueid !==
                     Math.min(...state.currentTeam.teamMembers.map((teamMember) => teamMember.uniqueid)));
+                console.log(state.currentTeam.teamMembers);
             }
             (_b = state.currentTeam.teamMembers) === null || _b === void 0 ? void 0 : _b.push(fullPokemon);
         }

@@ -6,9 +6,9 @@ class deleteMemberBtnsView {
         this._deleteBtns.forEach((deleteBtn) => {
             deleteBtn.addEventListener("click", () => {
                 const teamMember = deleteBtn.closest(".team-member");
-                const uniqueID = Number(teamMember.dataset.uniqueID);
+                const uniqueid = Number(teamMember.dataset.uniqueid);
                 deleteBtn.classList.add("hidden");
-                handler(uniqueID);
+                handler(uniqueid);
             });
         });
     }
