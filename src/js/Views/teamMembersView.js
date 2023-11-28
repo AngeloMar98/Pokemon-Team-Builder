@@ -556,7 +556,8 @@ class teamMembersView {
             (_f = typesFlexInner === null || typesFlexInner === void 0 ? void 0 : typesFlexInner.querySelector(".filter-menu_ul")) === null || _f === void 0 ? void 0 : _f.addEventListener("click", (e) => {
                 const li = e.target.closest("li");
                 if (li) {
-                    handleTypeChoice(num, li.dataset.type);
+                    const currUniqueID = li.closest(".team-member").dataset.uniqueID;
+                    handleTypeChoice(currUniqueID, li.dataset.type);
                     typesFlexInner.querySelector("img").src = `img/types_labels/${li.dataset.type}.png`;
                 }
             });

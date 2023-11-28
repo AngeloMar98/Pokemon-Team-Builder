@@ -107,6 +107,11 @@ const controlTeamMemberAdd = async function () {
   await Promise.all(
     teamMembersId.slice(-6).map(async (id) => {
       await model.addTeamMember(Number(id));
+      teamMembersView.update(
+        model.state.currentTeam.teamMembers.at(-1) || null,
+        model.state.currentTeam.teamMembers.length,
+        controlTypeChange
+      );
     })
   );
 
@@ -163,8 +168,8 @@ const controlTeamSave = function (promptType: string) {
   }
 };
 
-const controlTypeChange = async function (memberNum: number, type: Type) {
-  await model.changeType(memberNum, type);
+const controlTypeChange = async function (uniqueID: number, type: Type) {
+  await model.changeType(uniqueID, type);
   statisticsView.updateStatistics(
     model.state.currentTeam.teamDefense,
     model.state.currentTeam.teamOffense
@@ -204,7 +209,7 @@ const clearAll = function () {
 
 const addAll = function () {
   model.state.currentTeam.teamMembers.forEach((pokemon, i) =>
-    teamMembersView.update(pokemon, i, controlTypeChange)
+    teamMembersView.update(pokemon, i + 1, controlTypeChange)
   );
 };
 

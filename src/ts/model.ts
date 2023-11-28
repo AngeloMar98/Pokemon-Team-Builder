@@ -533,11 +533,14 @@ export const updateTeamMember = function (
   return { name, type, slotType, memberNum };
 };
 
-export const changeType = async function (memberNum: number, type: Type) {
-  state.currentTeam.teamMembers[Number(memberNum) - 1].types[0] = type;
+export const changeType = async function (currUniqueID: number, type: Type) {
+  const pos = state.currentTeam.teamMembers.findIndex(
+    (teamMember) => teamMember.uniqueId === currUniqueID
+  );
+  state.currentTeam.teamMembers[pos].types[0] = type;
   const stats = await calcStats([type]);
-  state.currentTeam.teamOffense[Number(memberNum) - 1] = stats.offensePokemon;
-  state.currentTeam.teamDefense[Number(memberNum) - 1] = stats.defencePokemon;
+  state.currentTeam.teamOffense[pos] = stats.offensePokemon;
+  state.currentTeam.teamDefense[pos] = stats.defencePokemon;
 };
 
 export const eliminateTeamMember = function (eliUniqueID: number) {

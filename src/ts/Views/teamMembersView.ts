@@ -577,7 +577,7 @@ class teamMembersView {
   update(
     pokemon: Pokemon | null,
     num: number,
-    handleTypeChoice: (memberNum: number, type: Type) => void
+    handleTypeChoice: (uniqueID: number, type: Type) => void
   ) {
     if (pokemon === null) return;
     const newMarkup = this._generateMarkup(pokemon, num);
@@ -654,7 +654,9 @@ class teamMembersView {
         ?.addEventListener("click", (e: any) => {
           const li = e.target.closest("li");
           if (li) {
-            handleTypeChoice(num, li.dataset.type);
+            const currUniqueID: number =
+              li.closest(".team-member").dataset.uniqueID;
+            handleTypeChoice(currUniqueID, li.dataset.type);
             typesFlexInner.querySelector(
               "img"
             )!.src = `img/types_labels/${li.dataset.type}.png`;
