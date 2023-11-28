@@ -366,7 +366,7 @@ export const getLocalStorage = function () {
     const previousSavedTeams = localStorage.getItem("savedTeams");
     const previousTeamIDstart = localStorage.getItem("teamIDstart") || "";
     const previousUniqueId = localStorage.getItem("uniqueID") || "";
-    if (previousSavedTeams) {
+    if (previousSavedTeams && previousTeamIDstart && previousUniqueId) {
         state.savedTeams = JSON.parse(previousSavedTeams);
         state.teamIDstart = Number(JSON.parse(previousTeamIDstart));
         state.uniqueID = Number(JSON.parse(previousUniqueId));
