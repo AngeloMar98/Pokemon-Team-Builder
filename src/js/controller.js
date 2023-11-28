@@ -40,8 +40,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 //   The value "evolves_to" needs to be empty
 // Prendi tipo, gen, name, evoluto o no
 // // FIX WHEN DEPLOYING
-// import "core-js/stable";
-// import "regenerator-runtime/runtime";
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 import * as model from "./model.js";
 /* DARK/LIGHT MODE */
 import toggleDarkModeView from "./Views/Views_Toggles/toggleDarkModeView.js";

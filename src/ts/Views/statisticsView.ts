@@ -1,4 +1,5 @@
-import { Stat, Type } from "../interfaces";
+import { Stat } from "../interfaces";
+
 import bug from "../../img/types_icons/bug.svg";
 import dark from "../../img/types_icons/dark.svg";
 import dragon from "../../img/types_icons/dragon.svg";
