@@ -234,7 +234,11 @@ class PokedexFilter {
   }
 
   filterNames(pokemonList: Pokemon[], name: string) {
-    return pokemonList.filter((pokemon) => pokemon.name.includes(name)).slice();
+    return pokemonList
+      .filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(name.toLowerCase())
+      )
+      .slice();
   }
 
   addExtra(

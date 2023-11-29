@@ -185,7 +185,9 @@ class PokedexFilter {
             .slice();
     }
     filterNames(pokemonList, name) {
-        return pokemonList.filter((pokemon) => pokemon.name.includes(name)).slice();
+        return pokemonList
+            .filter((pokemon) => pokemon.name.toLowerCase().includes(name.toLowerCase()))
+            .slice();
     }
     addExtra(originalPokemonList, extrasId, extraPokemonList) {
         const pokemonList = originalPokemonList.slice();
