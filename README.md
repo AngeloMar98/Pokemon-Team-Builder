@@ -7,7 +7,7 @@
    
 [Live site here](https://pokemonteambuilderangel.netlify.app/)
 
-This is a Pokèmon Team Builder, you search any pokèmon and build your own team with its own moveset, store that team and see its type coverage.
+This is a Pokèmon Team Builder, you can search up any pokèmon and build your own team with its own moveset, see your team statistics and save that team configuration.
 Everything is made using pure Javascript(and Typescript), and Tailwind, to fetch the pokèmon info I used the [PokèAPI](https://pokeapi.co/)
 ## Technologies used:
 <div >
