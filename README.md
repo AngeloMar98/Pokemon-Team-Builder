@@ -3,7 +3,15 @@
 
 This is a Pokèmon Team Builder, you search any pokèmon and build your own team with its own moveset, store that team and see its type coverage. 
 ## Technologies used:
-<img style="max-width:50px; !important" src="https://parceljs.org/assets/og.png" alt="Parcel">
+<div style="display:flex; flex-direction:row; align-items:center;">
+  <img src="https://parceljs.org/assets/og.png" title="Parcel" alt="Parcel" style="height:60px;" >
+   <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" title="HTML" alt="HTML" style="height:60px;" >   
+   <img src="https://static-00.iconduck.com/assets.00/tailwind-css-icon-512x307-1v56l8ed.png" title="Tailwind CSS" alt="Tailwind CSS" style="height:45px;" >   
+   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/800px-CSS3_logo.svg.png" title="CSS" alt="CSS" style="height:60px;"> 
+</div>
+  
+             
+
 
 ## The app features are:
 - Flexible layout, adapting seamlessly from mobile to desktop;
