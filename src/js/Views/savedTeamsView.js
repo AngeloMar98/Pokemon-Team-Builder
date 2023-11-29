@@ -5,11 +5,11 @@ class savedTeamsView {
     addNewSaved(team, id) {
         var _a;
         (_a = this.savedTeamsContainer) === null || _a === void 0 ? void 0 : _a.insertAdjacentHTML("beforeend", `<div
-          class="saved-team grid grid-cols-6 rounded-md bg-lightM-lightBismark dark:bg-darkM-lightIndigo3 mb-2 pb-2 hover:cursor-pointer"
+          class="saved-team grid grid-cols-6 desktop:grid-cols-3 desktop:min-h-[145px] rounded-md bg-lightM-lightBismark dark:bg-darkM-lightIndigo3 mb-2 pb-2 hover:cursor-pointer"
           data-teamid="${id}"
         >
           <h3
-            class="col-span-6 block text-center text-lightM-blackPearl dark:text-darkM-whiteBlue border-b border-darkM-whiteBlue";
+            class="col-span-6 desktop:col-span-3 block text-center text-lightM-blackPearl dark:text-darkM-whiteBlue border-b border-darkM-whiteBlue";
           >
             ${team.teamName}
           </h3>

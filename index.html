@@ -77,8 +77,8 @@
         </h1>
       </a>
     </header>
-    <main class="laptop:grid laptop:grid-cols-2 relative pb-[8rem]">
-      <section class="p-3">
+    <main class="grid grid-cols-2 laptop:grid-cols-4 relative pb-[8rem]">
+      <section class="p-3 col-span-2">
         <div
           class="team-members-pick dark:text-darkM-whiteIndigo border border-lightM-darkBismark dark:border-darkM-lightIndigo2 rounded-md overflow-hidden"
         >
@@ -1412,12 +1412,72 @@
         </div>
       </section>
 
-      <section class="p-3">
+      <!-- <section class="p-3 team-show col-span-1 laptop:hidden">
         <div
-          class="filter-container p-3 rounded-md grid grid-cols-2 tablet:grid-cols-3 bg-white dark:bg-darkM-lightIndigo1 border border-lightM-bismark dark:border-darkM-lightIndigo3 gap-2"
+          class="rounded-md grid p-2 grid-cols-3 grid-rows-2 gap-2 bg-white text-center dark:bg-darkM-lightIndigo1 border dark:border-darkM-lightIndigo3 h-fit w-full"
+        >
+          <article
+            class="col-span-1 bg-darkM-indigo rounded-md border flex flex-row items-center border-darkM-lightIndigo3 hover:cursor-pointer min-h-[60px] justify-around relative"
+            data-id="1"
+          >
+            <img
+              class="inline custom-shadow"
+              src="static/img/pokemon_icons/1000.png"
+            />
+          </article>
+          <article
+            class="col-span-1 bg-darkM-indigo rounded-md border flex flex-row items-center border-darkM-lightIndigo3 hover:cursor-pointer min-h-[60px] justify-around relative"
+            data-id="1"
+          >
+            <img
+              class="inline custom-shadow"
+              src="static/img/pokemon_icons/1000.png"
+            />
+          </article>
+          <article
+            class="col-span-1 bg-darkM-indigo rounded-md border flex flex-row items-center border-darkM-lightIndigo3 hover:cursor-pointer min-h-[60px] justify-around relative"
+            data-id="1"
+          >
+            <img
+              class="inline custom-shadow"
+              src="static/img/pokemon_icons/1000.png"
+            />
+          </article>
+          <article
+            class="col-span-1 bg-darkM-indigo rounded-md border flex flex-row items-center border-darkM-lightIndigo3 hover:cursor-pointer min-h-[60px] justify-around relative"
+            data-id="1"
+          >
+            <img
+              class="inline custom-shadow"
+              src="static/img/pokemon_icons/1000.png"
+            />
+          </article>
+          <article
+            class="col-span-1 bg-darkM-indigo rounded-md border flex flex-row items-center border-darkM-lightIndigo3 hover:cursor-pointer min-h-[60px] justify-around relative"
+            data-id="1"
+          >
+            <img
+              class="inline custom-shadow"
+              src="static/img/pokemon_icons/1000.png"
+            />
+          </article>
+          <article
+            class="col-span-1 bg-darkM-indigo rounded-md border flex flex-row items-center border-darkM-lightIndigo3 hover:cursor-pointer min-h-[60px] justify-around relative"
+            data-id="1"
+          >
+            <img
+              class="inline custom-shadow"
+              src="static/img/pokemon_icons/1000.png"
+            />
+          </article>
+        </div>
+      </section> -->
+      <section class="p-3 col-span-2">
+        <div
+          class="bg-white border border-lightM-bismark dark:bg-darkM-lightIndigo1 dark:border-darkM-lightIndigo3 filter-container gap-2 grid grid-cols-2 p-3 rounded-md tablet:grid-cols-3"
         >
           <div
-            class="filter filter-menu filter-gen relative group tablet:order-1"
+            class="filter filter-menu col-span-1 filter-gen relative group tablet:order-1"
           >
             <button
               class="filter-menu_btn w-full bg-lightM-lightBismark text-lightM-blackPearl dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 px-1 rounded-lg"
@@ -1549,7 +1609,7 @@
             </ul>
           </div>
           <div
-            class="filter filter-menu filter-type relative group tablet:order-2"
+            class="filter filter-menu col-span-1 filter-type relative group tablet:order-2"
           >
             <button
               class="filter-menu_btn w-full bg-lightM-lightBismark text-lightM-blackPearl dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 px-1 rounded-lg"
@@ -1797,7 +1857,6 @@
           </div>
           <button class="search-btn">Search!</button>
         </div>
-
         <div
           class="mt-3 border w-full dark:bg-darkM-lightIndigo1 dark:border-darkM-lightIndigo3 rounded-md p-3 gap-1"
         >
@@ -1808,6 +1867,7 @@
         </div>
       </section>
     </main>
+
     <button title="Toggle sidemenu button" class="sidemenu-btn group">
       <svg
         class="text-darkM-whiteBlue group-[.sidemenu-btn-lifted]:hidden"
@@ -1878,9 +1938,9 @@
       class="teamsAndStats bg-lightM-bismark dark:bg-darkM-darkBlue w-full group fixed top-0 bigTablet:right-0 bigTablet:top-[26vh] h-[70vh] bigTablet:h-[74vh] bigTablet:w-1/2 z-50 transition-transform duration-200"
     >
       <menu
-        class="saved-teams hidden group-[.show-teams]:block group-[:not(.show-stats)]:min-h-full group-[:not(.show-stats)]:max-h-full"
+        class="saved-teams hidden group-[.show-teams]:grid gap-2 group-[:not(.show-stats)]:min-h-full group-[:not(.show-stats)]:max-h-full desktop:grid-cols-2"
       >
-        <h2 class="text-darkM-whiteBlue pb-1">
+        <h2 class="text-darkM-whiteBlue pb-1 desktop:col-span-2">
           Saved Teams
           <svg
             class="fill-darkM-whiteBlue w-[30px] mb-2 inline"

@@ -386,7 +386,11 @@ class teamMembersView {
               id="${pokemon.id}"
               alt="${pokemon.name}"
             >
-              ${pokemon.name}
+              ${
+                pokemon.name.split("-")[1] === "mega"
+                  ? pokemon.name.replaceAll("-", " ")
+                  : pokemon.name
+              }
             </h2>
             <div class="flex min-h-[112px] justify-center py-2">
               <img
