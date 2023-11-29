@@ -52,7 +52,7 @@ class teamMembersView {
             `<li class="slot-select_li"
                        data-name="${move.name}"
                         data-type="${move.type}">
-                 <span>${move.name} </span>
+                 <span class="select-none">${move.name} </span>
             <p class="hidden">
             <b class="pointer-events-none">Type:</b> ${move.type} <br />
             <b class="pointer-events-none">Power: </b> ${move.power !== null ? move.power : "-"} <br />
@@ -69,7 +69,7 @@ class teamMembersView {
             `<li class="slot-select_li group"
                         data-name="${ability.name}"
                         data-type="ability">
-                    <span>${ability.name}</span>
+                    <span class="select-none">${ability.name}</span>
             <p class="hidden">
             <b class="pointer-events-none">Effect: </b> ${ability.effect} <br /> 
             </p>

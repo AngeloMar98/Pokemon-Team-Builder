@@ -76,6 +76,7 @@ module.exports = {
     "pointer-events-none",
     "mt-auto",
     "col-span-6",
+    "select-none",
     "fill-fighting",
     "text-xs",
     "w-[120px]",
