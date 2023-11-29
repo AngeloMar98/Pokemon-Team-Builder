@@ -1,8 +1,8 @@
 # Pokèmon Team Builder
 
  <div>
- <img src="https://i.imgur.com/c0lpJxt.png" alt="Mobile site preview" style="height:600px;" >   
-<img src="https://i.imgur.com/mvTyE0u.png" alt="Mobile site preview" style="height:600px; margin-left:20px;" >   
+ <img src="https://i.imgur.com/c0lpJxt.png" alt="Mobile site preview" style="height:400px;" >   
+<img src="https://i.imgur.com/mvTyE0u.png" alt="Mobile site preview" style="height:400px; margin-left:20px;" >   
    </div>
    
 [Live site here](https://pokemonteambuilderangel.netlify.app/)
