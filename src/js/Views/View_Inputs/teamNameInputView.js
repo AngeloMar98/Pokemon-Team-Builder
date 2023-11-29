@@ -20,8 +20,8 @@ class TeamNameInputView {
             }
         });
     }
-    updateName(newName) {
-        this._teamNameLabel.textContent = String(newName) || "";
+    updateName(newName = "Team name") {
+        this._teamNameLabel.textContent = String(newName);
     }
 }
 export default new TeamNameInputView();

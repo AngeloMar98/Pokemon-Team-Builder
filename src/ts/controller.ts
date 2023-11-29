@@ -215,6 +215,7 @@ const clearAll = function () {
   statisticsView.clear();
   model.cleanCurrentTeam();
   teamMembersView.clearAll();
+  teamNameInputView.updateName();
 };
 
 /* simple close and open menus */
