@@ -1,13 +1,23 @@
 # Pokèmon Team Builder
+
+ <div>
+ <img src="https://i.imgur.com/c0lpJxt.png" alt="Mobile site preview" style="height:600px;" >   
+<img src="https://i.imgur.com/mvTyE0u.png" alt="Mobile site preview" style="height:600px; margin-left:20px;" >   
+   </div>
+   
 [Live site here](https://pokemonteambuilderangel.netlify.app/)
 
-This is a Pokèmon Team Builder, you search any pokèmon and build your own team with its own moveset, store that team and see its type coverage. 
+This is a Pokèmon Team Builder, you search any pokèmon and build your own team with its own moveset, store that team and see its type coverage.
+Everything is made using pure Javascript(and Typescript), and Tailwind, to fetch the pokèmon info I used the [PokèAPI](https://pokeapi.co/)
 ## Technologies used:
-<div style="display:flex; flex-direction:row; align-items:center;">
+<div >
   <img src="https://parceljs.org/assets/og.png" title="Parcel" alt="Parcel" style="height:60px;" >
-   <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" title="HTML" alt="HTML" style="height:60px;" >   
-   <img src="https://static-00.iconduck.com/assets.00/tailwind-css-icon-512x307-1v56l8ed.png" title="Tailwind CSS" alt="Tailwind CSS" style="height:45px;" >   
+   <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" title="HTML" alt="HTML" style="height:60px;" >    
    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/CSS3_logo.svg/800px-CSS3_logo.svg.png" title="CSS" alt="CSS" style="height:60px;"> 
+   <img src="https://static-00.iconduck.com/assets.00/tailwind-css-icon-512x307-1v56l8ed.png" title="Tailwind CSS" alt="Tailwind CSS" style="height:45px;" >  
+ <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" title="Javascript" alt="Javascript" style="height:60px;" >   
+ <img src="https://cdn-icons-png.flaticon.com/512/5968/5968381.png" title="Typescript" alt="Typescript" style="height:60px;" >   
+   
 </div>
   
              
