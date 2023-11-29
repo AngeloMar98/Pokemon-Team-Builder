@@ -2320,3 +2320,9 @@ h3 {
     border-top-right-radius: 0px;
   }
 }
+
+@media (min-width: 1280px) {
+  .desktop\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
