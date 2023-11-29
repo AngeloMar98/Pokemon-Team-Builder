@@ -201,10 +201,7 @@ class PokedexFilter {
       fullEvo
     );
     const filteredTypes = this.filterTypes(addedVariants, types);
-    const filteredNames = this.filterNames(
-      filteredTypes,
-      name.replace(/\s/g, "")
-    );
+    const filteredNames = this.filterNames(filteredTypes, name);
 
     return filteredNames;
   }
@@ -236,7 +233,9 @@ class PokedexFilter {
   filterNames(pokemonList: Pokemon[], name: string) {
     return pokemonList
       .filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(name.toLowerCase())
+        pokemon.name
+          .toLowerCase()
+          .includes(name.replace(/\s/g, "").toLowerCase())
       )
       .slice();
   }

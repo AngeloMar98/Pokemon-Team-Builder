@@ -166,7 +166,7 @@ class PokedexFilter {
         const addedForms = this.addForms(addedMega, formsId, forms);
         const addedVariants = this.addVariants(addedForms, variants, generations, fullEvo);
         const filteredTypes = this.filterTypes(addedVariants, types);
-        const filteredNames = this.filterNames(filteredTypes, name.replace(/\s/g, ""));
+        const filteredNames = this.filterNames(filteredTypes, name);
         return filteredNames;
     }
     filterGens(pokemonList, generations) {
@@ -186,7 +186,9 @@ class PokedexFilter {
     }
     filterNames(pokemonList, name) {
         return pokemonList
-            .filter((pokemon) => pokemon.name.toLowerCase().includes(name.toLowerCase()))
+            .filter((pokemon) => pokemon.name
+            .toLowerCase()
+            .includes(name.replace(/\s/g, "").toLowerCase()))
             .slice();
     }
     addExtra(originalPokemonList, extrasId, extraPokemonList) {
