@@ -94,6 +94,9 @@ const controlTeamMemberAdd = function () {
                 teamMembersView.clearAll();
                 teamMembersView.addAll(model.state.currentTeam.teamMembers, controlTypeChange);
             }
+            teamMemberPickBtnsView.handleMenus([
+                String(model.state.currentTeam.teamMembers.length),
+            ]);
             teamMembersView.update(model.state.currentTeam.teamMembers.at(-1) || null, model.state.currentTeam.teamMembers.length, controlTypeChange);
         })));
         yield model.setCurrentTeamStats(model.state.currentTeam.teamMembers);
@@ -149,6 +152,9 @@ const controlDeleteBtn = function (uniqueid) {
     model.eliminateTeamMember(uniqueid);
     statisticsView.updateStatistics(model.state.currentTeam.teamDefense, model.state.currentTeam.teamOffense);
     teamMembersView.clearAll();
+    teamMemberPickBtnsView.handleMenus([
+        String(model.state.currentTeam.teamMembers.length),
+    ]);
     teamMembersView.addAll(model.state.currentTeam.teamMembers, controlTypeChange);
 };
 const clearAll = function () {

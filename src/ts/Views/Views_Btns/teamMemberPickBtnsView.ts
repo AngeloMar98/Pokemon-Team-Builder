@@ -13,12 +13,16 @@ class teamMemberPickBtnsView {
       if (!e.target.classList.contains("pick-btn")) return;
       const pickBtn = e.target;
       const tabsNum: string[] = pickBtn.classList[0].split("-").slice(1);
-      this.toggleMenus(tabsNum);
-      this.closeEverythingElse(tabsNum);
+      this.handleMenus(tabsNum);
     });
   }
 
-  toggleMenus(tabsNum: string[]) {
+  handleMenus(tabsNum: string[]) {
+    this._toggleMenus(tabsNum);
+    this._closeEverythingElse(tabsNum);
+  }
+
+  _toggleMenus(tabsNum: string[]) {
     this.smallPickBtns[Number(tabsNum[0]) - 1].classList.add("pick-btn-active");
 
     this.bigPickBtns[
@@ -55,7 +59,7 @@ class teamMemberPickBtnsView {
     }
   }
 
-  closeEverythingElse(tabsNum: string[]) {
+  _closeEverythingElse(tabsNum: string[]) {
     Array.from(document.querySelectorAll(".team-member")).forEach(
       (teamMember) => teamMember.classList.add(".hide-moveset")
     );

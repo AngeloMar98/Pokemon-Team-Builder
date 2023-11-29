@@ -114,6 +114,9 @@ const controlTeamMemberAdd = async function () {
           controlTypeChange
         );
       }
+      teamMemberPickBtnsView.handleMenus([
+        String(model.state.currentTeam.teamMembers.length),
+      ]);
       teamMembersView.update(
         model.state.currentTeam.teamMembers.at(-1) || null,
         model.state.currentTeam.teamMembers.length,
@@ -204,6 +207,10 @@ const controlDeleteBtn = function (uniqueid: number) {
   );
 
   teamMembersView.clearAll();
+
+  teamMemberPickBtnsView.handleMenus([
+    String(model.state.currentTeam.teamMembers.length),
+  ]);
 
   teamMembersView.addAll(
     model.state.currentTeam.teamMembers,
