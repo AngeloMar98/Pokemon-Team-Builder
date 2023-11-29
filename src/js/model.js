@@ -48,6 +48,14 @@ export const state = {
     teamIDstart,
     uniqueid,
 };
+const cleanString = function (word) {
+    return word
+        .toLowerCase()
+        .replaceAll(" ", "")
+        .replaceAll(".", "")
+        .replaceAll("-", " ")
+        .trim();
+};
 const fetchPokemon = function (id) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -186,9 +194,7 @@ class PokedexFilter {
     }
     filterNames(pokemonList, name) {
         return pokemonList
-            .filter((pokemon) => pokemon.name
-            .toLowerCase()
-            .includes(name.replace(/\s/g, "").toLowerCase()))
+            .filter((pokemon) => cleanString(pokemon.name).includes(cleanString(name)))
             .slice();
     }
     addExtra(originalPokemonList, extrasId, extraPokemonList) {

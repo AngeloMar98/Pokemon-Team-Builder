@@ -52,6 +52,15 @@ export const state = {
   uniqueid,
 };
 
+const cleanString = function (word: String) {
+  return word
+    .toLowerCase()
+    .replaceAll(" ", "")
+    .replaceAll(".", "")
+    .replaceAll("-", " ")
+    .trim();
+};
+
 const fetchPokemon = async function (id: number) {
   try {
     const pokemon = await fetchData(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -233,9 +242,7 @@ class PokedexFilter {
   filterNames(pokemonList: Pokemon[], name: string) {
     return pokemonList
       .filter((pokemon) =>
-        pokemon.name
-          .toLowerCase()
-          .includes(name.replace(/\s/g, "").toLowerCase())
+        cleanString(pokemon.name).includes(cleanString(name))
       )
       .slice();
   }
