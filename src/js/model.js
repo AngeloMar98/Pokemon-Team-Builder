@@ -53,7 +53,7 @@ const cleanString = function (word) {
         .toLowerCase()
         .replaceAll(" ", "")
         .replaceAll(".", "")
-        .replaceAll("-", " ")
+        .replaceAll("-", "")
         .trim();
 };
 const fetchPokemon = function (id) {

@@ -57,7 +57,7 @@ const cleanString = function (word: String) {
     .toLowerCase()
     .replaceAll(" ", "")
     .replaceAll(".", "")
-    .replaceAll("-", " ")
+    .replaceAll("-", "")
     .trim();
 };
 
