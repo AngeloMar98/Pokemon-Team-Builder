@@ -19,5 +19,13 @@ class filterContainerView {
         const toggledFullEvo = ((_b = this._toggleFullEvo) === null || _b === void 0 ? void 0 : _b.classList.contains("fullyEvo-only")) || false;
         return { searchedTypes, searchedGens, toggledFullEvo, searchedName };
     }
+    // )
+    addHandlerEnter(handler) {
+        var _a;
+        (_a = this._filterName) === null || _a === void 0 ? void 0 : _a.addEventListener("keyup", (e) => {
+            if (e.key === "Enter")
+                handler();
+        });
+    }
 }
 export default new filterContainerView();

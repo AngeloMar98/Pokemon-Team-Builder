@@ -41,6 +41,12 @@ class filterContainerView {
 
     return { searchedTypes, searchedGens, toggledFullEvo, searchedName };
   }
+  // )
+  addHandlerEnter(handler: () => void) {
+    this._filterName?.addEventListener("keyup", (e: KeyboardEvent) => {
+      if (e.key === "Enter") handler();
+    });
+  }
 }
 
 export default new filterContainerView();

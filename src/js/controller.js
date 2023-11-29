@@ -180,6 +180,7 @@ const handleUIMenus = function () {
 };
 /* handle data and fetching requests, modify UI as needed*/
 const handleAppLogic = function () {
+    filterContainerView.addHandlerEnter(controlSearchResults);
     searchBtnView.addHandlerClick(controlSearchResults);
     teamNameInputView.addHandlerNameChange(model.changeCurrentTeamName);
     teamMembersView.addHandlerLoad(controlTeamMemberAdd);
