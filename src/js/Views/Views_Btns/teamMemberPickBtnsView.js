@@ -41,7 +41,7 @@ class teamMemberPickBtnsView {
         // SWAP SOFT-HARD BETWEEN DUOS OF TABS
         (_a = document
             .querySelector(`.team-member-${Number(tabsNum[0])}`)) === null || _a === void 0 ? void 0 : _a.classList.remove("soft-active");
-        this.sidemenuMembers[Number(tabsNum[0]) - 1].classList.add("soft-active-member");
+        this.sidemenuMembers[Number(tabsNum[0]) - 1].classList.remove("soft-active-member");
         (_b = document
             .querySelector(`.team-member-${Number(tabsNum[0])}`)) === null || _b === void 0 ? void 0 : _b.classList.add("hard-active");
         this.sidemenuMembers[Number(tabsNum[0]) - 1].classList.add("hard-active-member");

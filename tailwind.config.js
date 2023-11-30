@@ -76,6 +76,7 @@ module.exports = {
     "pointer-events-none",
     "soft-active-member",
     "hard-active-member",
+    "moved",
     "mt-auto",
     "col-span-6",
     "select-none",

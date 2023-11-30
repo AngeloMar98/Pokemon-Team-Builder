@@ -53,6 +53,7 @@ import savedTeamsBtnView from "./Views/Views_Btns/savedTeamsBtnView.js";
 import favoriteTeamBtnView from "./Views/Views_Btns/favoriteTeamBtnView.js";
 import savedTeamsView from "./Views/savedTeamsView.js";
 import statisticsView from "./Views/statisticsView.js";
+import sidemenuTeamBtnView from "./Views/Views_Btns/sidemenuTeamBtnView.js";
 /* MOVESET AND SLOTS */
 import movesetMenuBtnsView from "./Views/Views_Btns/movesetMenuBtnsView.js";
 import slotSelectBtnView from "./Views/Views_Btns/slotSelectBtnView.js";
@@ -168,6 +169,7 @@ const handleUIMenus = function () {
     toggleDarkModeView.addHandlerClick();
     toggleFullEvoView.addHandlerClick();
     filterMenusView.addHandlerClickMultiple();
+    sidemenuTeamBtnView.addHandlerClick();
     sideMenuBtnView.addHandlerClick();
     statisticsBtnView.addHandlerClick();
     savedTeamsBtnView.addHandlerClick();
