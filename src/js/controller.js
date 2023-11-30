@@ -53,6 +53,7 @@ import savedTeamsBtnView from "./Views/Views_Btns/savedTeamsBtnView.js";
 import favoriteTeamBtnView from "./Views/Views_Btns/favoriteTeamBtnView.js";
 import savedTeamsView from "./Views/savedTeamsView.js";
 import statisticsView from "./Views/statisticsView.js";
+import sidemenuTeamView from "./Views/sidemenuTeamView.js";
 import sidemenuTeamBtnView from "./Views/Views_Btns/sidemenuTeamBtnView.js";
 /* MOVESET AND SLOTS */
 import movesetMenuBtnsView from "./Views/Views_Btns/movesetMenuBtnsView.js";
@@ -93,11 +94,14 @@ const controlTeamMemberAdd = function () {
             yield model.addTeamMember(Number(id));
             if (model.state.currentTeam.teamMembers.length === 6) {
                 teamMembersView.clearAll();
+                sidemenuTeamView.clearAll();
                 teamMembersView.addAll(model.state.currentTeam.teamMembers, controlTypeChange);
+                sidemenuTeamView.addAll(model.state.currentTeam.teamMembers);
             }
             teamMemberPickBtnsView.handleMenus([
                 String(model.state.currentTeam.teamMembers.length),
             ]);
+            sidemenuTeamView.update(model.state.currentTeam.teamMembers.at(-1) || null, model.state.currentTeam.teamMembers.length - 1);
             teamMembersView.update(model.state.currentTeam.teamMembers.at(-1) || null, model.state.currentTeam.teamMembers.length, controlTypeChange);
         })));
         yield model.setCurrentTeamStats(model.state.currentTeam.teamMembers);
@@ -112,7 +116,8 @@ const controlSavedTeams = function (id) {
     model.retrieveSavedTeam();
     statisticsView.updateStatistics(model.state.currentTeam.teamDefense, model.state.currentTeam.teamOffense);
     teamNameInputView.updateName(model.state.currentTeam.teamName);
-    teamMembersView.displayCurrentTeam(model.state.currentTeam, controlTypeChange);
+    teamMembersView.addAll(model.state.currentTeam.teamMembers, controlTypeChange);
+    sidemenuTeamView.addAll(model.state.currentTeam.teamMembers);
 };
 const controlTeamSave = function (promptType) {
     sideMenuBtnView.closeAll();
@@ -153,15 +158,18 @@ const controlDeleteBtn = function (uniqueid) {
     model.eliminateTeamMember(uniqueid);
     statisticsView.updateStatistics(model.state.currentTeam.teamDefense, model.state.currentTeam.teamOffense);
     teamMembersView.clearAll();
+    sidemenuTeamView.clearAll();
     teamMemberPickBtnsView.handleMenus([
         String(model.state.currentTeam.teamMembers.length),
     ]);
     teamMembersView.addAll(model.state.currentTeam.teamMembers, controlTypeChange);
+    sidemenuTeamView.addAll(model.state.currentTeam.teamMembers);
 };
 const clearAll = function () {
     statisticsView.clear();
     model.cleanCurrentTeam();
     teamMembersView.clearAll();
+    sidemenuTeamView.clearAll();
     teamNameInputView.updateName();
 };
 /* simple close and open menus */

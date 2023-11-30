@@ -579,15 +579,6 @@ class teamMembersView {
         </article>`;
   }
 
-  displayCurrentTeam(
-    team: Team,
-    handleTypeChoice: (memberNum: number, type: Type) => void
-  ) {
-    team.teamMembers.forEach((savedMember, id) => {
-      this.update(savedMember, id + 1, handleTypeChoice);
-    });
-  }
-
   update(
     pokemon: Pokemon | null,
     num: number,

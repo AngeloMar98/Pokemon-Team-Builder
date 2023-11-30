@@ -20,9 +20,9 @@ class teamMemberPickBtnsView {
             this.handler(pickBtn);
         });
         (_b = this.sidemenuTeam) === null || _b === void 0 ? void 0 : _b.addEventListener("click", (e) => {
-            if (!e.target.classList.contains("sidemenu-member"))
+            const pickBtn = e.target.closest(".sidemenu-member");
+            if (!pickBtn)
                 return;
-            const pickBtn = e.target;
             this.handler(pickBtn);
         });
     }

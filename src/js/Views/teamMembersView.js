@@ -516,11 +516,6 @@ class teamMembersView {
             </div>
         </article>`;
     }
-    displayCurrentTeam(team, handleTypeChoice) {
-        team.teamMembers.forEach((savedMember, id) => {
-            this.update(savedMember, id + 1, handleTypeChoice);
-        });
-    }
     update(pokemon, num, handleTypeChoice) {
         var _a, _b, _c, _d, _e, _f;
         if (pokemon === null)
