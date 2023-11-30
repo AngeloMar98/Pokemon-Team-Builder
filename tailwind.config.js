@@ -74,6 +74,8 @@ module.exports = {
     "w-[90px]",
     "h-[25px]",
     "pointer-events-none",
+    "soft-active-member",
+    "hard-active-member",
     "mt-auto",
     "col-span-6",
     "select-none",

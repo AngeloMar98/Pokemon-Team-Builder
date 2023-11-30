@@ -82,7 +82,7 @@ class teamMemberPickBtnsView {
                 this.sidemenuMembers[Number(tabsNum[0]) - 1].classList.remove("hard-active-member");
                 (_b = document
                     .querySelector(`.team-member-${Number(otherTabs[0])}`)) === null || _b === void 0 ? void 0 : _b.classList.remove("soft-active");
-                this.sidemenuMembers[Number(tabsNum[0])].classList.remove("soft-active-member");
+                this.sidemenuMembers[Number(tabsNum[0]) - 1].classList.remove("soft-active-member");
             }
         });
     }

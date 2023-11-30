@@ -126,7 +126,7 @@ class teamMemberPickBtnsView {
         document
           .querySelector(`.team-member-${Number(otherTabs[0])}`)
           ?.classList.remove("soft-active");
-        this.sidemenuMembers[Number(tabsNum[0])].classList.remove(
+        this.sidemenuMembers[Number(tabsNum[0]) - 1].classList.remove(
           "soft-active-member"
         );
       }
