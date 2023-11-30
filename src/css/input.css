@@ -164,7 +164,7 @@
   }
 
   .filter-menu_ul {
-    @apply hidden flex-col w-full absolute top-[30px] bg-lightM-lightBismark dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 rounded-lg text-center h-[100px] overflow-y-scroll z-10;
+    @apply hidden flex-col w-full absolute top-[30px] bg-lightM-lightBismark dark:text-darkM-whiteIndigo dark:bg-darkM-lightIndigo3 rounded-lg text-center h-[100px] overflow-y-scroll;
   }
 
   .tooltip {

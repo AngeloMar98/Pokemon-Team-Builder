@@ -61,6 +61,18 @@ const cleanString = function (word: String) {
     .trim();
 };
 
+const fetchData = async function (url: string) {
+  try {
+    const data = await fetch(url);
+
+    const result = await data.json();
+
+    return result;
+  } catch (error) {
+    throw new Error("Failed fetching");
+  }
+};
+
 const fetchPokemon = async function (id: number) {
   try {
     const pokemon = await fetchData(`https://pokeapi.co/api/v2/pokemon/${id}`);
@@ -103,18 +115,6 @@ const fetchPokemon = async function (id: number) {
   } catch (error) {
     console.error("Failed pokèmon fetching");
     throw error;
-  }
-};
-
-const fetchData = async function (url: string) {
-  try {
-    const data = await fetch(url);
-
-    const result = await data.json();
-
-    return result;
-  } catch (error) {
-    throw new Error("Failed fetching");
   }
 };
 
