@@ -28,6 +28,22 @@
     @apply translate-x-full;
   }
 
+  .moved.sidemenu-team_btn {
+    @apply left-20 rotate-180;
+  }
+
+  .moved.sidemenu-team {
+    @apply left-3 translate-x-0;
+  }
+
+  .hard-active-member {
+    @apply bg-lightM-bermudaGray dark:bg-darkM-violet !important;
+  }
+
+  .soft-active-member {
+    @apply tablet:bg-lightM-bermudaGray tablet:dark:bg-darkM-violet !important;
+  }
+
   .prompt-team {
     @apply absolute z-50 left-1/2  -translate-x-1/2 top-[20vh] mx-auto h-fit w-[200px] bg-lightM-darkBismark dark:bg-darkM-darkBlue text-white rounded-lg p-3 text-center border dark:border-darkM-whiteIndigo border-lightM-blackPearl;
     pointer-events: all !important;

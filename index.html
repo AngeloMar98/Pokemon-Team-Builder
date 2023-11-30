@@ -85,24 +85,24 @@
           <div
             class="pick-container pick-container-1 grid grid-cols-6 tablet:hidden"
           >
-            <button class="pick-1 pick-btn pick-btn-active">1</button>
-            <button class="pick-2 pick-btn">2</button>
-            <button class="pick-3 pick-btn">3</button>
-            <button class="pick-4 pick-btn">4</button>
-            <button class="pick-5 pick-btn">5</button>
-            <button class="pick-6 pick-btn">6</button>
+            <button data-id="1" class="pick-btn pick-btn-active">1</button>
+            <button data-id="2" class="pick-btn">2</button>
+            <button data-id="3" class="pick-btn">3</button>
+            <button data-id="4" class="pick-btn">4</button>
+            <button data-id="5" class="pick-btn">5</button>
+            <button data-id="6" class="pick-btn">6</button>
           </div>
           <div
             class="grid-cols-3 pick-container pick-container-2 hidden tablet:grid laptop:hidden"
           >
-            <button class="pick-1-2 pick-btn pick-btn-active">
+            <button data-id="1-2" class="pick-1-2 pick-btn pick-btn-active">
               1 &nbsp;&nbsp; - &nbsp;&nbsp; 2
             </button>
 
-            <button class="pick-3-4 pick-btn">
+            <button data-id="3-4" class="pick-3-4 pick-btn">
               3 &nbsp;&nbsp; - &nbsp;&nbsp; 4
             </button>
-            <button class="pick-5-6 pick-btn">
+            <button data-id="5-6" class="pick-5-6 pick-btn">
               5 &nbsp;&nbsp; - &nbsp;&nbsp; 6
             </button>
           </div>
@@ -1412,66 +1412,62 @@
         </div>
       </section>
 
-      <!-- <section class="p-3 team-show col-span-1 laptop:hidden">
-        <div
-          class="rounded-md grid p-2 grid-cols-3 grid-rows-2 gap-2 bg-white text-center dark:bg-darkM-lightIndigo1 border dark:border-darkM-lightIndigo3 h-fit w-full"
+      <button
+        class="sidemenu-team_btn fixed left-3 top-1/2 -translate-y-1/2 flex items-center justify-center p-1 rounded-full bg-lightM-blackPearl dark:bg-darkM-darkBlue fill-darkM-whiteIndigo z-10 transition-all duration-200"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="26"
+          height="26"
+          viewBox="0 0 256 256"
         >
-          <article
-            class="col-span-1 bg-darkM-indigo rounded-md border flex flex-row items-center border-darkM-lightIndigo3 hover:cursor-pointer min-h-[60px] justify-around relative"
-            data-id="1"
-          >
-            <img
-              class="inline custom-shadow"
-              src="static/img/pokemon_icons/1000.png"
-            />
-          </article>
-          <article
-            class="col-span-1 bg-darkM-indigo rounded-md border flex flex-row items-center border-darkM-lightIndigo3 hover:cursor-pointer min-h-[60px] justify-around relative"
-            data-id="1"
-          >
-            <img
-              class="inline custom-shadow"
-              src="static/img/pokemon_icons/1000.png"
-            />
-          </article>
-          <article
-            class="col-span-1 bg-darkM-indigo rounded-md border flex flex-row items-center border-darkM-lightIndigo3 hover:cursor-pointer min-h-[60px] justify-around relative"
-            data-id="1"
-          >
-            <img
-              class="inline custom-shadow"
-              src="static/img/pokemon_icons/1000.png"
-            />
-          </article>
-          <article
-            class="col-span-1 bg-darkM-indigo rounded-md border flex flex-row items-center border-darkM-lightIndigo3 hover:cursor-pointer min-h-[60px] justify-around relative"
-            data-id="1"
-          >
-            <img
-              class="inline custom-shadow"
-              src="static/img/pokemon_icons/1000.png"
-            />
-          </article>
-          <article
-            class="col-span-1 bg-darkM-indigo rounded-md border flex flex-row items-center border-darkM-lightIndigo3 hover:cursor-pointer min-h-[60px] justify-around relative"
-            data-id="1"
-          >
-            <img
-              class="inline custom-shadow"
-              src="static/img/pokemon_icons/1000.png"
-            />
-          </article>
-          <article
-            class="col-span-1 bg-darkM-indigo rounded-md border flex flex-row items-center border-darkM-lightIndigo3 hover:cursor-pointer min-h-[60px] justify-around relative"
-            data-id="1"
-          >
-            <img
-              class="inline custom-shadow"
-              src="static/img/pokemon_icons/1000.png"
-            />
-          </article>
-        </div>
-      </section> -->
+          <path
+            d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"
+          ></path>
+        </svg>
+      </button>
+
+      <menu
+        class="sidemenu-team moved w-[60px] fixed top-1/2 -translate-y-1/2 -translate-x-full left-0 z-10 transition-all duration-200 rounded-md flex flex-col gap-2 text-center h-fit"
+      >
+        <article
+          class="sidemenu-member col-span-1 bg-darkM-whiteBlue dark:bg-darkM-indigo rounded-md border flex flex-row items-center dark:border-darkM-lightIndigo3 border-lightM-blackPearl hover:cursor-pointer min-h-[55px] justify-around relative"
+          data-id="1"
+        >
+          <img class="inline custom-shadow" src="" />
+        </article>
+        <article
+          class="sidemenu-member col-span-1 bg-darkM-whiteBlue dark:bg-darkM-indigo rounded-md border flex flex-row items-center dark:border-darkM-lightIndigo3 border-lightM-blackPearl hover:cursor-pointer min-h-[55px] justify-around relative"
+          data-id="2"
+        >
+          <img class="inline custom-shadow" src="" />
+        </article>
+        <article
+          class="sidemenu-member col-span-1 bg-darkM-whiteBlue dark:bg-darkM-indigo rounded-md border flex flex-row items-center dark:border-darkM-lightIndigo3 border-lightM-blackPearl hover:cursor-pointer min-h-[55px] justify-around relative"
+          data-id="3"
+        >
+          <img class="inline custom-shadow" src="" />
+        </article>
+        <article
+          class="sidemenu-member col-span-1 bg-darkM-whiteBlue dark:bg-darkM-indigo rounded-md border flex flex-row items-center dark:border-darkM-lightIndigo3 border-lightM-blackPearl hover:cursor-pointer min-h-[55px] justify-around relative"
+          data-id="4"
+        >
+          <img class="inline custom-shadow" src="" />
+        </article>
+        <article
+          class="sidemenu-member col-span-1 bg-darkM-whiteBlue dark:bg-darkM-indigo rounded-md border flex flex-row items-center dark:border-darkM-lightIndigo3 border-lightM-blackPearl hover:cursor-pointer min-h-[55px] justify-around relative"
+          data-id="5"
+        >
+          <img class="inline custom-shadow" src="" />
+        </article>
+        <article
+          class="sidemenu-member col-span-1 bg-darkM-whiteBlue dark:bg-darkM-indigo rounded-md border flex flex-row items-center dark:border-darkM-lightIndigo3 border-lightM-blackPearl hover:cursor-pointer min-h-[55px] justify-around relative"
+          data-id="6"
+        >
+          <img class="inline custom-shadow" src="" />
+        </article>
+      </menu>
+
       <section class="p-3 col-span-2">
         <div
           class="bg-white border border-lightM-bismark dark:bg-darkM-lightIndigo1 dark:border-darkM-lightIndigo3 filter-container gap-2 grid grid-cols-2 p-3 rounded-md tablet:grid-cols-3"

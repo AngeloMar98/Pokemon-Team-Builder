@@ -5,15 +5,27 @@ class teamMemberPickBtnsView {
   bigPickBtns = Array.from(
     document.querySelector(".pick-container-2")!.querySelectorAll(".pick-btn")
   );
+
+  sidemenuTeam = document.querySelector(".sidemenu-team");
+  sidemenuMembers = Array.from(this.sidemenuTeam!.querySelectorAll("article"));
   pickBtnsContainer = document.querySelector(".team-members-pick");
-  allBtns = Array.from(document.querySelectorAll(".pick-btn"));
+  allBtns: HTMLElement[] = Array.from(document.querySelectorAll(".pick-btn"));
+
+  handler(pickBtn: HTMLElement) {
+    const tabsNum: string[] = pickBtn.dataset.id!.split("-");
+    this.handleMenus(tabsNum);
+  }
 
   addHandlerClick() {
     this.pickBtnsContainer?.addEventListener("click", (e: any) => {
       if (!e.target.classList.contains("pick-btn")) return;
       const pickBtn = e.target;
-      const tabsNum: string[] = pickBtn.classList[0].split("-").slice(1);
-      this.handleMenus(tabsNum);
+      this.handler(pickBtn);
+    });
+    this.sidemenuTeam?.addEventListener("click", (e: any) => {
+      if (!e.target.classList.contains("sidemenu-member")) return;
+      const pickBtn = e.target;
+      this.handler(pickBtn);
     });
   }
 
@@ -38,24 +50,46 @@ class teamMemberPickBtnsView {
     document
       .querySelector(`.team-member-${Number(tabsNum[0])}`)
       ?.classList.remove("soft-active");
+    this.sidemenuMembers[Number(tabsNum[0]) - 1].classList.add(
+      "soft-active-member"
+    );
+
     document
       .querySelector(`.team-member-${Number(tabsNum[0])}`)
       ?.classList.add("hard-active");
+    this.sidemenuMembers[Number(tabsNum[0]) - 1].classList.add(
+      "hard-active-member"
+    );
 
     if (Number(tabsNum[0]) % 2 !== 0) {
       document
         .querySelector(`.team-member-${Number(tabsNum[0]) + 1}`)
         ?.classList.add("soft-active");
+
+      this.sidemenuMembers[Number(tabsNum[0])].classList.add(
+        "soft-active-member"
+      );
+
       document
         .querySelector(`.team-member-${Number(tabsNum[0]) + 1}`)
         ?.classList.remove("hard-active");
+
+      this.sidemenuMembers[Number(tabsNum[0])].classList.remove(
+        "hard-active-member"
+      );
     } else {
       document
         .querySelector(`.team-member-${Number(tabsNum[0]) - 1}`)
         ?.classList.add("soft-active");
+      this.sidemenuMembers[Number(tabsNum[0]) - 2].classList.add(
+        "soft-active-member"
+      );
       document
         .querySelector(`.team-member-${Number(tabsNum[0]) - 1}`)
         ?.classList.remove("hard-active");
+      this.sidemenuMembers[Number(tabsNum[0]) - 2].classList.remove(
+        "hard-active-member"
+      );
     }
   }
 
@@ -63,8 +97,8 @@ class teamMemberPickBtnsView {
     Array.from(document.querySelectorAll(".team-member")).forEach(
       (teamMember) => teamMember.classList.add(".hide-moveset")
     );
-    this.allBtns.forEach((otherBtn) => {
-      const otherTabs = otherBtn.classList[0].split("-").slice(1);
+    this.allBtns.forEach((otherBtn: HTMLElement) => {
+      const otherTabs = otherBtn.dataset.id!.split("-");
       if (!otherTabs.includes(tabsNum[0])) {
         this.smallPickBtns[Number(otherTabs[0]) - 1].classList.remove(
           "pick-btn-active"
@@ -86,9 +120,15 @@ class teamMemberPickBtnsView {
         document
           .querySelector(`.team-member-${Number(otherTabs[0])}`)
           ?.classList.remove("hard-active");
+        this.sidemenuMembers[Number(tabsNum[0]) - 1].classList.remove(
+          "hard-active-member"
+        );
         document
           .querySelector(`.team-member-${Number(otherTabs[0])}`)
           ?.classList.remove("soft-active");
+        this.sidemenuMembers[Number(tabsNum[0])].classList.remove(
+          "soft-active-member"
+        );
       }
     });
   }
