@@ -79,10 +79,10 @@ class teamMemberPickBtnsView {
                     return;
                 (_a = document
                     .querySelector(`.team-member-${Number(otherTabs[0])}`)) === null || _a === void 0 ? void 0 : _a.classList.remove("hard-active");
-                this.sidemenuMembers[Number(tabsNum[0]) - 1].classList.remove("hard-active-member");
+                this.sidemenuMembers[Number(otherTabs[0]) - 1].classList.remove("hard-active-member");
                 (_b = document
                     .querySelector(`.team-member-${Number(otherTabs[0])}`)) === null || _b === void 0 ? void 0 : _b.classList.remove("soft-active");
-                this.sidemenuMembers[Number(tabsNum[0]) - 1].classList.remove("soft-active-member");
+                this.sidemenuMembers[Number(otherTabs[0]) - 1].classList.remove("soft-active-member");
             }
         });
     }

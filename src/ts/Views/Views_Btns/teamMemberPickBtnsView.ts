@@ -97,6 +97,7 @@ class teamMemberPickBtnsView {
     Array.from(document.querySelectorAll(".team-member")).forEach(
       (teamMember) => teamMember.classList.add(".hide-moveset")
     );
+
     this.allBtns.forEach((otherBtn: HTMLElement) => {
       const otherTabs = otherBtn.dataset.id!.split("-");
       if (!otherTabs.includes(tabsNum[0])) {
@@ -120,13 +121,13 @@ class teamMemberPickBtnsView {
         document
           .querySelector(`.team-member-${Number(otherTabs[0])}`)
           ?.classList.remove("hard-active");
-        this.sidemenuMembers[Number(tabsNum[0]) - 1].classList.remove(
+        this.sidemenuMembers[Number(otherTabs[0]) - 1].classList.remove(
           "hard-active-member"
         );
         document
           .querySelector(`.team-member-${Number(otherTabs[0])}`)
           ?.classList.remove("soft-active");
-        this.sidemenuMembers[Number(tabsNum[0]) - 1].classList.remove(
+        this.sidemenuMembers[Number(otherTabs[0]) - 1].classList.remove(
           "soft-active-member"
         );
       }
