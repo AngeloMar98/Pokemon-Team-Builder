@@ -118,6 +118,12 @@ const controlTeamMemberAdd = async function () {
           controlTypeChange
         );
         sidemenuTeamView.addAll(model.state.currentTeam.teamMembers);
+      } else {
+        teamMembersView.update(
+          model.state.currentTeam.teamMembers.at(-1) || null,
+          model.state.currentTeam.teamMembers.length,
+          controlTypeChange
+        );
       }
       teamMemberPickBtnsView.handleMenus([
         String(model.state.currentTeam.teamMembers.length),
@@ -126,11 +132,6 @@ const controlTeamMemberAdd = async function () {
       sidemenuTeamView.update(
         model.state.currentTeam.teamMembers.at(-1) || null,
         model.state.currentTeam.teamMembers.length - 1
-      );
-      teamMembersView.update(
-        model.state.currentTeam.teamMembers.at(-1) || null,
-        model.state.currentTeam.teamMembers.length,
-        controlTypeChange
       );
     })
   );

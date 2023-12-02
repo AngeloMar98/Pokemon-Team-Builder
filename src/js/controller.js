@@ -98,11 +98,13 @@ const controlTeamMemberAdd = function () {
                 teamMembersView.addAll(model.state.currentTeam.teamMembers, controlTypeChange);
                 sidemenuTeamView.addAll(model.state.currentTeam.teamMembers);
             }
+            else {
+                teamMembersView.update(model.state.currentTeam.teamMembers.at(-1) || null, model.state.currentTeam.teamMembers.length, controlTypeChange);
+            }
             teamMemberPickBtnsView.handleMenus([
                 String(model.state.currentTeam.teamMembers.length),
             ]);
             sidemenuTeamView.update(model.state.currentTeam.teamMembers.at(-1) || null, model.state.currentTeam.teamMembers.length - 1);
-            teamMembersView.update(model.state.currentTeam.teamMembers.at(-1) || null, model.state.currentTeam.teamMembers.length, controlTypeChange);
         })));
         yield model.setCurrentTeamStats(model.state.currentTeam.teamMembers);
         statisticsView.updateStatistics(model.state.currentTeam.teamDefense, model.state.currentTeam.teamOffense);
