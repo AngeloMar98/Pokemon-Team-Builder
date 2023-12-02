@@ -56,6 +56,18 @@ const cleanString = function (word) {
         .replaceAll("-", "")
         .trim();
 };
+const fetchData = function (url) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const data = yield fetch(url);
+            const result = yield data.json();
+            return result;
+        }
+        catch (error) {
+            throw new Error("Failed fetching");
+        }
+    });
+};
 const fetchPokemon = function (id) {
     return __awaiter(this, void 0, void 0, function* () {
         try {
@@ -96,18 +108,6 @@ const fetchPokemon = function (id) {
         catch (error) {
             console.error("Failed pokèmon fetching");
             throw error;
-        }
-    });
-};
-const fetchData = function (url) {
-    return __awaiter(this, void 0, void 0, function* () {
-        try {
-            const data = yield fetch(url);
-            const result = yield data.json();
-            return result;
-        }
-        catch (error) {
-            throw new Error("Failed fetching");
         }
     });
 };

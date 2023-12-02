@@ -637,6 +637,13 @@ class teamMembersView {
         updatedSlotSlectChoice[i].querySelectorAll("li")
       );
       slotsChoices.forEach((slotChoice) => slotSelect.append(slotChoice));
+
+      if (num === 6) {
+        console.log(slotSelect);
+        console.log(slotsChoices);
+        console.log(allSlotSelectChoice);
+        console.log(updatedSlotSlectChoice);
+      }
     });
 
     /* UPDATE SLOTS */

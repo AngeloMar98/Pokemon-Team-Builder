@@ -545,6 +545,12 @@ class teamMembersView {
         allSlotSelectChoice.forEach((slotSelect, i) => {
             const slotsChoices = Array.from(updatedSlotSlectChoice[i].querySelectorAll("li"));
             slotsChoices.forEach((slotChoice) => slotSelect.append(slotChoice));
+            if (num === 6) {
+                console.log(slotSelect);
+                console.log(slotsChoices);
+                console.log(allSlotSelectChoice);
+                console.log(updatedSlotSlectChoice);
+            }
         });
         /* UPDATE SLOTS */
         const allSlots = Array.from(currentMember.querySelectorAll(".slot"));
