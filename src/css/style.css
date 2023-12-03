@@ -997,10 +997,13 @@ h3 {
   top: 2rem;
   z-index: 20;
   margin-top: 0.25rem;
-  display: none;
+  display: flex;
   max-height: 160px;
   min-height: 52px;
   width: 100%;
+  transform-origin: top;
+  --tw-translate-y: 0px;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   flex-direction: column;
   align-items: center;
   overflow-y: scroll;
@@ -1013,6 +1016,9 @@ h3 {
   line-height: 1.25rem;
   --tw-text-opacity: 1;
   color: rgb(233 232 237 / var(--tw-text-opacity));
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
 }
 
 :is(.dark .slot-select_ul) {
@@ -1079,15 +1085,21 @@ h3 {
 .filter-menu_ul {
   position: absolute;
   top: 30px;
-  display: none;
+  display: flex;
   height: 100px;
   width: 100%;
+  transform-origin: top;
+  --tw-scale-y: 0;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   flex-direction: column;
   overflow-y: scroll;
   border-radius: 0.5rem;
   --tw-bg-opacity: 1;
   background-color: rgb(167 195 209 / var(--tw-bg-opacity));
   text-align: center;
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
 }
 
 :is(.dark .filter-menu_ul) {
@@ -2220,6 +2232,10 @@ h3 {
   display: flex;
 }
 
+.group.activscale-y-100 .group-\[\.activscale-y-100\]\:flex {
+  display: flex;
+}
+
 .group.show-stats .group-\[\.show-stats\]\:grid {
   display: grid;
 }
@@ -2250,6 +2266,11 @@ h3 {
 
 .group.activated .group-\[\.activated\]\:rotate-0 {
   --tw-rotate: 0deg;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.group.activated .group-\[\.activated\]\:scale-y-100 {
+  --tw-scale-y: 1;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
