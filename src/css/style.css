@@ -1002,7 +1002,7 @@ h3 {
   min-height: 52px;
   width: 100%;
   transform-origin: top;
-  --tw-translate-y: 0px;
+  --tw-scale-y: 0;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
   flex-direction: column;
   align-items: center;
@@ -1085,6 +1085,7 @@ h3 {
 .filter-menu_ul {
   position: absolute;
   top: 30px;
+  z-index: 1;
   display: flex;
   height: 100px;
   width: 100%;
@@ -2220,7 +2221,7 @@ h3 {
   display: block;
 }
 
-.group.activated .group-\[\.activated\]\:flex {
+.group.activscale-y-100 .group-\[\.activscale-y-100\]\:flex {
   display: flex;
 }
 
@@ -2229,10 +2230,6 @@ h3 {
 }
 
 .group.oldfav .group-\[\.oldfav\]\:flex {
-  display: flex;
-}
-
-.group.activscale-y-100 .group-\[\.activscale-y-100\]\:flex {
   display: flex;
 }
 
